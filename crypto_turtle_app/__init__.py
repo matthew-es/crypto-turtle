@@ -29,8 +29,11 @@ def enforce_www_and_https():
     elif url.startswith('http://'):
         redirect_url = url.replace('http://', 'https://www.', 1)
     # Redirect https://example.com to https://www.example.com
-    elif url.startswith('https://'):
+    elif url.startswith('https://') and not url.startswith('https://www.'):
         redirect_url = url.replace('https://', 'https://www.', 1)
+    else:
+        return
+    
 
     code = 301
     return fk.redirect(redirect_url, code=code)
