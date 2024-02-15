@@ -25,7 +25,7 @@ def enforce_www_and_https():
     else:
         redirect_url = 'https://www.' + url
 
-    return fk.redirect(redirect_url, code=301)
+        return fk.redirect(redirect_url, code=301)
 
 
 @app.route('/')
