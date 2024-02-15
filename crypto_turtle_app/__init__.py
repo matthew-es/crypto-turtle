@@ -38,7 +38,7 @@ def enforce_www_and_https():
     # if redirect_url.startswith('https://www.') and redirect_url[12:] == url[8:]:
     #     return
     
-    return fk.redirect(redirect_url, code=301)
+    # return fk.redirect(redirect_url, code=301)
 
 
 @app.route('/')
