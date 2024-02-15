@@ -5,41 +5,42 @@ import os as os
 de.load_dotenv('.flaskenv')
 app = fk.Flask(__name__)
 
-print(f"FLASK_ENV 1: {os.getenv('FLASK_ENV')}")
-
 @app.before_request
 def enforce_www_and_https():    
     url = fk.request.url
     redirect_url = None
-    
-    print(f"FLASK_ENV 2: {os.getenv('FLASK_ENV')}")
-    
+        
     if os.getenv('FLASK_ENV') == 'development':
         print("Skipping redirection for development environment")
         return
-        
+    
+    # Redirect http://www.example.com to https://www.example.com
     if url.startswith('http://www.'):
         redirect_url = url.replace('http://', 'https://', 1)
+    # Redirect http://example.com to https://www.example.com
     elif url.startswith('http://'):
         redirect_url = url.replace('http://', 'https://www.', 1)
-    elif url.startswith('https://www.'):
-        redirect_url = url
-    elif url.startswith('https://'):
+    # Redirect https://example.com to https://www.example.com
+    elif url.startswith('https://') and not url.startswith('https://www.'):
         redirect_url = url.replace('https://', 'https://www.', 1)
-    else:
-        redirect_url = 'https://www.' + url
-
+    
+    # Perform the redirect if needed
+    if redirect_url and redirect_url != url:
         return fk.redirect(redirect_url, code=301)
     
-    # # Check if the redirect URL is the same as the current URL
-    # if redirect_url == url:
-    #     return
     
-    # # Check if the redirect URL is already redirected
-    # if redirect_url.startswith('https://www.') and redirect_url[12:] == url[8:]:
-    #     return
-    
-    # return fk.redirect(redirect_url, code=301)
+    # if url.startswith('http://www.'):
+    #     redirect_url = url.replace('http://', 'https://', 1)
+    # elif url.startswith('http://'):
+    #     redirect_url = url.replace('http://', 'https://www.', 1)
+    # elif url.startswith('https://www.'):
+    #     redirect_url = url
+    # elif url.startswith('https://'):
+    #     redirect_url = url.replace('https://', 'https://www.', 1)
+    # else:
+    #     redirect_url = 'https://www.' + url
+
+    #     return fk.redirect(redirect_url, code=301)
 
 
 @app.route('/')
