@@ -17,23 +17,18 @@ def enforce_www_and_https():
     if os.getenv('FLASK_ENV') == 'development':
         print("Skipping redirection for development environment")
         return
-    
-    if url.startswith('https://www.'):
-        return url  # No redirection needed
-    
-    # Prepare the redirect URL starting with https://www.
-    if url.startswith('http://www.'):
-        # Replace 'http://' with 'https://'
-        redirect_url = url.replace('http://www.', 'https://www.', 1)
-    elif url.startswith('http://'):
-        # Replace 'http://' with 'https://www.'
-        redirect_url = url.replace('http://', 'https://www.', 1)
-    elif url.startswith('https://'):
-        # Replace 'https://' with 'https://www.' for URLs not starting with www
-        redirect_url = url.replace('https://', 'https://www.', 1)
-    else:
-        # For any other cases, prepend 'https://www.'
-        redirect_url = 'https://www.' + url
+        
+    # Check if the URL does not start with https://www.
+    if not url.startswith('https://www.'):
+        # Redirect http://www.example.com to https://www.example.com
+        if url.startswith('http://www.'):
+            redirect_url = url.replace('http://www.', 'https://www.', 1)
+        # Redirect http://example.com to https://www.example.com
+        elif url.startswith('http://'):
+            redirect_url = url.replace('http://', 'https://www.', 1)
+        # Redirect https://example.com to https://www.example.com
+        elif url.startswith('https://'):
+            redirect_url = url.replace('https://', 'https://www.', 1)
 
         code = 301
         return fk.redirect(redirect_url, code=code)
