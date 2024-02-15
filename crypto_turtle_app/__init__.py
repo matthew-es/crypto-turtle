@@ -19,18 +19,16 @@ def enforce_www_and_https():
         return
         
     # Check if the URL does not start with https://www.
-    if url.startswith('https://www.'):
-        return None
+     
+    if not url.startswith('https://www.'):
+        if url.startswith('http://www.'):
+            redirect_url = url.replace('http://www.', 'https://www.', 1)
+        elif url.startswith('http://'):
+            redirect_url = url.replace('http://', 'https://www.', 1)
+        elif url.startswith('https://'):
+            redirect_url = url.replace('https://', 'https://www.', 1)
     
-    # Redirect http://www.example.com to https://www.example.com
-    if url.startswith('http://www.'):
-        redirect_url = url.replace('http://www.', 'https://www.', 1)
-    # Redirect http://example.com to https://www.example.com
-    elif url.startswith('http://'):
-        redirect_url = url.replace('http://', 'https://www.', 1)
-    # Redirect https://example.com to https://www.example.com
-    elif url.startswith('https://') and not url.startswith('https://www.'):
-        redirect_url = url.replace('https://', 'https://www.', 1)
+        return fk.redirect(redirect_url, code=301)
     
     # # Check if the redirect URL is the same as the current URL
     # if redirect_url == url:
