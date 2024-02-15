@@ -18,16 +18,17 @@ def enforce_www_and_https():
         print("Skipping redirection for development environment")
         return
         
-    # Check if the URL does not start with https://www.
-     
-    if not url.startswith('https://www.'):
-        if url.startswith('http://www.'):
-            redirect_url = url.replace('http://www.', 'https://www.', 1)
-        elif url.startswith('http://'):
-            redirect_url = url.replace('http://', 'https://www.', 1)
-        elif url.startswith('https://'):
-            redirect_url = url.replace('https://', 'https://www.', 1)
-    
+    if url.startswith('http://www.'):
+        redirect_url = url.replace('http://', 'https://', 1)
+    elif url.startswith('http://'):
+        redirect_url = url.replace('http://', 'https://www.', 1)
+    elif url.startswith('https://www.'):
+        redirect_url = url
+    elif url.startswith('https://'):
+        redirect_url = url.replace('https://', 'https://www.', 1)
+    else:
+        redirect_url = 'https://www.' + url
+
         return fk.redirect(redirect_url, code=301)
     
     # # Check if the redirect URL is the same as the current URL
