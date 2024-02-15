@@ -31,8 +31,6 @@ def enforce_www_and_https():
     # Redirect https://example.com to https://www.example.com
     elif url.startswith('https://') and not url.startswith('https://www.'):
         redirect_url = url.replace('https://', 'https://www.', 1)
-    else:
-        redirect_url = "https://www" + url
     
     # # Check if the redirect URL is the same as the current URL
     # if redirect_url == url:
