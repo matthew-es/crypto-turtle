@@ -14,33 +14,18 @@ def enforce_www_and_https():
         print("Skipping redirection for development environment")
         return
     
-    # Redirect http://www.example.com to https://www.example.com
     if url.startswith('http://www.'):
         redirect_url = url.replace('http://', 'https://', 1)
-    # Redirect http://example.com to https://www.example.com
     elif url.startswith('http://'):
         redirect_url = url.replace('http://', 'https://www.', 1)
-    # Redirect https://example.com to https://www.example.com
-    elif url.startswith('https://') and not url.startswith('https://www.'):
+    elif url.startswith('https://www.'):
+        redirect_url = url
+    elif url.startswith('https://'):
         redirect_url = url.replace('https://', 'https://www.', 1)
-    
-    # Perform the redirect if needed
-    if redirect_url and redirect_url != url:
-        return fk.redirect(redirect_url, code=301)
-    
-    
-    # if url.startswith('http://www.'):
-    #     redirect_url = url.replace('http://', 'https://', 1)
-    # elif url.startswith('http://'):
-    #     redirect_url = url.replace('http://', 'https://www.', 1)
-    # elif url.startswith('https://www.'):
-    #     redirect_url = url
-    # elif url.startswith('https://'):
-    #     redirect_url = url.replace('https://', 'https://www.', 1)
-    # else:
-    #     redirect_url = 'https://www.' + url
+    else:
+        redirect_url = 'https://www.' + url
 
-    #     return fk.redirect(redirect_url, code=301)
+    return fk.redirect(redirect_url, code=301)
 
 
 @app.route('/')
