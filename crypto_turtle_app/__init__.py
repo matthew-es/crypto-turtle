@@ -19,19 +19,21 @@ def enforce_www_and_https():
         return
         
     # Check if the URL does not start with https://www.
-    if not url.startswith('https://www.'):
-        # Redirect http://www.example.com to https://www.example.com
-        if url.startswith('http://www.'):
-            redirect_url = url.replace('http://www.', 'https://www.', 1)
-        # Redirect http://example.com to https://www.example.com
-        elif url.startswith('http://'):
-            redirect_url = url.replace('http://', 'https://www.', 1)
-        # Redirect https://example.com to https://www.example.com
-        elif url.startswith('https://'):
-            redirect_url = url.replace('https://', 'https://www.', 1)
+    if url.startswith('https://www.'):
+        return
+    
+    # Redirect http://www.example.com to https://www.example.com
+    if url.startswith('http://www.'):
+        redirect_url = url.replace('http://www.', 'https://www.', 1)
+    # Redirect http://example.com to https://www.example.com
+    elif url.startswith('http://'):
+        redirect_url = url.replace('http://', 'https://www.', 1)
+    # Redirect https://example.com to https://www.example.com
+    elif url.startswith('https://'):
+        redirect_url = url.replace('https://', 'https://www.', 1)
 
-        code = 301
-        return fk.redirect(redirect_url, code=code)
+    code = 301
+    return fk.redirect(redirect_url, code=code)
 
 
 @app.route('/')
