@@ -34,6 +34,15 @@ def enforce_www_and_https():
     else:
         return
     
+    # Check if the redirect URL is the same as the current URL
+    if redirect_url == url:
+        return
+    
+    # Check if the redirect URL is already redirected
+    if redirect_url.startswith('https://www.') and redirect_url[12:] == url[8:]:
+        return
+    
+    
 
     code = 301
     return fk.redirect(redirect_url, code=code)
