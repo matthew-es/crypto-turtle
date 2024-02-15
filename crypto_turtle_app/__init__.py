@@ -27,7 +27,6 @@ def enforce_www_and_https():
 
         return fk.redirect(redirect_url, code=301)
 
-
 @app.route('/')
 def hello_world():
     # return "Hello, World!"
