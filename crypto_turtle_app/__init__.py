@@ -20,9 +20,9 @@ def enforce_www_and_https():
         
     # Check if the URL does not start with https://www.
     if url.startswith('https://www.'):
-        return url
+        return None
+    
     # Redirect http://www.example.com to https://www.example.com
-
     if url.startswith('http://www.'):
         redirect_url = url.replace('http://www.', 'https://www.', 1)
     # Redirect http://example.com to https://www.example.com
@@ -42,10 +42,7 @@ def enforce_www_and_https():
     # if redirect_url.startswith('https://www.') and redirect_url[12:] == url[8:]:
     #     return
     
-    
-
-    code = 301
-    return fk.redirect(redirect_url, code=code)
+    return fk.redirect(redirect_url, code=301)
 
 
 @app.route('/')
