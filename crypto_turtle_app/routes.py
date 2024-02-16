@@ -2,6 +2,7 @@ import os as os
 import flask as fk
 import subprocess as sb
 import sys as sys
+import psycopg as pg
 
 def init_routes(app):
     @app.before_request
@@ -42,7 +43,32 @@ def init_routes(app):
     @app.route('/eth-usd')
     def eth_usd():
         return "ETH-USD"
+    
+    # Connect to postgres database with psycopg
+    def db_connect_open():         
+        try:
+            connection = pg.connect(
+                host = os.getenv("DATABASE_HOST"),
+                dbname = os.getenv("DATABASE_NAME"),
+                user = os.getenv("DATABASE_USER"),
+                password = os.getenv("DATABASE_PASSWORD"),
+                port = os.getenv("DATABASE_PORT"),
+                sslmode="require"
+            )
+            return connection
+        
+        except pg.OperationalError as e:
+            print("Unable to connect to the database from db_connect:", e)
 
+    @app.route('/db-test')
+    def db_test():
+        conn = db_connect_open()
+        if conn:
+            conn.close()  # Close the connection as we're just testing the connection
+            message = "Successfully connected to the database."
+        else:
+            message = "Failed to connect to the database."
+        return fk.render_template_string('<h1>{{ message }}</h1>', message=message)
     
     @app.route('/trigger-update', methods=['POST'])
     def trigger_update():
