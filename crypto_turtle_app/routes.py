@@ -52,8 +52,7 @@ def init_routes(app):
                 dbname = os.getenv("DATABASE_NAME"),
                 user = os.getenv("DATABASE_USER"),
                 password = os.getenv("DATABASE_PASSWORD"),
-                port = os.getenv("DATABASE_PORT"),
-                sslmode="require"
+                port = os.getenv("DATABASE_PORT")
             )
             return connection
         
@@ -64,8 +63,21 @@ def init_routes(app):
     def db_test():
         conn = db_connect_open()
         if conn:
-            conn.close()  # Close the connection as we're just testing the connection
-            message = "Successfully connected to the database."
+            cursor = conn.cursor()
+            # Query to fetch table names from the public schema
+            cursor.execute("""
+                SELECT table_name
+                FROM information_schema.tables
+                WHERE table_schema = 'public'
+            """)
+            tables = cursor.fetchall()
+            table_names = ', '.join([table[0] for table in tables])
+            cursor.close()
+            conn.close()
+            if tables:
+                message = f"Successfully connected to the database. Tables: {table_names}."
+            else:
+                message = "Successfully connected to the database. No tables found."
         else:
             message = "Failed to connect to the database."
         return fk.render_template_string('<h1>{{ message }}</h1>', message=message)
