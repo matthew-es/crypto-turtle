@@ -5,6 +5,28 @@ import coinbase_symbols as sym
 import coinbase_prices as prices
 import coinbase_prices_calculate_daily_highs_lows as highs
 
+import logging
+import sys
+
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        # Call the default KeyboardInterrupt handler to avoid capturing interrupt signals.
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logging.error("Unhandled exception", exc_info=(exc_type, exc_value, exc_traceback))
+
+def setup_logging():
+    log_file_path = 'crypto_turtle_log.txt'
+    logging.basicConfig(filename=log_file_path, level=logging.ERROR,
+                        format='%(asctime)s:%(levelname)s:%(message)s')
+
+# Call setup_logging at the start of your main script or application entry point.
+setup_logging()
+
+# Set the global exception hook to our custom handler.
+sys.excepthook = handle_exception
+
+
 # LET'S GO
 log.log_message("********************************************************")
 log_crypto_turtle = log.log_duration_start("CRYPTO TURTLE WHOLE PROGRAM")
