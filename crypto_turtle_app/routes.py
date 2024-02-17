@@ -34,6 +34,8 @@ def init_routes(app):
         # return fk.render_template('crypto_turtle_pumping_percentages.html')
         response = fk.make_response(fk.render_template('crypto_turtle_pumping_percentages.html'))
         response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
         return response
 
     log_file_path = 'crypto_turtle_program/crypto_turtle_log.txt'  # Update this path

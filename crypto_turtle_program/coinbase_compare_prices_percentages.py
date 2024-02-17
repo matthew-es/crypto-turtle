@@ -141,6 +141,11 @@ def compare_prices_percentages(new_connection):
             <head>
                 <title>Pumping on Coinbase - %</title>
                 <meta charset="utf-8">
+                
+                <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+                <meta http-equiv="Pragma" content="no-cache" />
+                <meta http-equiv="Expires" content="0" />
+                
                 <link rel="stylesheet" type="text/css" href="/static/css/crypto_turtle_styles.css">
             </head>
             <body>

@@ -27,6 +27,7 @@ def update_high_lows(symbols, connection):
             
             # Assuming 'symbols' is a list of symbol names and 'connection' is your database connection
             for symbol in symbols:
+                log.log_message(f"CHECKING HIGH LOWS FOR: {symbol} STARTS")
                 cursor.execute("SELECT SymbolID FROM Symbols WHERE SymbolName = %s;", (symbol,))
                 symbol_id_row = cursor.fetchone()
                 
@@ -96,7 +97,7 @@ def update_high_lows(symbols, connection):
             
             # Commit the transaction
             connection.commit()
-            
+            log.log_message(f"CHECKING HIGH LOWS FOR: {symbol} ENDS")          
     except Exception as e:
         print(f"Error updating high and low for symbols: {e}")
         # Rollback in case of error
