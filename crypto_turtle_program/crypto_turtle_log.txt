@@ -39266,3 +39266,12 @@
 2024-02-16 17:08:09.396699: CRYPTO TURTLE WHOLE PROGRAM ENDS 
 2024-02-16 17:08:09.396699: CRYPTO TURTLE WHOLE PROGRAM TOOK 0:04:32.653134
 2024-02-16 17:08:09.402201: ********************************************************
+Request: GET /logs | Response: 200 OK
+Request: GET /logs | Response: 200 OK
+Request: GET /db-test | Response: 200 OK
+Request: GET /logs | Response: 200 OK
+Request: GET / | Response: 200 OK
+Request: GET / | Response: 200 OK
+Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
+Request: GET /logs | Response: 200 OK
+Request: GET /logs | Response: 200 OK

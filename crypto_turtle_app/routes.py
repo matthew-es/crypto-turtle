@@ -36,6 +36,33 @@ def init_routes(app):
         response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
         return response
 
+    log_file_path = 'crypto_turtle_program/crypto_turtle_log.txt'  # Update this path
+    # base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    # log_file_path = os.path.join(base_dir, 'crypto_turtle_program/crypto_turtle_log.txt')
+        
+    # View logs for debugging
+    @app.route('/logs')
+    def show_logs():
+        try:
+            with open(log_file_path, 'r') as file:
+                content = file.read()
+            return fk.Response(content, mimetype='text/plain')
+        except FileNotFoundError:
+            return "Log file not found.", 404
+
+    def log_to_file(message):
+        """Utility function to log a message to a file."""
+        with open(log_file_path, 'a') as file:
+            file.write(message + '\n')
+
+    @app.after_request
+    def log_response(response):
+        """Logs details of the HTTP response after every request."""
+        log_message = f"Request: {fk.request.method} {fk.request.path} | Response: {response.status}"
+        log_to_file(log_message)
+        return response
+    
+
     @app.route('/btc-usd')
     def btc_usd():
         return "BTC-USD"
@@ -82,6 +109,7 @@ def init_routes(app):
             message = "Failed to connect to the database."
         return fk.render_template_string('<h1>{{ message }}</h1>', message=message)
     
+    # Main trigger update route to ping from somewhere else
     @app.route('/trigger-update', methods=['POST'])
     def trigger_update():
         try:
@@ -102,17 +130,3 @@ def init_routes(app):
             return "Success", 200
         except sb.CalledProcessError as e:
             return f"Failed to trigger the update process. {e}\nOutput: {e.stderr} {e.stdout}", 500
-
-    # @app.route('/trigger-update', methods=['POST'])
-    # def trigger_update():
-    #     # Simple token-based authentication
-    #     token = fk.request.headers.get('Authorization')
-    #     if not token or token != "ExpectedToken":
-    #         fk.abort(403)
-
-    #     try:
-    #         # Assuming your script can be executed like this
-    #         sb.run(['python', '/path/to/crypto_turtle_program/crypto_turtle.py'], check=True)
-    #         return "Update process triggered successfully.", 200
-    #     except sb.CalledProcessError:
-    #         return "Failed to trigger the update process.", 500
