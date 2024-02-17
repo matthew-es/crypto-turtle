@@ -97,7 +97,7 @@ def get_daily_prices_for_symbols(symbols, new_connection):
 #################################################################################################################################
 
 
-def update_hourly_prices(symbols, new_connection):
+def get_hourly_prices_for_symbols(symbols, new_connection):
     function_name = "UPDATE HOURLY PRICES"
     log_hourly_price_check = log.log_duration_start(function_name)
     
