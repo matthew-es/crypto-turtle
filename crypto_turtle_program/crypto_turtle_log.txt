@@ -1,4 +1,0 @@
-Request: GET / | Response: 200 OK
-Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
-Request: GET /static/favicon.png | Response: 304 NOT MODIFIED
-Request: GET /static/favicon.png | Response: 304 NOT MODIFIED

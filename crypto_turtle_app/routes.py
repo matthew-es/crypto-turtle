@@ -32,12 +32,13 @@ def init_routes(app):
     def home():
         # return "Hello, World!"
         # return fk.render_template('home.html')
-        # return fk.render_template('crypto_turtle_pumping_percentages.html')
-        response = fk.make_response(fk.render_template('crypto_turtle_pumping_percentages.html'))
-        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-        response.headers['Pragma'] = 'no-cache'
-        response.headers['Expires'] = '0'
-        return response
+        return fk.render_template('crypto_turtle_pumping_percentages.html')
+        # response = fk.make_response(fk.render_template('crypto_turtle_pumping_percentages.html'))
+        # response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        # response.headers['Pragma'] = 'no-cache'
+        # response.headers['Expires'] = '0'
+        # return response
+
 
     log_file_path = 'crypto_turtle_program/crypto_turtle_log.txt'  # Update this path
     # base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
