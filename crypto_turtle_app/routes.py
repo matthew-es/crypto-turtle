@@ -4,6 +4,7 @@ import subprocess as sb
 import sys as sys
 import psycopg as pg
 import threading as th
+import datetime as dt
 
 def init_routes(app):
     @app.before_request
@@ -30,15 +31,31 @@ def init_routes(app):
     
     @app.route('/')
     def home():
+            # Get current time
+        current_time = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # Dynamic data to pass to template
+        dynamic_data = {"time": current_time}
+        
+        # Generate dynamic page
+        response = fk.make_response(fk.render_template('dynamic_page.html', data=dynamic_data))
+        
+        # Set cache-control headers to prevent caching
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
+        
+        return response
+        
+        
         # return "Hello, World!"
         # return fk.render_template('home.html')
-        return fk.render_template('crypto_turtle_pumping_percentages.html')
+        # return fk.render_template('crypto_turtle_pumping_percentages.html')
         # response = fk.make_response(fk.render_template('crypto_turtle_pumping_percentages.html'))
         # response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
         # response.headers['Pragma'] = 'no-cache'
         # response.headers['Expires'] = '0'
         # return response
-
 
     log_file_path = 'crypto_turtle_program/crypto_turtle_log.txt'  # Update this path
     # base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
