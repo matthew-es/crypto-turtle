@@ -107,7 +107,7 @@ def get_hourly_prices_for_symbols(symbols, new_connection):
     # TIME references
     current_unix_time = ctt.now_basic_unix
     end_time = ctt.now_previous_hour
-    start_time = ctt.three_hours_ago
+    start_time = ctt.twenty_four_hours_ago
     granularity = 3600
     start_of_previous_hour_unix = int(ctt.now_previous_hour.timestamp())
     log.log_message(f"CURRENT UNIX IS: {current_unix_time}")
@@ -149,8 +149,10 @@ def get_hourly_prices_for_symbols(symbols, new_connection):
                 url = f"https://api.pro.coinbase.com/products/{symbol}/candles"
                 params = {'start': start_time.isoformat(), 'end': end_time.isoformat(), 'granularity': granularity}
                 response = req.get(url, params=params)
+                api_call_count += 1
 
                 if response.status_code == 200:
+                    api_call_count_successful += 1
                     log.log_message(f"{function_name}: UPDATING: {symbol}")
                     
                     data = response.json()
@@ -187,6 +189,7 @@ def get_hourly_prices_for_symbols(symbols, new_connection):
 
     log.log_message(f"{function_name}: total api calls is: {api_call_count}")
     log.log_message(f"{function_name}: api calls successful: {api_call_count_successful}")
+    cursor = new_connection.cursor()
     cursor.execute("SELECT COUNT(*) FROM HourlyPrices")
     final_row_count = cursor.fetchone()[0]
     log.log_message(f"{function_name}: final row count is: {final_row_count}")
