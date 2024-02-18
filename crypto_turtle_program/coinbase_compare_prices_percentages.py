@@ -148,6 +148,7 @@ def compare_prices_percentages(new_connection):
                 <meta http-equiv="Pragma" content="no-cache" />
                 <meta http-equiv="Expires" content="0" />
                 
+                <link rel="icon" type="image/png" href="/static/favicon.png">
                 <link rel="stylesheet" type="text/css" href="/static/css/crypto_turtle_styles.css">
             </head>
             <body>
