@@ -169,8 +169,14 @@ def get_hourly_prices_for_symbols(symbols, new_connection):
         # After collecting all data, insert it into the actual hourlyprices table from the temporary table
         cursor.execute("""
             INSERT INTO hourlyprices (symbolid, unixtimestamp, highprice, lowprice, openprice, closeprice)
-            SELECT symbol_id, unix_timestamp, high_price, low_price, open_price, close_price
-            FROM temp_hourly_prices;
+            SELECT symbolid, unixtimestamp, highprice, lowprice, openprice, closeprice
+            FROM temp_hourly_prices
+            ON CONFLICT (symbolid, unixtimestamp)
+            DO UPDATE SET
+                highprice = EXCLUDED.highprice,
+                lowprice = EXCLUDED.lowprice,
+                openprice = EXCLUDED.openprice,
+                closeprice = EXCLUDED.closeprice;
         """)
 
         # Commit the transaction to finalize the bulk insert
