@@ -159,7 +159,7 @@ def compare_prices_percentages(new_connection):
             """
             html_content += f"""<p class=\"small\">
             <strong>Last updated:</strong> {formatted_datetime}.
-            <br />Monitors all the active symbols returned by the Coinbase API and compares the previous hour's high to the high 2, 4, 12, etc. hours earlier.
+            <br />Monitors all the active symbols returned by the Coinbase API and compares the previous hour's high to the high X hours earlier.
             </p>"""           
             
             html_content += """
