@@ -9,11 +9,11 @@ import crypto_turtle_database as db
 
 time_periods = [10, 20, 55]  # Time periods remain the same, but calculations will change
 
-def update_high_lows(symbols, connection):
+def update_high_lows(symbols, new_connection):
     log.log_message("CHECKING HIGH LOWS TEMP TABLE STARTS")
     try:
         # Use a context manager to ensure the cursor is closed automatically
-        with cl.closing(connection.cursor()) as cursor:
+        with cl.closing(new_connection.cursor()) as cursor:
             # Create a temporary table for batch update operations
             cursor.execute("""
                 CREATE TEMP TABLE IF NOT EXISTS batch_updates (
@@ -96,12 +96,12 @@ def update_high_lows(symbols, connection):
             """)
             
             # Commit the transaction
-            connection.commit()
+            new_connection.commit()
             log.log_message(f"CHECKING HIGH LOWS FOR: {symbol} ENDS")          
     except Exception as e:
         print(f"Error updating high and low for symbols: {e}")
         # Rollback in case of error
-        connection.rollback()
+        new_connection.rollback()
     log.log_message("CHECKING HIGH LOWS TEMP TABLE ENDS")
 
 

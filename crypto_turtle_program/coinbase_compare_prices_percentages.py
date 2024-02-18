@@ -1,6 +1,8 @@
 import datetime as dt
 import psycopg  # Assuming psycopg2 for PostgreSQL connection
 import flask as fk
+import crypto_turtle_logger as log
+
 
 def compare_prices_percentages(new_connection):
     try:
@@ -157,7 +159,7 @@ def compare_prices_percentages(new_connection):
             """
             html_content += f"""<p class=\"small\">
             <strong>Last updated:</strong> {formatted_datetime}.
-            Monitors all the active symbols returned by the Coinbase Pro API and compares the previous hour's high to the high 2, 4, 12, etc. hours earlier.
+            <br />Monitors all the active symbols returned by the Coinbase API and compares the previous hour's high to the high 2, 4, 12, etc. hours earlier.
             </p>"""           
             
             html_content += """
@@ -228,14 +230,9 @@ def compare_prices_percentages(new_connection):
                 </html>
             """
             
-            file_path_1 = "crypto_turtle_pumping_percentages.html"
-            file_path_2 = "../crypto_turtle_app/templates/crypto_turtle_pumping_percentages.html"
-            
-            with open(file_path_1, "w") as file_1, open(file_path_2, "w") as file_2:
-                file_1.write(html_content)
-                file_2.write(html_content)
-
-            print("HTML report generated successfully.")
+            with open("../crypto_turtle_app/templates/crypto_turtle_pumping_percentages.html", "w") as file:
+                file.write(html_content)
+            log.log_message("HOURLY PERCENTAGES HTML report generated successfully.")
 
     except Exception as e:
         print(f"Error in generating report: {e}")

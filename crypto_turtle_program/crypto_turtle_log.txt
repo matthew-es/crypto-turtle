@@ -1,1269 +1,862 @@
-Request: GET / | Response: 200 OK
-Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
-Request: GET / | Response: 200 OK
-Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
-Request: GET / | Response: 200 OK
-Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
-Request: GET / | Response: 200 OK
-Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
-2024-02-18 13:04:17.843195: ********************************************************
-2024-02-18 13:04:17.848761: CRYPTO TURTLE WHOLE PROGRAM STARTS
-2024-02-18 13:04:17.853765: DB CONNECTION OPENED
-2024-02-18 13:04:17.901804: CHECK OR CREATE TABLES STARTS
-2024-02-18 13:04:17.913313: TABLE: symbols already exists
-2024-02-18 13:04:17.919318: TABLE: hourlyprices already exists
-2024-02-18 13:04:17.925323: TABLE: dailyprices already exists
-2024-02-18 13:04:17.931327: CHECK OR CREATE TABLES ENDS 
-2024-02-18 13:04:17.931327: CHECK OR CREATE TABLES TOOK 0:00:00.029523
-2024-02-18 13:04:17.936331: SYMBOLS CHECK STARTS
-2024-02-18 13:04:17.941836: GET COINBASE SYMBOLS STARTS
-2024-02-18 13:04:18.424938: GET COINBASE SYMBOLS: API returns 614 symbols.
-2024-02-18 13:04:18.430443: GET COINBASE SYMBOLS ENDS 
-2024-02-18 13:04:18.430443: GET COINBASE SYMBOLS TOOK 0:00:00.488607
-2024-02-18 13:04:18.437448: DB SYMBOLS CHECK AND INSERT STARTS
-2024-02-18 13:04:18.445456: DB SYMBOLS CHECK AND INSERT: SELECT COUNT returns 614 symbols in database.
-2024-02-18 13:04:18.519516: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'online': 396
-2024-02-18 13:04:18.525214: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'delisted': 218
-2024-02-18 13:04:18.530221: DB SYMBOLS CHECK AND INSERT ENDS 
-2024-02-18 13:04:18.530221: DB SYMBOLS CHECK AND INSERT TOOK 0:00:00.092773
-2024-02-18 13:04:18.535725: GET ONLINE SYMBOLS STARTS
-2024-02-18 13:04:18.542230: GET ONLINE SYMBOLS: there are 396 symbols online.
-2024-02-18 13:04:18.547733: GET ONLINE SYMBOLS ENDS 
-2024-02-18 13:04:18.547733: GET ONLINE SYMBOLS TOOK 0:00:00.012008
-2024-02-18 13:04:18.553239: SYMBOLS CHECK ENDS 
-2024-02-18 13:04:18.553239: SYMBOLS CHECK TOOK 0:00:00.616908
-2024-02-18 13:04:18.558242: PRICES CHECK STARTS
-2024-02-18 13:04:18.563747: GET DAILY PRICES FOR SYMBOLS STARTS
-2024-02-18 13:04:18.569447: START OF YESTERDAY TIMESTAMP IS: 1708128000
-2024-02-18 13:04:18.579957: GET DAILY PRICES FOR SYMBOLS initial row count is: 36288
-2024-02-18 13:04:18.586963: No DAILY data for ILV-USD is already up to date
-2024-02-18 13:04:18.592910: No DAILY data for BADGER-USD is already up to date
-2024-02-18 13:04:18.598915: No DAILY data for PRIME-USD is already up to date
-2024-02-18 13:04:18.604419: No DAILY data for MANA-USD is already up to date
-2024-02-18 13:04:18.610425: No DAILY data for NCT-USD is already up to date
-2024-02-18 13:04:18.615929: No DAILY data for CRO-EUR is already up to date
-2024-02-18 13:04:18.621434: No DAILY data for MATIC-USD is already up to date
-2024-02-18 13:04:18.630447: No DAILY data for EUROC-USD is already up to date
-2024-02-18 13:04:18.646958: No DAILY data for XTZ-USD is already up to date
-2024-02-18 13:04:18.651964: No DAILY data for ETC-USD is already up to date
-2024-02-18 13:04:18.657468: No DAILY data for AAVE-BTC is already up to date
-2024-02-18 13:04:18.662973: No DAILY data for ACS-USD is already up to date
-2024-02-18 13:04:18.668338: No DAILY data for LTC-USD is already up to date
-2024-02-18 13:04:18.673844: No DAILY data for SNT-USD is already up to date
-2024-02-18 13:04:18.679348: No DAILY data for ALEPH-USD is already up to date
-2024-02-18 13:04:18.684351: No DAILY data for BCH-GBP is already up to date
-2024-02-18 13:04:18.689857: No DAILY data for MANA-ETH is already up to date
-2024-02-18 13:04:18.695361: No DAILY data for AVAX-USDT is already up to date
-2024-02-18 13:04:18.700364: No DAILY data for GHST-USD is already up to date
-2024-02-18 13:04:18.705869: No DAILY data for TIA-USD is already up to date
-2024-02-18 13:04:18.711374: No DAILY data for ENJ-BTC is already up to date
-2024-02-18 13:04:18.716377: No DAILY data for INV-USD is already up to date
-2024-02-18 13:04:18.722383: No DAILY data for GRT-USD is already up to date
-2024-02-18 13:04:18.727887: No DAILY data for CTX-USD is already up to date
-2024-02-18 13:04:18.733392: No DAILY data for GMT-USDT is already up to date
-2024-02-18 13:04:18.738896: No DAILY data for HBAR-USD is already up to date
-2024-02-18 13:04:19.180450: LSETH-ETH UPDATING: 1707868800, 1.03935, 1.03909, 1.03909, 1.03935
-2024-02-18 13:04:19.195846: LSETH-ETH UPDATING: 1707955200, 1.0402, 1.0394, 1.0402, 1.03957
-2024-02-18 13:04:19.201851: LSETH-ETH UPDATING: 1708041600, 1.04073, 1.03976, 1.04047, 1.03976
-2024-02-18 13:04:19.212859: No DAILY data for ETC-BTC is already up to date
-2024-02-18 13:04:19.218863: No DAILY data for PUNDIX-USD is already up to date
-2024-02-18 13:04:19.224360: No DAILY data for WBTC-BTC is already up to date
-2024-02-18 13:04:19.229863: No DAILY data for XLM-EUR is already up to date
-2024-02-18 13:04:19.235368: No DAILY data for IOTX-USD is already up to date
-2024-02-18 13:04:19.240872: No DAILY data for SUI-USD is already up to date
-2024-02-18 13:04:19.246878: No DAILY data for ARB-USD is already up to date
-2024-02-18 13:04:19.252382: No DAILY data for GNO-USD is already up to date
-2024-02-18 13:04:19.257886: No DAILY data for BIT-USD is already up to date
-2024-02-18 13:04:19.263391: No DAILY data for BICO-USD is already up to date
-2024-02-18 13:04:19.268895: No DAILY data for SNX-GBP is already up to date
-2024-02-18 13:04:19.274900: No DAILY data for RARI-USD is already up to date
-2024-02-18 13:04:19.280404: No DAILY data for CGLD-GBP is already up to date
-2024-02-18 13:04:19.286409: No DAILY data for API3-USD is already up to date
-2024-02-18 13:04:19.291914: No DAILY data for USDT-GBP is already up to date
-2024-02-18 13:04:19.297418: No DAILY data for STX-USDT is already up to date
-2024-02-18 13:04:19.302922: No DAILY data for CHZ-EUR is already up to date
-2024-02-18 13:04:19.308427: No DAILY data for SOL-ETH is already up to date
-2024-02-18 13:04:19.313931: No DAILY data for GFI-USD is already up to date
-2024-02-18 13:04:19.319436: No DAILY data for DAR-USD is already up to date
-2024-02-18 13:04:19.325441: No DAILY data for AURORA-USD is already up to date
-2024-02-18 13:04:19.330945: No DAILY data for AERGO-USD is already up to date
-2024-02-18 13:04:19.336449: No DAILY data for FORT-USD is already up to date
-2024-02-18 13:04:19.341953: No DAILY data for 1INCH-GBP is already up to date
-2024-02-18 13:04:19.347458: No DAILY data for DYP-USD is already up to date
-2024-02-18 13:04:19.353110: No DAILY data for SUPER-USD is already up to date
-2024-02-18 13:04:19.358617: No DAILY data for XTZ-GBP is already up to date
-2024-02-18 13:04:19.364323: No DAILY data for MATIC-USDT is already up to date
-2024-02-18 13:04:19.369829: No DAILY data for BICO-USDT is already up to date
-2024-02-18 13:04:19.375835: No DAILY data for LQTY-USD is already up to date
-2024-02-18 13:04:19.381339: No DAILY data for LIT-USD is already up to date
-2024-02-18 13:04:19.386843: No DAILY data for SOL-EUR is already up to date
-2024-02-18 13:04:19.392848: No DAILY data for ELA-USD is already up to date
-2024-02-18 13:04:19.398353: No DAILY data for COVAL-USD is already up to date
-2024-02-18 13:04:19.404357: No DAILY data for STX-USD is already up to date
-2024-02-18 13:04:19.409861: No DAILY data for PERP-USD is already up to date
-2024-02-18 13:04:19.415867: No DAILY data for ETH-EUR is already up to date
-2024-02-18 13:04:19.421872: No DAILY data for EUROC-EUR is already up to date
-2024-02-18 13:04:19.427876: No DAILY data for IMX-USD is already up to date
-2024-02-18 13:04:19.433381: No DAILY data for DAI-USD is already up to date
-2024-02-18 13:04:19.444389: No DAILY data for JTO-USD is already up to date
-2024-02-18 13:04:19.454397: No DAILY data for AXS-BTC is already up to date
-2024-02-18 13:04:19.460403: No DAILY data for ARPA-USD is already up to date
-2024-02-18 13:04:19.465907: No DAILY data for FIL-BTC is already up to date
-2024-02-18 13:04:19.471912: No DAILY data for LINK-BTC is already up to date
-2024-02-18 13:04:19.477416: No DAILY data for BNT-USD is already up to date
-2024-02-18 13:04:19.482920: No DAILY data for ADA-ETH is already up to date
-2024-02-18 13:04:19.488925: No DAILY data for APE-EUR is already up to date
-2024-02-18 13:04:19.494930: No DAILY data for LCX-USD is already up to date
-2024-02-18 13:04:19.500935: No DAILY data for AIOZ-USD is already up to date
-2024-02-18 13:04:19.506940: No DAILY data for APE-USD is already up to date
-2024-02-18 13:04:19.512444: No DAILY data for AXS-EUR is already up to date
-2024-02-18 13:04:19.518448: No DAILY data for TIME-USD is already up to date
-2024-02-18 13:04:19.524454: No DAILY data for MINA-USD is already up to date
-2024-02-18 13:04:19.529958: No DAILY data for SNX-USD is already up to date
-2024-02-18 13:04:19.535963: No DAILY data for DNT-USD is already up to date
-2024-02-18 13:04:19.541466: No DAILY data for ICP-USD is already up to date
-2024-02-18 13:04:19.548473: No DAILY data for AVT-USD is already up to date
-2024-02-18 13:04:19.554797: No DAILY data for DOT-USD is already up to date
-2024-02-18 13:04:19.560520: No DAILY data for INJ-USD is already up to date
-2024-02-18 13:04:19.566465: No DAILY data for APT-USD is already up to date
-2024-02-18 13:04:19.572470: No DAILY data for UNFI-USD is already up to date
-2024-02-18 13:04:19.578629: No DAILY data for RNDR-USDT is already up to date
-2024-02-18 13:04:19.584132: No DAILY data for COMP-USD is already up to date
-2024-02-18 13:04:19.589636: No DAILY data for BTRST-USD is already up to date
-2024-02-18 13:04:19.595324: No DAILY data for UNI-USD is already up to date
-2024-02-18 13:04:19.600830: No DAILY data for 00-USD is already up to date
-2024-02-18 13:04:19.606835: No DAILY data for SEAM-USD is already up to date
-2024-02-18 13:04:19.612840: No DAILY data for FLR-USD is already up to date
-2024-02-18 13:04:19.618343: No DAILY data for LINK-GBP is already up to date
-2024-02-18 13:04:19.624349: No DAILY data for MASK-EUR is already up to date
-2024-02-18 13:04:19.629853: No DAILY data for GST-USD is already up to date
-2024-02-18 13:04:19.635358: No DAILY data for WCFG-USD is already up to date
-2024-02-18 13:04:19.640862: No DAILY data for DASH-BTC is already up to date
-2024-02-18 13:04:19.646366: No DAILY data for AUCTION-USD is already up to date
-2024-02-18 13:04:19.651871: No DAILY data for BAL-USD is already up to date
-2024-02-18 13:04:19.657876: No DAILY data for MAGIC-USD is already up to date
-2024-02-18 13:04:19.663380: No DAILY data for FIL-GBP is already up to date
-2024-02-18 13:04:19.668884: No DAILY data for MLN-USD is already up to date
-2024-02-18 13:04:19.674389: No DAILY data for AUDIO-USD is already up to date
-2024-02-18 13:04:19.679393: No DAILY data for BTC-USD is already up to date
-2024-02-18 13:04:19.685898: No DAILY data for DOT-USDT is already up to date
-2024-02-18 13:04:19.697408: No DAILY data for PAX-USD is already up to date
-2024-02-18 13:04:19.703913: No DAILY data for UMA-USD is already up to date
-2024-02-18 13:04:19.710419: No DAILY data for ABT-USD is already up to date
-2024-02-18 13:04:19.717424: No DAILY data for SPELL-USD is already up to date
-2024-02-18 13:04:19.723928: No DAILY data for CHZ-GBP is already up to date
-2024-02-18 13:04:19.729933: No DAILY data for XRP-USD is already up to date
-2024-02-18 13:04:19.735938: No DAILY data for MEDIA-USD is already up to date
-2024-02-18 13:04:19.741943: No DAILY data for FLOW-USDT is already up to date
-2024-02-18 13:04:19.747948: No DAILY data for METIS-USD is already up to date
-2024-02-18 13:04:19.753953: No DAILY data for XLM-USDT is already up to date
-2024-02-18 13:04:19.759957: No DAILY data for CRV-USD is already up to date
-2024-02-18 13:04:19.765462: No DAILY data for ATOM-EUR is already up to date
-2024-02-18 13:04:19.770965: No DAILY data for YFI-BTC is already up to date
-2024-02-18 13:04:19.776443: No DAILY data for GLM-USD is already up to date
-2024-02-18 13:04:19.781949: No DAILY data for RAD-USD is already up to date
-2024-02-18 13:04:19.787454: No DAILY data for AERO-USD is already up to date
-2024-02-18 13:04:19.792958: No DAILY data for ICP-BTC is already up to date
-2024-02-18 13:04:19.798462: No DAILY data for APT-USDT is already up to date
-2024-02-18 13:04:19.803966: No DAILY data for USDC-EUR is already up to date
-2024-02-18 13:04:19.809471: No DAILY data for SKL-USD is already up to date
-2024-02-18 13:04:19.814975: No DAILY data for ALCX-USD is already up to date
-2024-02-18 13:04:19.820365: No DAILY data for MSOL-USD is already up to date
-2024-02-18 13:04:19.825871: No DAILY data for ETH-BTC is already up to date
-2024-02-18 13:04:19.831901: No DAILY data for ETH-GBP is already up to date
-2024-02-18 13:04:19.837880: No DAILY data for AXS-USDT is already up to date
-2024-02-18 13:04:19.843885: No DAILY data for BAT-USD is already up to date
-2024-02-18 13:04:19.849890: No DAILY data for SEI-USD is already up to date
-2024-02-18 13:04:19.855895: No DAILY data for BLUR-USD is already up to date
-2024-02-18 13:04:19.861899: No DAILY data for GYEN-USD is already up to date
-2024-02-18 13:04:19.868406: No DAILY data for XCN-USD is already up to date
-2024-02-18 13:04:19.874410: No DAILY data for BCH-USD is already up to date
-2024-02-18 13:04:19.880415: No DAILY data for PRO-USD is already up to date
-2024-02-18 13:04:19.886419: No DAILY data for POND-USD is already up to date
-2024-02-18 13:04:19.892424: No DAILY data for ZEC-USD is already up to date
-2024-02-18 13:04:19.898430: No DAILY data for MASK-USD is already up to date
-2024-02-18 13:04:19.904934: No DAILY data for DIA-USD is already up to date
-2024-02-18 13:04:19.910939: No DAILY data for TRB-USD is already up to date
-2024-02-18 13:04:19.916944: No DAILY data for ACH-USD is already up to date
-2024-02-18 13:04:19.922948: No DAILY data for OXT-USD is already up to date
-2024-02-18 13:04:19.928953: No DAILY data for USDT-EUR is already up to date
-2024-02-18 13:04:19.934457: No DAILY data for COMP-BTC is already up to date
-2024-02-18 13:04:19.940462: No DAILY data for RAI-USD is already up to date
-2024-02-18 13:04:19.946825: No DAILY data for FLOW-USD is already up to date
-2024-02-18 13:04:19.963344: No DAILY data for ADA-BTC is already up to date
-2024-02-18 13:04:19.969349: No DAILY data for HFT-USD is already up to date
-2024-02-18 13:04:19.974853: No DAILY data for MATH-USD is already up to date
-2024-02-18 13:04:19.980358: No DAILY data for BCH-BTC is already up to date
-2024-02-18 13:04:19.986363: No DAILY data for EOS-BTC is already up to date
-2024-02-18 13:04:19.992368: No DAILY data for C98-USD is already up to date
-2024-02-18 13:04:19.998373: No DAILY data for RPL-USD is already up to date
-2024-02-18 13:04:20.004377: No DAILY data for KSM-USD is already up to date
-2024-02-18 13:04:20.009881: No DAILY data for FIL-USD is already up to date
-2024-02-18 13:04:20.016386: No DAILY data for PRQ-USD is already up to date
-2024-02-18 13:04:20.022391: No DAILY data for FX-USD is already up to date
-2024-02-18 13:04:20.028897: No DAILY data for BTC-GBP is already up to date
-2024-02-18 13:04:20.034902: No DAILY data for ALICE-USD is already up to date
-2024-02-18 13:04:20.041407: No DAILY data for DOGE-GBP is already up to date
-2024-02-18 13:04:20.047912: No DAILY data for 1INCH-EUR is already up to date
-2024-02-18 13:04:20.053918: No DAILY data for USDT-USD is already up to date
-2024-02-18 13:04:20.059922: No DAILY data for CTSI-USD is already up to date
-2024-02-18 13:04:20.065927: No DAILY data for POWR-USD is already up to date
-2024-02-18 13:04:20.072433: No DAILY data for NEAR-USDT is already up to date
-2024-02-18 13:04:20.078437: No DAILY data for GODS-USD is already up to date
-2024-02-18 13:04:20.084941: No DAILY data for MKR-BTC is already up to date
-2024-02-18 13:04:20.090446: No DAILY data for GRT-EUR is already up to date
-2024-02-18 13:04:20.096951: No DAILY data for HBAR-USDT is already up to date
-2024-02-18 13:04:20.102957: No DAILY data for SYN-USD is already up to date
-2024-02-18 13:04:20.109462: No DAILY data for DOGE-EUR is already up to date
-2024-02-18 13:04:20.115967: No DAILY data for ASM-USD is already up to date
-2024-02-18 13:04:20.121471: No DAILY data for ZEN-USD is already up to date
-2024-02-18 13:04:20.127977: No DAILY data for DASH-USD is already up to date
-2024-02-18 13:04:20.133981: No DAILY data for SOL-USDT is already up to date
-2024-02-18 13:04:20.140486: No DAILY data for SHIB-EUR is already up to date
-2024-02-18 13:04:20.146490: No DAILY data for OP-USD is already up to date
-2024-02-18 13:04:20.152496: No DAILY data for DOT-EUR is already up to date
-2024-02-18 13:04:20.158500: No DAILY data for GUSD-USD is already up to date
-2024-02-18 13:04:20.165006: No DAILY data for IMX-USDT is already up to date
-2024-02-18 13:04:20.170509: No DAILY data for CRV-BTC is already up to date
-2024-02-18 13:04:20.177016: No DAILY data for RNDR-USD is already up to date
-2024-02-18 13:04:20.183020: No DAILY data for MANA-EUR is already up to date
-2024-02-18 13:04:20.189025: No DAILY data for LRC-BTC is already up to date
-2024-02-18 13:04:20.195030: No DAILY data for DOT-GBP is already up to date
-2024-02-18 13:04:20.205329: No DAILY data for HIGH-USD is already up to date
-2024-02-18 13:04:20.210833: No DAILY data for RLC-USD is already up to date
-2024-02-18 13:04:20.216838: No DAILY data for YFI-USD is already up to date
-2024-02-18 13:04:20.222843: No DAILY data for KRL-USD is already up to date
-2024-02-18 13:04:20.228426: No DAILY data for SNX-EUR is already up to date
-2024-02-18 13:04:20.233933: No DAILY data for JASMY-USDT is already up to date
-2024-02-18 13:04:20.239437: No DAILY data for ADA-USD is already up to date
-2024-02-18 13:04:20.245442: No DAILY data for QNT-USD is already up to date
-2024-02-18 13:04:20.250947: No DAILY data for HOPR-USD is already up to date
-2024-02-18 13:04:20.256450: No DAILY data for MKR-USD is already up to date
-2024-02-18 13:04:20.261955: No DAILY data for ROSE-USDT is already up to date
-2024-02-18 13:04:20.267462: No DAILY data for BIGTIME-USD is already up to date
-2024-02-18 13:04:20.272965: No DAILY data for AVAX-BTC is already up to date
-2024-02-18 13:04:20.278970: No DAILY data for MTL-USD is already up to date
-2024-02-18 13:04:20.284203: No DAILY data for FIDA-USD is already up to date
-2024-02-18 13:04:20.289709: No DAILY data for PYR-USD is already up to date
-2024-02-18 13:04:20.295714: No DAILY data for DESO-USD is already up to date
-2024-02-18 13:04:20.300718: No DAILY data for BLZ-USD is already up to date
-2024-02-18 13:04:20.306314: No DAILY data for ORCA-USD is already up to date
-2024-02-18 13:04:20.311821: No DAILY data for MASK-GBP is already up to date
-2024-02-18 13:04:20.317504: No DAILY data for CRO-USDT is already up to date
-2024-02-18 13:04:20.322965: No DAILY data for CLV-USD is already up to date
-2024-02-18 13:04:20.328373: No DAILY data for KNC-USD is already up to date
-2024-02-18 13:04:20.333878: No DAILY data for OP-USDT is already up to date
-2024-02-18 13:04:20.338883: No DAILY data for MANA-BTC is already up to date
-2024-02-18 13:04:20.344388: No DAILY data for ATOM-GBP is already up to date
-2024-02-18 13:04:20.349891: No DAILY data for FARM-USD is already up to date
-2024-02-18 13:04:20.355897: No DAILY data for BAT-ETH is already up to date
-2024-02-18 13:04:20.361401: No DAILY data for ATOM-BTC is already up to date
-2024-02-18 13:04:20.367405: No DAILY data for XTZ-BTC is already up to date
-2024-02-18 13:04:20.373411: No DAILY data for ETC-GBP is already up to date
-2024-02-18 13:04:20.378915: No DAILY data for WBTC-USD is already up to date
-2024-02-18 13:04:20.383919: No DAILY data for GRT-GBP is already up to date
-2024-02-18 13:04:20.389423: No DAILY data for ROSE-USD is already up to date
-2024-02-18 13:04:20.394927: No DAILY data for ANKR-EUR is already up to date
-2024-02-18 13:04:20.400432: No DAILY data for VARA-USD is already up to date
-2024-02-18 13:04:20.406937: No DAILY data for SAND-USDT is already up to date
-2024-02-18 13:04:20.413443: No DAILY data for LTC-EUR is already up to date
-2024-02-18 13:04:20.428455: No DAILY data for MPL-USD is already up to date
-2024-02-18 13:04:20.434788: No DAILY data for MNDE-USD is already up to date
-2024-02-18 13:04:20.440292: No DAILY data for ICP-USDT is already up to date
-2024-02-18 13:04:20.446296: No DAILY data for SNX-BTC is already up to date
-2024-02-18 13:04:20.451801: No DAILY data for SUKU-USD is already up to date
-2024-02-18 13:04:20.457305: No DAILY data for OGN-USD is already up to date
-2024-02-18 13:04:20.463309: No DAILY data for AGLD-USD is already up to date
-2024-02-18 13:04:20.468814: No DAILY data for NKN-USD is already up to date
-2024-02-18 13:04:20.474318: No DAILY data for MINA-USDT is already up to date
-2024-02-18 13:04:20.479823: No DAILY data for ONDO-USD is already up to date
-2024-02-18 13:04:20.485327: No DAILY data for ALGO-GBP is already up to date
-2024-02-18 13:04:20.490500: No DAILY data for CBETH-USD is already up to date
-2024-02-18 13:04:20.495964: No DAILY data for LRC-USD is already up to date
-2024-02-18 13:04:20.501970: No DAILY data for ZEC-BTC is already up to date
-2024-02-18 13:04:20.507474: No DAILY data for ICP-GBP is already up to date
-2024-02-18 13:04:20.513479: No DAILY data for ALGO-EUR is already up to date
-2024-02-18 13:04:20.519484: No DAILY data for ICP-EUR is already up to date
-2024-02-18 13:04:20.525489: No DAILY data for LTC-GBP is already up to date
-2024-02-18 13:04:20.530994: No DAILY data for ALGO-USD is already up to date
-2024-02-18 13:04:20.536497: No DAILY data for ADA-USDT is already up to date
-2024-02-18 13:04:20.542002: No DAILY data for SWFTC-USD is already up to date
-2024-02-18 13:04:20.549508: No DAILY data for ANKR-GBP is already up to date
-2024-02-18 13:04:20.555300: No DAILY data for EOS-EUR is already up to date
-2024-02-18 13:04:20.560806: No DAILY data for LSETH-USD is already up to date
-2024-02-18 13:04:20.566811: No DAILY data for GMT-USD is already up to date
-2024-02-18 13:04:20.572314: No DAILY data for GRT-BTC is already up to date
-2024-02-18 13:04:20.577819: No DAILY data for HNT-USD is already up to date
-2024-02-18 13:04:20.583324: No DAILY data for USDC-GBP is already up to date
-2024-02-18 13:04:20.588827: No DAILY data for MATIC-EUR is already up to date
-2024-02-18 13:04:20.594332: No DAILY data for ANKR-USD is already up to date
-2024-02-18 13:04:20.599448: No DAILY data for ETC-EUR is already up to date
-2024-02-18 13:04:20.605456: No DAILY data for IDEX-USD is already up to date
-2024-02-18 13:04:20.610959: No DAILY data for QNT-USDT is already up to date
-2024-02-18 13:04:20.616181: No DAILY data for BOBA-USD is already up to date
-2024-02-18 13:04:20.621687: No DAILY data for REQ-USD is already up to date
-2024-02-18 13:04:20.627692: No DAILY data for ENS-EUR is already up to date
-2024-02-18 13:04:20.633196: No DAILY data for TRU-USD is already up to date
-2024-02-18 13:04:20.638476: No DAILY data for STORJ-USD is already up to date
-2024-02-18 13:04:20.643935: No DAILY data for MATIC-BTC is already up to date
-2024-02-18 13:04:20.649440: No DAILY data for ATOM-USD is already up to date
-2024-02-18 13:04:20.654944: No DAILY data for LINK-USD is already up to date
-2024-02-18 13:04:20.660450: No DAILY data for MINA-EUR is already up to date
-2024-02-18 13:04:20.665953: No DAILY data for TVK-USD is already up to date
-2024-02-18 13:04:20.671457: No DAILY data for VTHO-USD is already up to date
-2024-02-18 13:04:20.677463: No DAILY data for BCH-EUR is already up to date
-2024-02-18 13:04:20.682967: No DAILY data for APE-USDT is already up to date
-2024-02-18 13:04:20.688279: No DAILY data for GTC-USD is already up to date
-2024-02-18 13:04:20.693784: No DAILY data for PLU-USD is already up to date
-2024-02-18 13:04:20.699289: No DAILY data for SHIB-USDT is already up to date
-2024-02-18 13:04:20.705295: No DAILY data for CRV-GBP is already up to date
-2024-02-18 13:04:20.710798: No DAILY data for NMR-USD is already up to date
-2024-02-18 13:04:20.716803: No DAILY data for DOGE-BTC is already up to date
-2024-02-18 13:04:20.722809: No DAILY data for CRV-EUR is already up to date
-2024-02-18 13:04:20.728814: No DAILY data for FOX-USD is already up to date
-2024-02-18 13:04:20.734818: No DAILY data for RENDER-USD is already up to date
-2024-02-18 13:04:20.740823: No DAILY data for AAVE-USD is already up to date
-2024-02-18 13:04:20.746435: No DAILY data for SUSHI-USD is already up to date
-2024-02-18 13:04:20.752443: No DAILY data for TRAC-USD is already up to date
-2024-02-18 13:04:20.757946: No DAILY data for ADA-EUR is already up to date
-2024-02-18 13:04:20.763450: No DAILY data for VELO-USD is already up to date
-2024-02-18 13:04:20.768957: No DAILY data for CELR-USD is already up to date
-2024-02-18 13:04:20.774460: No DAILY data for LTC-BTC is already up to date
-2024-02-18 13:04:20.779964: No DAILY data for LRC-USDT is already up to date
-2024-02-18 13:04:20.785468: No DAILY data for FET-USDT is already up to date
-2024-02-18 13:04:20.793959: No DAILY data for WAXL-USD is already up to date
-2024-02-18 13:04:20.799466: No DAILY data for AST-USD is already up to date
-2024-02-18 13:04:21.277336: PLA-USD UPDATING: 1707868800, 0.1474, 0.1464, 0.1473, 0.1469
-2024-02-18 13:04:21.283841: No DAILY data for UNI-BTC is already up to date
-2024-02-18 13:04:21.289846: No DAILY data for LINK-USDT is already up to date
-2024-02-18 13:04:21.295850: No DAILY data for ETH-USDT is already up to date
-2024-02-18 13:04:21.301355: No DAILY data for BTC-USDT is already up to date
-2024-02-18 13:04:21.307360: No DAILY data for BAND-USD is already up to date
-2024-02-18 13:04:21.313364: No DAILY data for CGLD-BTC is already up to date
-2024-02-18 13:04:21.319369: No DAILY data for ZRX-USD is already up to date
-2024-02-18 13:04:21.325374: No DAILY data for LDO-USD is already up to date
-2024-02-18 13:04:21.330878: No DAILY data for ANKR-BTC is already up to date
-2024-02-18 13:04:21.336883: No DAILY data for BAT-BTC is already up to date
-2024-02-18 13:04:21.342387: No DAILY data for CGLD-EUR is already up to date
-2024-02-18 13:04:21.347892: No DAILY data for KAVA-USD is already up to date
-2024-02-18 13:04:21.353396: No DAILY data for MASK-USDT is already up to date
-2024-02-18 13:04:21.358901: No DAILY data for SHIB-USD is already up to date
-2024-02-18 13:04:21.364405: No DAILY data for UNI-EUR is already up to date
-2024-02-18 13:04:21.369910: No DAILY data for ZETA-USD is already up to date
-2024-02-18 13:04:21.375414: No DAILY data for 1INCH-USD is already up to date
-2024-02-18 13:04:21.380418: No DAILY data for WAMPL-USD is already up to date
-2024-02-18 13:04:21.386423: No DAILY data for ORN-USD is already up to date
-2024-02-18 13:04:21.391927: No DAILY data for SAND-USD is already up to date
-2024-02-18 13:04:21.397932: No DAILY data for LOKA-USD is already up to date
-2024-02-18 13:04:21.402936: No DAILY data for RNDR-EUR is already up to date
-2024-02-18 13:04:21.408440: No DAILY data for PNG-USD is already up to date
-2024-02-18 13:04:21.413944: No DAILY data for DOGE-USDT is already up to date
-2024-02-18 13:04:21.419449: No DAILY data for POLS-USD is already up to date
-2024-02-18 13:04:21.424954: No DAILY data for MDT-USD is already up to date
-2024-02-18 13:04:21.430458: No DAILY data for CHZ-USD is already up to date
-2024-02-18 13:04:21.436463: No DAILY data for BONK-USD is already up to date
-2024-02-18 13:04:21.441967: No DAILY data for USDT-USDC is already up to date
-2024-02-18 13:04:21.447199: No DAILY data for SOL-GBP is already up to date
-2024-02-18 13:04:21.452707: No DAILY data for DOT-BTC is already up to date
-2024-02-18 13:04:21.458211: No DAILY data for FIS-USD is already up to date
-2024-02-18 13:04:21.464215: No DAILY data for AXL-USD is already up to date
-2024-02-18 13:04:21.469720: No DAILY data for XLM-BTC is already up to date
-2024-02-18 13:04:21.475725: No DAILY data for RBN-USD is already up to date
-2024-02-18 13:04:21.481229: No DAILY data for ENJ-USD is already up to date
-2024-02-18 13:04:21.487734: No DAILY data for OCEAN-USD is already up to date
-2024-02-18 13:04:21.494240: No DAILY data for ETH-USD is already up to date
-2024-02-18 13:04:21.499744: No DAILY data for SOL-BTC is already up to date
-2024-02-18 13:04:21.505748: No DAILY data for XTZ-EUR is already up to date
-2024-02-18 13:04:21.511253: No DAILY data for AVAX-USD is already up to date
-2024-02-18 13:04:21.517759: No DAILY data for MUSE-USD is already up to date
-2024-02-18 13:04:21.523262: No DAILY data for CGLD-USD is already up to date
-2024-02-18 13:04:21.529269: No DAILY data for UNI-GBP is already up to date
-2024-02-18 13:04:21.535272: No DAILY data for GAL-USD is already up to date
-2024-02-18 13:04:21.541278: No DAILY data for CVC-USD is already up to date
-2024-02-18 13:04:21.547282: No DAILY data for CRO-USD is already up to date
-2024-02-18 13:04:21.553287: No DAILY data for SPA-USD is already up to date
-2024-02-18 13:04:21.559294: No DAILY data for MATIC-GBP is already up to date
-2024-02-18 13:04:21.567297: No DAILY data for DOGE-USD is already up to date
-2024-02-18 13:04:21.575305: No DAILY data for ENS-USDT is already up to date
-2024-02-18 13:04:21.583310: No DAILY data for NEAR-USD is already up to date
-2024-02-18 13:04:21.591317: No DAILY data for SHIB-GBP is already up to date
-2024-02-18 13:04:21.597822: No DAILY data for AMP-USD is already up to date
-2024-02-18 13:04:21.603827: No DAILY data for INDEX-USD is already up to date
-2024-02-18 13:04:21.609832: No DAILY data for VOXEL-USD is already up to date
-2024-02-18 13:04:21.615837: No DAILY data for XLM-USD is already up to date
-2024-02-18 13:04:21.621841: No DAILY data for BAL-BTC is already up to date
-2024-02-18 13:04:21.627846: No DAILY data for ENS-USD is already up to date
-2024-02-18 13:04:21.633350: No DAILY data for ATOM-USDT is already up to date
-2024-02-18 13:04:21.639855: No DAILY data for XYO-USD is already up to date
-2024-02-18 13:04:21.645860: No DAILY data for SHPING-USD is already up to date
-2024-02-18 13:04:21.651866: No DAILY data for ETH-DAI is already up to date
-2024-02-18 13:04:21.657870: No DAILY data for VET-USD is already up to date
-2024-02-18 13:04:21.663875: No DAILY data for CBETH-ETH is already up to date
-2024-02-18 13:04:21.669880: No DAILY data for AAVE-GBP is already up to date
-2024-02-18 13:04:21.676385: No DAILY data for LINK-EUR is already up to date
-2024-02-18 13:04:21.681889: No DAILY data for EOS-USD is already up to date
-2024-02-18 13:04:21.687895: No DAILY data for RARE-USD is already up to date
-2024-02-18 13:04:21.693900: No DAILY data for BICO-EUR is already up to date
-2024-02-18 13:04:21.699904: No DAILY data for FIL-EUR is already up to date
-2024-02-18 13:04:21.706409: No DAILY data for OSMO-USD is already up to date
-2024-02-18 13:04:21.712414: No DAILY data for CVX-USD is already up to date
-2024-02-18 13:04:21.718919: No DAILY data for HONEY-USD is already up to date
-2024-02-18 13:04:21.724924: No DAILY data for LPT-USD is already up to date
-2024-02-18 13:04:21.730929: No DAILY data for AXS-USD is already up to date
-2024-02-18 13:04:21.737434: No DAILY data for FET-USD is already up to date
-2024-02-18 13:04:21.743439: No DAILY data for FORTH-USD is already up to date
-2024-02-18 13:04:21.749443: No DAILY data for 1INCH-BTC is already up to date
-2024-02-18 13:04:21.755449: No DAILY data for DIMO-USD is already up to date
-2024-02-18 13:04:21.761453: No DAILY data for SOL-USD is already up to date
-2024-02-18 13:04:21.767775: No DAILY data for PYUSD-USD is already up to date
-2024-02-18 13:04:21.773278: No DAILY data for ADA-GBP is already up to date
-2024-02-18 13:04:21.779284: No DAILY data for JASMY-USD is already up to date
-2024-02-18 13:04:21.785789: No DAILY data for ALGO-BTC is already up to date
-2024-02-18 13:04:21.791793: No DAILY data for DEXT-USD is already up to date
-2024-02-18 13:04:21.797799: No DAILY data for CHZ-USDT is already up to date
-2024-02-18 13:04:21.803803: No DAILY data for AVAX-EUR is already up to date
-2024-02-18 13:04:21.809808: No DAILY data for XRP-EUR is already up to date
-2024-02-18 13:04:21.815813: No DAILY data for QI-USD is already up to date
-2024-02-18 13:04:21.821818: No DAILY data for XRP-USDT is already up to date
-2024-02-18 13:04:21.827822: No DAILY data for BTC-EUR is already up to date
-2024-02-18 13:04:21.833827: No DAILY data for AAVE-EUR is already up to date
-2024-02-18 13:04:21.839832: No DAILY data for ERN-USD is already up to date
-2024-02-18 13:04:21.845837: No DAILY data for COTI-USD is already up to date
-2024-02-18 13:04:21.851842: No DAILY data for EGLD-USD is already up to date
-2024-02-18 13:04:21.857846: No DAILY data for BAT-EUR is already up to date
-2024-02-18 13:04:21.863851: No DAILY data for LINK-ETH is already up to date
-2024-02-18 13:04:21.869856: No DAILY data for T-USD is already up to date
-2024-02-18 13:04:21.875861: No DAILY data for ENJ-USDT is already up to date
-2024-02-18 13:04:21.881366: GET DAILY PRICES FOR SYMBOLS: api calls: 2
-2024-02-18 13:04:21.886870: GET DAILY PRICES FOR SYMBOLS: api calls successful: 2
-2024-02-18 13:04:21.895878: GET DAILY PRICES FOR SYMBOLS final row count is: 36288
-2024-02-18 13:04:21.901381: GET DAILY PRICES FOR SYMBOLS rows added is: 0
-2024-02-18 13:04:21.907387: GET DAILY PRICES FOR SYMBOLS ENDS 
-2024-02-18 13:04:21.907387: GET DAILY PRICES FOR SYMBOLS TOOK 0:00:03.343640
-2024-02-18 13:04:21.914391: UPDATE HOURLY PRICES STARTS
-2024-02-18 13:04:21.919897: CURRENT UNIX IS: 1708257857.5709767
-2024-02-18 13:04:21.925401: START OF PREVIOUS HOUR UNIX IS: 1708254000
-2024-02-18 13:04:21.938411: UPDATE HOURLY PRICES: initial row count is: 57708
-2024-02-18 13:04:22.498454: UPDATE HOURLY PRICES: UPDATING: ILV-USD
-2024-02-18 13:04:23.045467: UPDATE HOURLY PRICES: UPDATING: BADGER-USD
-2024-02-18 13:04:23.597463: UPDATE HOURLY PRICES: UPDATING: PRIME-USD
-2024-02-18 13:04:24.297461: UPDATE HOURLY PRICES: UPDATING: MANA-USD
-2024-02-18 13:04:24.878942: UPDATE HOURLY PRICES: UPDATING: NCT-USD
-2024-02-18 13:04:25.440967: UPDATE HOURLY PRICES: UPDATING: CRO-EUR
-2024-02-18 13:04:26.225446: UPDATE HOURLY PRICES: UPDATING: MATIC-USD
-2024-02-18 13:04:26.738001: UPDATE HOURLY PRICES: UPDATING: EUROC-USD
-2024-02-18 13:04:27.360500: UPDATE HOURLY PRICES: UPDATING: XTZ-USD
-2024-02-18 13:04:27.917945: UPDATE HOURLY PRICES: UPDATING: ETC-USD
-2024-02-18 13:04:28.574384: UPDATE HOURLY PRICES: UPDATING: AAVE-BTC
-2024-02-18 13:04:29.140462: UPDATE HOURLY PRICES: UPDATING: ACS-USD
-2024-02-18 13:04:29.871956: UPDATE HOURLY PRICES: UPDATING: LTC-USD
-2024-02-18 13:04:30.569962: UPDATE HOURLY PRICES: UPDATING: SNT-USD
-2024-02-18 13:04:31.189961: UPDATE HOURLY PRICES: UPDATING: ALEPH-USD
-2024-02-18 13:04:31.715967: UPDATE HOURLY PRICES: UPDATING: BCH-GBP
-2024-02-18 13:04:32.856998: UPDATE HOURLY PRICES: UPDATING: MANA-ETH
-2024-02-18 13:04:33.399962: UPDATE HOURLY PRICES: UPDATING: AVAX-USDT
-2024-02-18 13:04:34.083053: UPDATE HOURLY PRICES: UPDATING: GHST-USD
-2024-02-18 13:04:34.707789: UPDATE HOURLY PRICES: UPDATING: TIA-USD
-2024-02-18 13:04:35.200391: UPDATE HOURLY PRICES: UPDATING: ENJ-BTC
-2024-02-18 13:04:35.839304: UPDATE HOURLY PRICES: UPDATING: INV-USD
-2024-02-18 13:04:36.358959: UPDATE HOURLY PRICES: UPDATING: GRT-USD
-2024-02-18 13:04:36.842771: UPDATE HOURLY PRICES: UPDATING: CTX-USD
-2024-02-18 13:04:37.383462: UPDATE HOURLY PRICES: UPDATING: GMT-USDT
-2024-02-18 13:04:38.011458: UPDATE HOURLY PRICES: UPDATING: HBAR-USD
-2024-02-18 13:04:38.882961: UPDATE HOURLY PRICES: UPDATING: LSETH-ETH
-2024-02-18 13:04:39.553960: UPDATE HOURLY PRICES: UPDATING: ETC-BTC
-2024-02-18 13:04:40.202462: UPDATE HOURLY PRICES: UPDATING: PUNDIX-USD
-2024-02-18 13:04:40.751415: UPDATE HOURLY PRICES: UPDATING: WBTC-BTC
-2024-02-18 13:04:41.299463: UPDATE HOURLY PRICES: UPDATING: XLM-EUR
-2024-02-18 13:04:41.886999: UPDATE HOURLY PRICES: UPDATING: IOTX-USD
-2024-02-18 13:04:42.540967: UPDATE HOURLY PRICES: UPDATING: SUI-USD
-2024-02-18 13:04:43.095687: UPDATE HOURLY PRICES: UPDATING: ARB-USD
-2024-02-18 13:04:43.632471: UPDATE HOURLY PRICES: UPDATING: GNO-USD
-2024-02-18 13:04:44.155473: UPDATE HOURLY PRICES: UPDATING: BIT-USD
-2024-02-18 13:04:44.683379: UPDATE HOURLY PRICES: UPDATING: BICO-USD
-2024-02-18 13:04:45.192786: UPDATE HOURLY PRICES: UPDATING: SNX-GBP
-2024-02-18 13:04:45.813472: UPDATE HOURLY PRICES: UPDATING: RARI-USD
-2024-02-18 13:04:46.498508: UPDATE HOURLY PRICES: UPDATING: CGLD-GBP
-2024-02-18 13:04:47.138272: UPDATE HOURLY PRICES: UPDATING: API3-USD
-2024-02-18 13:04:47.708749: UPDATE HOURLY PRICES: UPDATING: USDT-GBP
-2024-02-18 13:04:48.275465: UPDATE HOURLY PRICES: UPDATING: STX-USDT
-2024-02-18 13:04:48.771728: UPDATE HOURLY PRICES: UPDATING: CHZ-EUR
-2024-02-18 13:04:49.399466: UPDATE HOURLY PRICES: UPDATING: SOL-ETH
-2024-02-18 13:04:49.904463: UPDATE HOURLY PRICES: UPDATING: GFI-USD
-2024-02-18 13:04:50.472463: UPDATE HOURLY PRICES: UPDATING: DAR-USD
-2024-02-18 13:04:51.138975: UPDATE HOURLY PRICES: UPDATING: AURORA-USD
-2024-02-18 13:04:51.697831: UPDATE HOURLY PRICES: UPDATING: AERGO-USD
-2024-02-18 13:04:52.176962: UPDATE HOURLY PRICES: UPDATING: FORT-USD
-2024-02-18 13:04:52.656962: UPDATE HOURLY PRICES: UPDATING: 1INCH-GBP
-2024-02-18 13:04:53.149235: UPDATE HOURLY PRICES: UPDATING: DYP-USD
-2024-02-18 13:04:53.769961: UPDATE HOURLY PRICES: UPDATING: SUPER-USD
-2024-02-18 13:04:54.412219: UPDATE HOURLY PRICES: UPDATING: XTZ-GBP
-2024-02-18 13:04:55.041259: UPDATE HOURLY PRICES: UPDATING: MATIC-USDT
-2024-02-18 13:04:55.581240: UPDATE HOURLY PRICES: UPDATING: BICO-USDT
-2024-02-18 13:04:56.228209: UPDATE HOURLY PRICES: UPDATING: LQTY-USD
-2024-02-18 13:04:56.766465: UPDATE HOURLY PRICES: UPDATING: LIT-USD
-2024-02-18 13:04:57.339465: UPDATE HOURLY PRICES: UPDATING: SOL-EUR
-2024-02-18 13:04:58.003314: UPDATE HOURLY PRICES: UPDATING: ELA-USD
-2024-02-18 13:04:58.506233: UPDATE HOURLY PRICES: UPDATING: COVAL-USD
-2024-02-18 13:04:59.150221: UPDATE HOURLY PRICES: UPDATING: STX-USD
-2024-02-18 13:04:59.638961: UPDATE HOURLY PRICES: UPDATING: PERP-USD
-2024-02-18 13:05:00.267446: UPDATE HOURLY PRICES: UPDATING: ETH-EUR
-2024-02-18 13:05:00.839962: UPDATE HOURLY PRICES: UPDATING: EUROC-EUR
-2024-02-18 13:05:01.498462: UPDATE HOURLY PRICES: UPDATING: IMX-USD
-2024-02-18 13:05:02.054963: UPDATE HOURLY PRICES: UPDATING: DAI-USD
-2024-02-18 13:05:02.814475: UPDATE HOURLY PRICES: UPDATING: JTO-USD
-2024-02-18 13:05:03.360285: UPDATE HOURLY PRICES: UPDATING: AXS-BTC
-2024-02-18 13:05:03.901382: UPDATE HOURLY PRICES: UPDATING: ARPA-USD
-2024-02-18 13:05:04.554690: UPDATE HOURLY PRICES: UPDATING: FIL-BTC
-2024-02-18 13:05:05.464967: UPDATE HOURLY PRICES: UPDATING: LINK-BTC
-2024-02-18 13:05:06.142211: UPDATE HOURLY PRICES: UPDATING: BNT-USD
-2024-02-18 13:05:06.695152: UPDATE HOURLY PRICES: UPDATING: ADA-ETH
-2024-02-18 13:05:07.375764: UPDATE HOURLY PRICES: UPDATING: APE-EUR
-2024-02-18 13:05:07.943960: UPDATE HOURLY PRICES: UPDATING: LCX-USD
-2024-02-18 13:05:08.573464: UPDATE HOURLY PRICES: UPDATING: AIOZ-USD
-2024-02-18 13:05:09.166834: UPDATE HOURLY PRICES: UPDATING: APE-USD
-2024-02-18 13:05:09.735757: UPDATE HOURLY PRICES: UPDATING: AXS-EUR
-2024-02-18 13:05:10.398401: UPDATE HOURLY PRICES: UPDATING: TIME-USD
-2024-02-18 13:05:11.011894: UPDATE HOURLY PRICES: UPDATING: MINA-USD
-2024-02-18 13:05:11.538313: UPDATE HOURLY PRICES: UPDATING: SNX-USD
-2024-02-18 13:05:12.076244: UPDATE HOURLY PRICES: UPDATING: DNT-USD
-2024-02-18 13:05:12.615674: UPDATE HOURLY PRICES: UPDATING: ICP-USD
-2024-02-18 13:05:13.229928: UPDATE HOURLY PRICES: UPDATING: AVT-USD
-2024-02-18 13:05:13.788962: UPDATE HOURLY PRICES: UPDATING: DOT-USD
-2024-02-18 13:05:14.278962: UPDATE HOURLY PRICES: UPDATING: INJ-USD
-2024-02-18 13:05:14.901937: UPDATE HOURLY PRICES: UPDATING: APT-USD
-2024-02-18 13:05:15.460543: UPDATE HOURLY PRICES: UPDATING: UNFI-USD
-2024-02-18 13:05:16.028143: UPDATE HOURLY PRICES: UPDATING: RNDR-USDT
-2024-02-18 13:05:16.637481: UPDATE HOURLY PRICES: UPDATING: COMP-USD
-2024-02-18 13:05:17.211749: UPDATE HOURLY PRICES: UPDATING: BTRST-USD
-2024-02-18 13:05:17.746083: UPDATE HOURLY PRICES: UPDATING: UNI-USD
-2024-02-18 13:05:18.310173: UPDATE HOURLY PRICES: UPDATING: 00-USD
-2024-02-18 13:05:18.902963: UPDATE HOURLY PRICES: UPDATING: SEAM-USD
-2024-02-18 13:05:19.481239: UPDATE HOURLY PRICES: UPDATING: FLR-USD
-2024-02-18 13:05:20.915963: UPDATE HOURLY PRICES: UPDATING: LINK-GBP
-2024-02-18 13:05:21.414469: UPDATE HOURLY PRICES: UPDATING: MASK-EUR
-2024-02-18 13:05:22.038961: UPDATE HOURLY PRICES: UPDATING: GST-USD
-2024-02-18 13:05:22.710463: UPDATE HOURLY PRICES: UPDATING: WCFG-USD
-2024-02-18 13:05:23.266107: UPDATE HOURLY PRICES: UPDATING: DASH-BTC
-2024-02-18 13:05:23.750464: UPDATE HOURLY PRICES: UPDATING: AUCTION-USD
-2024-02-18 13:05:24.290202: UPDATE HOURLY PRICES: UPDATING: BAL-USD
-2024-02-18 13:05:24.939222: UPDATE HOURLY PRICES: UPDATING: MAGIC-USD
-2024-02-18 13:05:25.480610: UPDATE HOURLY PRICES: UPDATING: FIL-GBP
-2024-02-18 13:05:25.973477: UPDATE HOURLY PRICES: UPDATING: MLN-USD
-2024-02-18 13:05:26.562716: UPDATE HOURLY PRICES: UPDATING: AUDIO-USD
-2024-02-18 13:05:27.099976: UPDATE HOURLY PRICES: UPDATING: BTC-USD
-2024-02-18 13:05:27.669004: UPDATE HOURLY PRICES: UPDATING: DOT-USDT
-2024-02-18 13:05:28.208962: UPDATE HOURLY PRICES: UPDATING: PAX-USD
-2024-02-18 13:05:28.685449: UPDATE HOURLY PRICES: UPDATING: UMA-USD
-2024-02-18 13:05:29.590914: UPDATE HOURLY PRICES: UPDATING: ABT-USD
-2024-02-18 13:05:30.104708: UPDATE HOURLY PRICES: UPDATING: SPELL-USD
-2024-02-18 13:05:30.738286: UPDATE HOURLY PRICES: UPDATING: CHZ-GBP
-2024-02-18 13:05:31.243963: UPDATE HOURLY PRICES: UPDATING: XRP-USD
-2024-02-18 13:05:31.801462: UPDATE HOURLY PRICES: UPDATING: MEDIA-USD
-2024-02-18 13:05:32.332461: UPDATE HOURLY PRICES: UPDATING: FLOW-USDT
-2024-02-18 13:05:32.976462: UPDATE HOURLY PRICES: UPDATING: METIS-USD
-2024-02-18 13:05:33.585961: UPDATE HOURLY PRICES: UPDATING: XLM-USDT
-2024-02-18 13:05:34.171963: UPDATE HOURLY PRICES: UPDATING: CRV-USD
-2024-02-18 13:05:34.841679: UPDATE HOURLY PRICES: UPDATING: ATOM-EUR
-2024-02-18 13:05:35.325966: UPDATE HOURLY PRICES: UPDATING: YFI-BTC
-2024-02-18 13:05:36.005680: UPDATE HOURLY PRICES: UPDATING: GLM-USD
-2024-02-18 13:05:36.551719: UPDATE HOURLY PRICES: UPDATING: RAD-USD
-2024-02-18 13:05:37.164781: UPDATE HOURLY PRICES: UPDATING: AERO-USD
-2024-02-18 13:05:37.740668: UPDATE HOURLY PRICES: UPDATING: ICP-BTC
-2024-02-18 13:05:38.248962: UPDATE HOURLY PRICES: UPDATING: APT-USDT
-2024-02-18 13:05:38.779963: UPDATE HOURLY PRICES: UPDATING: USDC-EUR
-2024-02-18 13:05:39.293462: UPDATE HOURLY PRICES: UPDATING: SKL-USD
-2024-02-18 13:05:39.846963: UPDATE HOURLY PRICES: UPDATING: ALCX-USD
-2024-02-18 13:05:40.454963: UPDATE HOURLY PRICES: UPDATING: MSOL-USD
-2024-02-18 13:05:40.991464: UPDATE HOURLY PRICES: UPDATING: ETH-BTC
-2024-02-18 13:05:41.512166: UPDATE HOURLY PRICES: UPDATING: ETH-GBP
-2024-02-18 13:05:42.008196: UPDATE HOURLY PRICES: UPDATING: AXS-USDT
-2024-02-18 13:05:42.512967: UPDATE HOURLY PRICES: UPDATING: BAT-USD
-2024-02-18 13:05:43.008021: UPDATE HOURLY PRICES: UPDATING: SEI-USD
-2024-02-18 13:05:43.620457: UPDATE HOURLY PRICES: UPDATING: BLUR-USD
-2024-02-18 13:05:44.724456: UPDATE HOURLY PRICES: UPDATING: GYEN-USD
-2024-02-18 13:05:45.206971: UPDATE HOURLY PRICES: UPDATING: XCN-USD
-2024-02-18 13:05:45.823142: UPDATE HOURLY PRICES: UPDATING: BCH-USD
-2024-02-18 13:05:46.437052: UPDATE HOURLY PRICES: UPDATING: PRO-USD
-2024-02-18 13:05:47.078951: UPDATE HOURLY PRICES: UPDATING: POND-USD
-2024-02-18 13:05:47.607463: UPDATE HOURLY PRICES: UPDATING: ZEC-USD
-2024-02-18 13:05:48.125961: UPDATE HOURLY PRICES: UPDATING: MASK-USD
-2024-02-18 13:05:48.671072: UPDATE HOURLY PRICES: UPDATING: DIA-USD
-2024-02-18 13:05:49.261634: UPDATE HOURLY PRICES: UPDATING: TRB-USD
-2024-02-18 13:05:49.788963: UPDATE HOURLY PRICES: UPDATING: ACH-USD
-2024-02-18 13:05:50.326485: UPDATE HOURLY PRICES: UPDATING: OXT-USD
-2024-02-18 13:05:50.821643: UPDATE HOURLY PRICES: UPDATING: USDT-EUR
-2024-02-18 13:05:51.467307: UPDATE HOURLY PRICES: UPDATING: COMP-BTC
-2024-02-18 13:05:52.141956: UPDATE HOURLY PRICES: UPDATING: RAI-USD
-2024-02-18 13:05:52.627961: UPDATE HOURLY PRICES: UPDATING: FLOW-USD
-2024-02-18 13:05:53.580521: UPDATE HOURLY PRICES: UPDATING: ADA-BTC
-2024-02-18 13:05:54.153950: UPDATE HOURLY PRICES: UPDATING: HFT-USD
-2024-02-18 13:05:54.716958: UPDATE HOURLY PRICES: UPDATING: MATH-USD
-2024-02-18 13:05:55.301609: UPDATE HOURLY PRICES: UPDATING: BCH-BTC
-2024-02-18 13:05:55.966627: UPDATE HOURLY PRICES: UPDATING: EOS-BTC
-2024-02-18 13:05:56.898947: UPDATE HOURLY PRICES: UPDATING: C98-USD
-2024-02-18 13:05:57.623299: UPDATE HOURLY PRICES: UPDATING: RPL-USD
-2024-02-18 13:05:58.290970: UPDATE HOURLY PRICES: UPDATING: KSM-USD
-2024-02-18 13:05:58.942987: UPDATE HOURLY PRICES: UPDATING: FIL-USD
-2024-02-18 13:05:59.426962: UPDATE HOURLY PRICES: UPDATING: PRQ-USD
-2024-02-18 13:06:00.208965: UPDATE HOURLY PRICES: UPDATING: FX-USD
-2024-02-18 13:06:00.845465: UPDATE HOURLY PRICES: UPDATING: BTC-GBP
-2024-02-18 13:06:01.474463: UPDATE HOURLY PRICES: UPDATING: ALICE-USD
-2024-02-18 13:06:01.994963: UPDATE HOURLY PRICES: UPDATING: DOGE-GBP
-2024-02-18 13:06:02.515963: UPDATE HOURLY PRICES: UPDATING: 1INCH-EUR
-2024-02-18 13:06:03.181465: UPDATE HOURLY PRICES: UPDATING: USDT-USD
-2024-02-18 13:06:03.801460: UPDATE HOURLY PRICES: UPDATING: CTSI-USD
-2024-02-18 13:06:04.675964: UPDATE HOURLY PRICES: UPDATING: POWR-USD
-2024-02-18 13:06:05.327467: UPDATE HOURLY PRICES: UPDATING: NEAR-USDT
-2024-02-18 13:06:05.826463: UPDATE HOURLY PRICES: UPDATING: GODS-USD
-2024-02-18 13:06:06.331470: UPDATE HOURLY PRICES: UPDATING: MKR-BTC
-2024-02-18 13:06:07.011967: UPDATE HOURLY PRICES: UPDATING: GRT-EUR
-2024-02-18 13:06:07.506462: UPDATE HOURLY PRICES: UPDATING: HBAR-USDT
-2024-02-18 13:06:08.125509: UPDATE HOURLY PRICES: UPDATING: SYN-USD
-2024-02-18 13:06:08.638944: UPDATE HOURLY PRICES: UPDATING: DOGE-EUR
-2024-02-18 13:06:09.262500: UPDATE HOURLY PRICES: UPDATING: ASM-USD
-2024-02-18 13:06:09.845262: UPDATE HOURLY PRICES: UPDATING: ZEN-USD
-2024-02-18 13:06:10.381962: UPDATE HOURLY PRICES: UPDATING: DASH-USD
-2024-02-18 13:06:10.942463: UPDATE HOURLY PRICES: UPDATING: SOL-USDT
-2024-02-18 13:06:11.494960: UPDATE HOURLY PRICES: UPDATING: SHIB-EUR
-2024-02-18 13:06:12.015963: UPDATE HOURLY PRICES: UPDATING: OP-USD
-2024-02-18 13:06:12.622465: UPDATE HOURLY PRICES: UPDATING: DOT-EUR
-2024-02-18 13:06:13.244713: UPDATE HOURLY PRICES: UPDATING: GUSD-USD
-2024-02-18 13:06:14.200741: UPDATE HOURLY PRICES: UPDATING: IMX-USDT
-2024-02-18 13:06:15.009774: UPDATE HOURLY PRICES: UPDATING: CRV-BTC
-2024-02-18 13:06:15.524468: UPDATE HOURLY PRICES: UPDATING: RNDR-USD
-2024-02-18 13:06:16.133467: UPDATE HOURLY PRICES: UPDATING: MANA-EUR
-2024-02-18 13:06:16.773568: UPDATE HOURLY PRICES: UPDATING: LRC-BTC
-2024-02-18 13:06:17.279043: UPDATE HOURLY PRICES: UPDATING: DOT-GBP
-2024-02-18 13:06:17.781963: UPDATE HOURLY PRICES: UPDATING: HIGH-USD
-2024-02-18 13:06:18.397036: UPDATE HOURLY PRICES: UPDATING: RLC-USD
-2024-02-18 13:06:19.007428: UPDATE HOURLY PRICES: UPDATING: YFI-USD
-2024-02-18 13:06:19.510962: UPDATE HOURLY PRICES: UPDATING: KRL-USD
-2024-02-18 13:06:20.110525: UPDATE HOURLY PRICES: UPDATING: SNX-EUR
-2024-02-18 13:06:20.604965: UPDATE HOURLY PRICES: UPDATING: JASMY-USDT
-2024-02-18 13:06:21.132991: UPDATE HOURLY PRICES: UPDATING: ADA-USD
-2024-02-18 13:06:21.628427: UPDATE HOURLY PRICES: UPDATING: QNT-USD
-2024-02-18 13:06:22.271964: UPDATE HOURLY PRICES: UPDATING: HOPR-USD
-2024-02-18 13:06:22.878270: UPDATE HOURLY PRICES: UPDATING: MKR-USD
-2024-02-18 13:06:23.449355: UPDATE HOURLY PRICES: UPDATING: ROSE-USDT
-2024-02-18 13:06:23.952962: UPDATE HOURLY PRICES: UPDATING: BIGTIME-USD
-2024-02-18 13:06:24.581465: UPDATE HOURLY PRICES: UPDATING: AVAX-BTC
-2024-02-18 13:06:25.209965: UPDATE HOURLY PRICES: UPDATING: MTL-USD
-2024-02-18 13:06:25.818463: UPDATE HOURLY PRICES: UPDATING: FIDA-USD
-2024-02-18 13:06:26.336969: UPDATE HOURLY PRICES: UPDATING: PYR-USD
-2024-02-18 13:06:26.975629: UPDATE HOURLY PRICES: UPDATING: DESO-USD
-2024-02-18 13:06:27.624196: UPDATE HOURLY PRICES: UPDATING: BLZ-USD
-2024-02-18 13:06:28.173963: UPDATE HOURLY PRICES: UPDATING: ORCA-USD
-2024-02-18 13:06:28.816939: UPDATE HOURLY PRICES: UPDATING: MASK-GBP
-2024-02-18 13:06:29.563464: UPDATE HOURLY PRICES: UPDATING: CRO-USDT
-2024-02-18 13:06:30.095962: UPDATE HOURLY PRICES: UPDATING: CLV-USD
-2024-02-18 13:06:31.202965: UPDATE HOURLY PRICES: UPDATING: KNC-USD
-2024-02-18 13:06:32.081209: UPDATE HOURLY PRICES: UPDATING: OP-USDT
-2024-02-18 13:06:32.712463: UPDATE HOURLY PRICES: UPDATING: MANA-BTC
-2024-02-18 13:06:33.314965: UPDATE HOURLY PRICES: UPDATING: ATOM-GBP
-2024-02-18 13:06:33.821463: UPDATE HOURLY PRICES: UPDATING: FARM-USD
-2024-02-18 13:06:34.452963: UPDATE HOURLY PRICES: UPDATING: BAT-ETH
-2024-02-18 13:06:35.098461: UPDATE HOURLY PRICES: UPDATING: ATOM-BTC
-2024-02-18 13:06:35.633964: UPDATE HOURLY PRICES: UPDATING: XTZ-BTC
-2024-02-18 13:06:36.171398: UPDATE HOURLY PRICES: UPDATING: ETC-GBP
-2024-02-18 13:06:36.751524: UPDATE HOURLY PRICES: UPDATING: WBTC-USD
-2024-02-18 13:06:37.461963: UPDATE HOURLY PRICES: UPDATING: GRT-GBP
-2024-02-18 13:06:38.108963: UPDATE HOURLY PRICES: UPDATING: ROSE-USD
-2024-02-18 13:06:38.789964: UPDATE HOURLY PRICES: UPDATING: ANKR-EUR
-2024-02-18 13:06:39.278374: UPDATE HOURLY PRICES: UPDATING: VARA-USD
-2024-02-18 13:06:39.938464: UPDATE HOURLY PRICES: UPDATING: SAND-USDT
-2024-02-18 13:06:40.447462: UPDATE HOURLY PRICES: UPDATING: LTC-EUR
-2024-02-18 13:06:40.924963: UPDATE HOURLY PRICES: UPDATING: MPL-USD
-2024-02-18 13:06:41.587461: UPDATE HOURLY PRICES: UPDATING: MNDE-USD
-2024-02-18 13:06:42.216462: UPDATE HOURLY PRICES: UPDATING: ICP-USDT
-2024-02-18 13:06:42.818953: UPDATE HOURLY PRICES: UPDATING: SNX-BTC
-2024-02-18 13:06:43.384963: UPDATE HOURLY PRICES: UPDATING: SUKU-USD
-2024-02-18 13:06:43.964961: UPDATE HOURLY PRICES: UPDATING: OGN-USD
-2024-02-18 13:06:45.459961: UPDATE HOURLY PRICES: UPDATING: AGLD-USD
-2024-02-18 13:06:45.967962: UPDATE HOURLY PRICES: UPDATING: NKN-USD
-2024-02-18 13:06:46.578462: UPDATE HOURLY PRICES: UPDATING: MINA-USDT
-2024-02-18 13:06:47.193962: UPDATE HOURLY PRICES: UPDATING: ONDO-USD
-2024-02-18 13:06:47.731464: UPDATE HOURLY PRICES: UPDATING: ALGO-GBP
-2024-02-18 13:06:48.301426: UPDATE HOURLY PRICES: UPDATING: CBETH-USD
-2024-02-18 13:06:48.895118: UPDATE HOURLY PRICES: UPDATING: LRC-USD
-2024-02-18 13:06:49.507463: UPDATE HOURLY PRICES: UPDATING: ZEC-BTC
-2024-02-18 13:06:50.107465: UPDATE HOURLY PRICES: UPDATING: ICP-GBP
-2024-02-18 13:06:50.735675: UPDATE HOURLY PRICES: UPDATING: ALGO-EUR
-2024-02-18 13:06:51.211963: UPDATE HOURLY PRICES: UPDATING: ICP-EUR
-2024-02-18 13:06:51.740962: UPDATE HOURLY PRICES: UPDATING: LTC-GBP
-2024-02-18 13:06:52.294964: UPDATE HOURLY PRICES: UPDATING: ALGO-USD
-2024-02-18 13:06:52.837963: UPDATE HOURLY PRICES: UPDATING: ADA-USDT
-2024-02-18 13:06:53.555257: UPDATE HOURLY PRICES: UPDATING: SWFTC-USD
-2024-02-18 13:06:54.060962: UPDATE HOURLY PRICES: UPDATING: ANKR-GBP
-2024-02-18 13:06:54.699365: UPDATE HOURLY PRICES: UPDATING: EOS-EUR
-2024-02-18 13:06:55.332963: UPDATE HOURLY PRICES: UPDATING: LSETH-USD
-2024-02-18 13:06:56.008962: UPDATE HOURLY PRICES: UPDATING: GMT-USD
-2024-02-18 13:06:56.664655: UPDATE HOURLY PRICES: UPDATING: GRT-BTC
-2024-02-18 13:06:57.163464: UPDATE HOURLY PRICES: UPDATING: HNT-USD
-2024-02-18 13:06:57.687365: UPDATE HOURLY PRICES: UPDATING: USDC-GBP
-2024-02-18 13:06:58.275961: UPDATE HOURLY PRICES: UPDATING: MATIC-EUR
-2024-02-18 13:06:58.817468: UPDATE HOURLY PRICES: UPDATING: ANKR-USD
-2024-02-18 13:06:59.304406: UPDATE HOURLY PRICES: UPDATING: ETC-EUR
-2024-02-18 13:06:59.869962: UPDATE HOURLY PRICES: UPDATING: IDEX-USD
-2024-02-18 13:07:00.513466: UPDATE HOURLY PRICES: UPDATING: QNT-USDT
-2024-02-18 13:07:01.141998: UPDATE HOURLY PRICES: UPDATING: BOBA-USD
-2024-02-18 13:07:02.172141: UPDATE HOURLY PRICES: UPDATING: REQ-USD
-2024-02-18 13:07:02.642961: UPDATE HOURLY PRICES: UPDATING: ENS-EUR
-2024-02-18 13:07:03.298463: UPDATE HOURLY PRICES: UPDATING: TRU-USD
-2024-02-18 13:07:03.903313: UPDATE HOURLY PRICES: UPDATING: STORJ-USD
-2024-02-18 13:07:04.579446: UPDATE HOURLY PRICES: UPDATING: MATIC-BTC
-2024-02-18 13:07:05.232984: UPDATE HOURLY PRICES: UPDATING: ATOM-USD
-2024-02-18 13:07:05.788136: UPDATE HOURLY PRICES: UPDATING: LINK-USD
-2024-02-18 13:07:06.477464: UPDATE HOURLY PRICES: UPDATING: MINA-EUR
-2024-02-18 13:07:07.114950: UPDATE HOURLY PRICES: UPDATING: TVK-USD
-2024-02-18 13:07:08.013461: UPDATE HOURLY PRICES: UPDATING: VTHO-USD
-2024-02-18 13:07:08.978961: UPDATE HOURLY PRICES: UPDATING: BCH-EUR
-2024-02-18 13:07:09.514967: UPDATE HOURLY PRICES: UPDATING: APE-USDT
-2024-02-18 13:07:10.090963: UPDATE HOURLY PRICES: UPDATING: GTC-USD
-2024-02-18 13:07:10.582963: UPDATE HOURLY PRICES: UPDATING: PLU-USD
-2024-02-18 13:07:11.137460: UPDATE HOURLY PRICES: UPDATING: SHIB-USDT
-2024-02-18 13:07:11.696461: UPDATE HOURLY PRICES: UPDATING: CRV-GBP
-2024-02-18 13:07:12.340962: UPDATE HOURLY PRICES: UPDATING: NMR-USD
-2024-02-18 13:07:12.977463: UPDATE HOURLY PRICES: UPDATING: DOGE-BTC
-2024-02-18 13:07:13.522461: UPDATE HOURLY PRICES: UPDATING: CRV-EUR
-2024-02-18 13:07:14.138968: UPDATE HOURLY PRICES: UPDATING: FOX-USD
-2024-02-18 13:07:14.755963: UPDATE HOURLY PRICES: UPDATING: RENDER-USD
-2024-02-18 13:07:15.296964: UPDATE HOURLY PRICES: UPDATING: AAVE-USD
-2024-02-18 13:07:15.824462: UPDATE HOURLY PRICES: UPDATING: SUSHI-USD
-2024-02-18 13:07:16.376018: UPDATE HOURLY PRICES: UPDATING: TRAC-USD
-2024-02-18 13:07:16.935964: UPDATE HOURLY PRICES: UPDATING: ADA-EUR
-2024-02-18 13:07:17.453466: UPDATE HOURLY PRICES: UPDATING: VELO-USD
-2024-02-18 13:07:18.033963: UPDATE HOURLY PRICES: UPDATING: CELR-USD
-2024-02-18 13:07:18.682445: UPDATE HOURLY PRICES: UPDATING: LTC-BTC
-Request: GET / | Response: 200 OK
-Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
-2024-02-18 13:07:19.223508: UPDATE HOURLY PRICES: UPDATING: LRC-USDT
-2024-02-18 13:07:19.877298: UPDATE HOURLY PRICES: UPDATING: FET-USDT
-2024-02-18 13:07:20.420974: UPDATE HOURLY PRICES: UPDATING: WAXL-USD
-2024-02-18 13:07:20.889562: UPDATE HOURLY PRICES: UPDATING: AST-USD
-2024-02-18 13:07:21.425046: UPDATE HOURLY PRICES: UPDATING: PLA-USD
-2024-02-18 13:07:21.999964: UPDATE HOURLY PRICES: UPDATING: UNI-BTC
-2024-02-18 13:07:22.518962: UPDATE HOURLY PRICES: UPDATING: LINK-USDT
-2024-02-18 13:07:22.997238: UPDATE HOURLY PRICES: UPDATING: ETH-USDT
-2024-02-18 13:07:23.552963: UPDATE HOURLY PRICES: UPDATING: BTC-USDT
-2024-02-18 13:07:24.092955: UPDATE HOURLY PRICES: UPDATING: BAND-USD
-2024-02-18 13:07:24.781963: UPDATE HOURLY PRICES: UPDATING: CGLD-BTC
-2024-02-18 13:07:25.422481: UPDATE HOURLY PRICES: UPDATING: ZRX-USD
-2024-02-18 13:07:26.068695: UPDATE HOURLY PRICES: UPDATING: LDO-USD
-2024-02-18 13:07:26.702552: UPDATE HOURLY PRICES: UPDATING: ANKR-BTC
-2024-02-18 13:07:27.333864: UPDATE HOURLY PRICES: UPDATING: BAT-BTC
-2024-02-18 13:07:27.843966: UPDATE HOURLY PRICES: UPDATING: CGLD-EUR
-2024-02-18 13:07:28.370462: UPDATE HOURLY PRICES: UPDATING: KAVA-USD
-2024-02-18 13:07:28.993973: UPDATE HOURLY PRICES: UPDATING: MASK-USDT
-2024-02-18 13:07:29.512972: UPDATE HOURLY PRICES: UPDATING: SHIB-USD
-2024-02-18 13:07:30.060462: UPDATE HOURLY PRICES: UPDATING: UNI-EUR
-2024-02-18 13:07:30.717464: UPDATE HOURLY PRICES: UPDATING: ZETA-USD
-2024-02-18 13:07:31.214394: UPDATE HOURLY PRICES: UPDATING: 1INCH-USD
-2024-02-18 13:07:31.765453: UPDATE HOURLY PRICES: UPDATING: WAMPL-USD
-2024-02-18 13:07:32.429461: UPDATE HOURLY PRICES: UPDATING: ORN-USD
-2024-02-18 13:07:32.909461: UPDATE HOURLY PRICES: UPDATING: SAND-USD
-2024-02-18 13:07:33.524461: UPDATE HOURLY PRICES: UPDATING: LOKA-USD
-2024-02-18 13:07:34.139965: UPDATE HOURLY PRICES: UPDATING: RNDR-EUR
-2024-02-18 13:07:34.798996: UPDATE HOURLY PRICES: UPDATING: PNG-USD
-2024-02-18 13:07:35.264951: UPDATE HOURLY PRICES: UPDATING: DOGE-USDT
-2024-02-18 13:07:35.951965: UPDATE HOURLY PRICES: UPDATING: POLS-USD
-2024-02-18 13:07:36.568963: UPDATE HOURLY PRICES: UPDATING: MDT-USD
-2024-02-18 13:07:37.057145: UPDATE HOURLY PRICES: UPDATING: CHZ-USD
-2024-02-18 13:07:37.545957: UPDATE HOURLY PRICES: UPDATING: BONK-USD
-2024-02-18 13:07:38.073861: UPDATE HOURLY PRICES: UPDATING: USDT-USDC
-2024-02-18 13:07:38.630806: UPDATE HOURLY PRICES: UPDATING: SOL-GBP
-2024-02-18 13:07:39.263311: UPDATE HOURLY PRICES: UPDATING: DOT-BTC
-2024-02-18 13:07:39.986389: UPDATE HOURLY PRICES: UPDATING: FIS-USD
-2024-02-18 13:07:40.646417: UPDATE HOURLY PRICES: UPDATING: AXL-USD
-2024-02-18 13:07:41.141815: UPDATE HOURLY PRICES: UPDATING: XLM-BTC
-2024-02-18 13:07:41.686749: UPDATE HOURLY PRICES: UPDATING: RBN-USD
-2024-02-18 13:07:42.322257: UPDATE HOURLY PRICES: UPDATING: ENJ-USD
-2024-02-18 13:07:42.968274: UPDATE HOURLY PRICES: UPDATING: OCEAN-USD
-2024-02-18 13:07:44.271631: UPDATE HOURLY PRICES: UPDATING: ETH-USD
-2024-02-18 13:07:44.779446: UPDATE HOURLY PRICES: UPDATING: SOL-BTC
-2024-02-18 13:07:45.437961: UPDATE HOURLY PRICES: UPDATING: XTZ-EUR
-2024-02-18 13:07:45.977950: UPDATE HOURLY PRICES: UPDATING: AVAX-USD
-2024-02-18 13:07:46.477424: UPDATE HOURLY PRICES: UPDATING: MUSE-USD
-2024-02-18 13:07:46.961417: UPDATE HOURLY PRICES: UPDATING: CGLD-USD
-2024-02-18 13:07:47.510949: UPDATE HOURLY PRICES: UPDATING: UNI-GBP
-2024-02-18 13:07:48.021936: UPDATE HOURLY PRICES: UPDATING: GAL-USD
-2024-02-18 13:07:48.737946: UPDATE HOURLY PRICES: UPDATING: CVC-USD
-2024-02-18 13:07:49.359049: UPDATE HOURLY PRICES: UPDATING: CRO-USD
-2024-02-18 13:07:50.142414: UPDATE HOURLY PRICES: UPDATING: SPA-USD
-2024-02-18 13:07:50.733705: UPDATE HOURLY PRICES: UPDATING: MATIC-GBP
-2024-02-18 13:07:51.202404: UPDATE HOURLY PRICES: UPDATING: DOGE-USD
-2024-02-18 13:07:51.746308: UPDATE HOURLY PRICES: UPDATING: ENS-USDT
-2024-02-18 13:07:52.283944: UPDATE HOURLY PRICES: UPDATING: NEAR-USD
-2024-02-18 13:07:52.908962: UPDATE HOURLY PRICES: UPDATING: SHIB-GBP
-2024-02-18 13:07:53.447478: UPDATE HOURLY PRICES: UPDATING: AMP-USD
-2024-02-18 13:07:53.984896: UPDATE HOURLY PRICES: UPDATING: INDEX-USD
-2024-02-18 13:07:54.626366: UPDATE HOURLY PRICES: UPDATING: VOXEL-USD
-2024-02-18 13:07:55.666962: UPDATE HOURLY PRICES: UPDATING: XLM-USD
-2024-02-18 13:07:56.220964: UPDATE HOURLY PRICES: UPDATING: BAL-BTC
-2024-02-18 13:07:56.776963: UPDATE HOURLY PRICES: UPDATING: ENS-USD
-2024-02-18 13:07:57.264462: UPDATE HOURLY PRICES: UPDATING: ATOM-USDT
-2024-02-18 13:07:57.923467: UPDATE HOURLY PRICES: UPDATING: XYO-USD
-2024-02-18 13:07:58.552380: UPDATE HOURLY PRICES: UPDATING: SHPING-USD
-2024-02-18 13:07:59.186390: UPDATE HOURLY PRICES: UPDATING: ETH-DAI
-2024-02-18 13:07:59.756239: UPDATE HOURLY PRICES: UPDATING: VET-USD
-2024-02-18 13:08:00.255027: UPDATE HOURLY PRICES: UPDATING: CBETH-ETH
-2024-02-18 13:08:00.860462: UPDATE HOURLY PRICES: UPDATING: AAVE-GBP
-2024-02-18 13:08:01.457039: UPDATE HOURLY PRICES: UPDATING: LINK-EUR
-2024-02-18 13:08:02.102963: UPDATE HOURLY PRICES: UPDATING: EOS-USD
-2024-02-18 13:08:02.612191: UPDATE HOURLY PRICES: UPDATING: RARE-USD
-2024-02-18 13:08:03.196595: UPDATE HOURLY PRICES: UPDATING: BICO-EUR
-2024-02-18 13:08:03.717481: UPDATE HOURLY PRICES: UPDATING: FIL-EUR
-2024-02-18 13:08:04.398962: UPDATE HOURLY PRICES: UPDATING: OSMO-USD
-2024-02-18 13:08:05.049424: UPDATE HOURLY PRICES: UPDATING: CVX-USD
-2024-02-18 13:08:05.587965: UPDATE HOURLY PRICES: UPDATING: HONEY-USD
-2024-02-18 13:08:06.121360: UPDATE HOURLY PRICES: UPDATING: LPT-USD
-2024-02-18 13:08:06.635262: UPDATE HOURLY PRICES: UPDATING: AXS-USD
-2024-02-18 13:08:07.274609: UPDATE HOURLY PRICES: UPDATING: FET-USD
-2024-02-18 13:08:07.775467: UPDATE HOURLY PRICES: UPDATING: FORTH-USD
-2024-02-18 13:08:08.552967: UPDATE HOURLY PRICES: UPDATING: 1INCH-BTC
-2024-02-18 13:08:09.157961: UPDATE HOURLY PRICES: UPDATING: DIMO-USD
-2024-02-18 13:08:09.798963: UPDATE HOURLY PRICES: UPDATING: SOL-USD
-2024-02-18 13:08:10.434867: UPDATE HOURLY PRICES: UPDATING: PYUSD-USD
-2024-02-18 13:08:10.958962: UPDATE HOURLY PRICES: UPDATING: ADA-GBP
-2024-02-18 13:08:11.562464: UPDATE HOURLY PRICES: UPDATING: JASMY-USD
-2024-02-18 13:08:12.216375: UPDATE HOURLY PRICES: UPDATING: ALGO-BTC
-2024-02-18 13:08:12.876947: UPDATE HOURLY PRICES: UPDATING: DEXT-USD
-2024-02-18 13:08:13.764330: UPDATE HOURLY PRICES: UPDATING: CHZ-USDT
-2024-02-18 13:08:14.397950: UPDATE HOURLY PRICES: UPDATING: AVAX-EUR
-2024-02-18 13:08:14.971462: UPDATE HOURLY PRICES: UPDATING: XRP-EUR
-2024-02-18 13:08:15.745968: UPDATE HOURLY PRICES: UPDATING: QI-USD
-2024-02-18 13:08:16.300963: UPDATE HOURLY PRICES: UPDATING: XRP-USDT
-2024-02-18 13:08:16.890411: UPDATE HOURLY PRICES: UPDATING: BTC-EUR
-2024-02-18 13:08:17.384447: UPDATE HOURLY PRICES: UPDATING: AAVE-EUR
-2024-02-18 13:08:17.985463: UPDATE HOURLY PRICES: UPDATING: ERN-USD
-2024-02-18 13:08:18.575464: UPDATE HOURLY PRICES: UPDATING: COTI-USD
-2024-02-18 13:08:19.206962: UPDATE HOURLY PRICES: UPDATING: EGLD-USD
-2024-02-18 13:08:19.818468: UPDATE HOURLY PRICES: UPDATING: BAT-EUR
-2024-02-18 13:08:20.444969: UPDATE HOURLY PRICES: UPDATING: LINK-ETH
-2024-02-18 13:08:21.115526: UPDATE HOURLY PRICES: UPDATING: T-USD
-2024-02-18 13:08:21.658582: UPDATE HOURLY PRICES: UPDATING: ENJ-USDT
-2024-02-18 13:08:21.850939: UPDATE HOURLY PRICES: total api calls is: 396
-2024-02-18 13:08:21.856444: UPDATE HOURLY PRICES: api calls successful: 396
-2024-02-18 13:08:21.867952: UPDATE HOURLY PRICES: final row count is: 63842
-2024-02-18 13:08:21.873456: UPDATE HOURLY PRICES: rows added is: 6134
-2024-02-18 13:08:21.879199: UPDATE HOURLY PRICES ENDS 
-2024-02-18 13:08:21.879199: UPDATE HOURLY PRICES TOOK 0:03:59.964808
-2024-02-18 13:08:21.886206: PRICES CHECK ENDS 
-2024-02-18 13:08:21.886206: PRICES CHECK TOOK 0:04:03.327964
-2024-02-18 13:08:21.891711: HIGHS LOWS CHECK STARTS
-2024-02-18 13:08:21.897214: CHECKING HIGH LOWS TEMP TABLE STARTS
-2024-02-18 13:08:21.915695: CHECKING HIGH LOWS FOR: ILV-USD STARTS
-2024-02-18 13:08:21.949472: CHECKING HIGH LOWS FOR: BADGER-USD STARTS
-2024-02-18 13:08:21.958689: CHECKING HIGH LOWS FOR: PRIME-USD STARTS
-2024-02-18 13:08:21.967825: CHECKING HIGH LOWS FOR: MANA-USD STARTS
-2024-02-18 13:08:21.976463: CHECKING HIGH LOWS FOR: NCT-USD STARTS
-2024-02-18 13:08:21.986472: CHECKING HIGH LOWS FOR: CRO-EUR STARTS
-2024-02-18 13:08:21.996139: CHECKING HIGH LOWS FOR: MATIC-USD STARTS
-2024-02-18 13:08:22.005146: CHECKING HIGH LOWS FOR: EUROC-USD STARTS
-2024-02-18 13:08:22.014154: CHECKING HIGH LOWS FOR: XTZ-USD STARTS
-2024-02-18 13:08:22.023661: CHECKING HIGH LOWS FOR: ETC-USD STARTS
-2024-02-18 13:08:22.032669: CHECKING HIGH LOWS FOR: AAVE-BTC STARTS
-2024-02-18 13:08:22.040674: CHECKING HIGH LOWS FOR: ACS-USD STARTS
-2024-02-18 13:08:22.048374: CHECKING HIGH LOWS FOR: LTC-USD STARTS
-2024-02-18 13:08:22.056380: CHECKING HIGH LOWS FOR: SNT-USD STARTS
-2024-02-18 13:08:22.065387: CHECKING HIGH LOWS FOR: ALEPH-USD STARTS
-2024-02-18 13:08:22.073394: CHECKING HIGH LOWS FOR: BCH-GBP STARTS
-2024-02-18 13:08:22.081400: CHECKING HIGH LOWS FOR: MANA-ETH STARTS
-2024-02-18 13:08:22.089907: CHECKING HIGH LOWS FOR: AVAX-USDT STARTS
-2024-02-18 13:08:22.098414: CHECKING HIGH LOWS FOR: GHST-USD STARTS
-2024-02-18 13:08:22.106920: CHECKING HIGH LOWS FOR: TIA-USD STARTS
-2024-02-18 13:08:22.115427: CHECKING HIGH LOWS FOR: ENJ-BTC STARTS
-2024-02-18 13:08:22.123935: CHECKING HIGH LOWS FOR: INV-USD STARTS
-2024-02-18 13:08:22.132441: CHECKING HIGH LOWS FOR: GRT-USD STARTS
-2024-02-18 13:08:22.140448: CHECKING HIGH LOWS FOR: CTX-USD STARTS
-2024-02-18 13:08:22.148454: CHECKING HIGH LOWS FOR: GMT-USDT STARTS
-2024-02-18 13:08:22.160463: CHECKING HIGH LOWS FOR: HBAR-USD STARTS
-2024-02-18 13:08:22.170472: CHECKING HIGH LOWS FOR: LSETH-ETH STARTS
-2024-02-18 13:08:22.179479: CHECKING HIGH LOWS FOR: ETC-BTC STARTS
-2024-02-18 13:08:22.189487: CHECKING HIGH LOWS FOR: PUNDIX-USD STARTS
-2024-02-18 13:08:22.198494: CHECKING HIGH LOWS FOR: WBTC-BTC STARTS
-2024-02-18 13:08:22.207501: CHECKING HIGH LOWS FOR: XLM-EUR STARTS
-2024-02-18 13:08:22.216508: CHECKING HIGH LOWS FOR: IOTX-USD STARTS
-2024-02-18 13:08:22.225015: CHECKING HIGH LOWS FOR: SUI-USD STARTS
-2024-02-18 13:08:22.234022: CHECKING HIGH LOWS FOR: ARB-USD STARTS
-2024-02-18 13:08:22.242529: CHECKING HIGH LOWS FOR: GNO-USD STARTS
-2024-02-18 13:08:22.251036: CHECKING HIGH LOWS FOR: BIT-USD STARTS
-2024-02-18 13:08:22.260044: CHECKING HIGH LOWS FOR: BICO-USD STARTS
-2024-02-18 13:08:22.268550: CHECKING HIGH LOWS FOR: SNX-GBP STARTS
-2024-02-18 13:08:22.277558: CHECKING HIGH LOWS FOR: RARI-USD STARTS
-2024-02-18 13:08:22.288566: CHECKING HIGH LOWS FOR: CGLD-GBP STARTS
-2024-02-18 13:08:22.297685: CHECKING HIGH LOWS FOR: API3-USD STARTS
-2024-02-18 13:08:22.306192: CHECKING HIGH LOWS FOR: USDT-GBP STARTS
-2024-02-18 13:08:22.314699: CHECKING HIGH LOWS FOR: STX-USDT STARTS
-2024-02-18 13:08:22.324206: CHECKING HIGH LOWS FOR: CHZ-EUR STARTS
-2024-02-18 13:08:22.332713: CHECKING HIGH LOWS FOR: SOL-ETH STARTS
-2024-02-18 13:08:22.340822: CHECKING HIGH LOWS FOR: GFI-USD STARTS
-2024-02-18 13:08:22.348829: CHECKING HIGH LOWS FOR: DAR-USD STARTS
-2024-02-18 13:08:22.356882: CHECKING HIGH LOWS FOR: AURORA-USD STARTS
-2024-02-18 13:08:22.365388: CHECKING HIGH LOWS FOR: AERGO-USD STARTS
-2024-02-18 13:08:22.374395: CHECKING HIGH LOWS FOR: FORT-USD STARTS
-2024-02-18 13:08:22.382401: CHECKING HIGH LOWS FOR: 1INCH-GBP STARTS
-2024-02-18 13:08:22.390408: CHECKING HIGH LOWS FOR: DYP-USD STARTS
-2024-02-18 13:08:22.398916: CHECKING HIGH LOWS FOR: SUPER-USD STARTS
-2024-02-18 13:08:22.408922: CHECKING HIGH LOWS FOR: XTZ-GBP STARTS
-2024-02-18 13:08:22.416929: CHECKING HIGH LOWS FOR: MATIC-USDT STARTS
-2024-02-18 13:08:22.425436: CHECKING HIGH LOWS FOR: BICO-USDT STARTS
-2024-02-18 13:08:22.433442: CHECKING HIGH LOWS FOR: LQTY-USD STARTS
-2024-02-18 13:08:22.440948: CHECKING HIGH LOWS FOR: LIT-USD STARTS
-2024-02-18 13:08:22.448454: CHECKING HIGH LOWS FOR: SOL-EUR STARTS
-2024-02-18 13:08:22.456461: CHECKING HIGH LOWS FOR: ELA-USD STARTS
-2024-02-18 13:08:22.464467: CHECKING HIGH LOWS FOR: COVAL-USD STARTS
-2024-02-18 13:08:22.471973: CHECKING HIGH LOWS FOR: STX-USD STARTS
-2024-02-18 13:08:22.481481: CHECKING HIGH LOWS FOR: PERP-USD STARTS
-2024-02-18 13:08:22.490075: CHECKING HIGH LOWS FOR: ETH-EUR STARTS
-2024-02-18 13:08:22.498081: CHECKING HIGH LOWS FOR: EUROC-EUR STARTS
-2024-02-18 13:08:22.506087: CHECKING HIGH LOWS FOR: IMX-USD STARTS
-2024-02-18 13:08:22.514094: CHECKING HIGH LOWS FOR: DAI-USD STARTS
-2024-02-18 13:08:22.522602: CHECKING HIGH LOWS FOR: JTO-USD STARTS
-2024-02-18 13:08:22.530107: CHECKING HIGH LOWS FOR: AXS-BTC STARTS
-2024-02-18 13:08:22.538614: CHECKING HIGH LOWS FOR: ARPA-USD STARTS
-2024-02-18 13:08:22.546620: CHECKING HIGH LOWS FOR: FIL-BTC STARTS
-2024-02-18 13:08:22.554626: CHECKING HIGH LOWS FOR: LINK-BTC STARTS
-2024-02-18 13:08:22.562633: CHECKING HIGH LOWS FOR: BNT-USD STARTS
-2024-02-18 13:08:22.570640: CHECKING HIGH LOWS FOR: ADA-ETH STARTS
-2024-02-18 13:08:22.578646: CHECKING HIGH LOWS FOR: APE-EUR STARTS
-2024-02-18 13:08:22.586152: CHECKING HIGH LOWS FOR: LCX-USD STARTS
-2024-02-18 13:08:22.594158: CHECKING HIGH LOWS FOR: AIOZ-USD STARTS
-2024-02-18 13:08:22.602164: CHECKING HIGH LOWS FOR: APE-USD STARTS
-2024-02-18 13:08:22.610170: CHECKING HIGH LOWS FOR: AXS-EUR STARTS
-2024-02-18 13:08:22.618177: CHECKING HIGH LOWS FOR: TIME-USD STARTS
-2024-02-18 13:08:22.625683: CHECKING HIGH LOWS FOR: MINA-USD STARTS
-2024-02-18 13:08:22.633189: CHECKING HIGH LOWS FOR: SNX-USD STARTS
-2024-02-18 13:08:22.640695: CHECKING HIGH LOWS FOR: DNT-USD STARTS
-2024-02-18 13:08:22.648201: CHECKING HIGH LOWS FOR: ICP-USD STARTS
-2024-02-18 13:08:22.656207: CHECKING HIGH LOWS FOR: AVT-USD STARTS
-2024-02-18 13:08:22.669949: CHECKING HIGH LOWS FOR: DOT-USD STARTS
-2024-02-18 13:08:22.677454: CHECKING HIGH LOWS FOR: INJ-USD STARTS
-2024-02-18 13:08:22.685628: CHECKING HIGH LOWS FOR: APT-USD STARTS
-2024-02-18 13:08:22.693134: CHECKING HIGH LOWS FOR: UNFI-USD STARTS
-2024-02-18 13:08:22.700640: CHECKING HIGH LOWS FOR: RNDR-USDT STARTS
-2024-02-18 13:08:22.709648: CHECKING HIGH LOWS FOR: COMP-USD STARTS
-2024-02-18 13:08:22.718154: CHECKING HIGH LOWS FOR: BTRST-USD STARTS
-2024-02-18 13:08:22.726160: CHECKING HIGH LOWS FOR: UNI-USD STARTS
-2024-02-18 13:08:22.734668: CHECKING HIGH LOWS FOR: 00-USD STARTS
-2024-02-18 13:08:22.742892: CHECKING HIGH LOWS FOR: SEAM-USD STARTS
-2024-02-18 13:08:22.751900: CHECKING HIGH LOWS FOR: FLR-USD STARTS
-2024-02-18 13:08:22.760407: CHECKING HIGH LOWS FOR: LINK-GBP STARTS
-2024-02-18 13:08:22.768914: CHECKING HIGH LOWS FOR: MASK-EUR STARTS
-2024-02-18 13:08:22.777420: CHECKING HIGH LOWS FOR: GST-USD STARTS
-2024-02-18 13:08:22.785928: CHECKING HIGH LOWS FOR: WCFG-USD STARTS
-2024-02-18 13:08:22.794934: CHECKING HIGH LOWS FOR: DASH-BTC STARTS
-2024-02-18 13:08:22.803942: CHECKING HIGH LOWS FOR: AUCTION-USD STARTS
-2024-02-18 13:08:22.811948: CHECKING HIGH LOWS FOR: BAL-USD STARTS
-2024-02-18 13:08:22.820454: CHECKING HIGH LOWS FOR: MAGIC-USD STARTS
-2024-02-18 13:08:22.828961: CHECKING HIGH LOWS FOR: FIL-GBP STARTS
-2024-02-18 13:08:22.837468: CHECKING HIGH LOWS FOR: MLN-USD STARTS
-2024-02-18 13:08:22.845475: CHECKING HIGH LOWS FOR: AUDIO-USD STARTS
-2024-02-18 13:08:22.853982: CHECKING HIGH LOWS FOR: BTC-USD STARTS
-2024-02-18 13:08:22.862489: CHECKING HIGH LOWS FOR: DOT-USDT STARTS
-2024-02-18 13:08:22.869994: CHECKING HIGH LOWS FOR: PAX-USD STARTS
-2024-02-18 13:08:22.877500: CHECKING HIGH LOWS FOR: UMA-USD STARTS
-2024-02-18 13:08:22.885121: CHECKING HIGH LOWS FOR: ABT-USD STARTS
-2024-02-18 13:08:22.892627: CHECKING HIGH LOWS FOR: SPELL-USD STARTS
-2024-02-18 13:08:22.900133: CHECKING HIGH LOWS FOR: CHZ-GBP STARTS
-2024-02-18 13:08:22.907639: CHECKING HIGH LOWS FOR: XRP-USD STARTS
-2024-02-18 13:08:22.919971: CHECKING HIGH LOWS FOR: MEDIA-USD STARTS
-2024-02-18 13:08:22.928021: CHECKING HIGH LOWS FOR: FLOW-USDT STARTS
-2024-02-18 13:08:22.935527: CHECKING HIGH LOWS FOR: METIS-USD STARTS
-2024-02-18 13:08:22.943033: CHECKING HIGH LOWS FOR: XLM-USDT STARTS
-2024-02-18 13:08:22.950538: CHECKING HIGH LOWS FOR: CRV-USD STARTS
-2024-02-18 13:08:22.958044: CHECKING HIGH LOWS FOR: ATOM-EUR STARTS
-2024-02-18 13:08:22.965102: CHECKING HIGH LOWS FOR: YFI-BTC STARTS
-2024-02-18 13:08:22.972607: CHECKING HIGH LOWS FOR: GLM-USD STARTS
-2024-02-18 13:08:22.980113: CHECKING HIGH LOWS FOR: RAD-USD STARTS
-2024-02-18 13:08:22.987619: CHECKING HIGH LOWS FOR: AERO-USD STARTS
-2024-02-18 13:08:22.996126: CHECKING HIGH LOWS FOR: ICP-BTC STARTS
-2024-02-18 13:08:23.003632: CHECKING HIGH LOWS FOR: APT-USDT STARTS
-2024-02-18 13:08:23.011638: CHECKING HIGH LOWS FOR: USDC-EUR STARTS
-2024-02-18 13:08:23.019645: CHECKING HIGH LOWS FOR: SKL-USD STARTS
-2024-02-18 13:08:23.027651: CHECKING HIGH LOWS FOR: ALCX-USD STARTS
-2024-02-18 13:08:23.036659: CHECKING HIGH LOWS FOR: MSOL-USD STARTS
-2024-02-18 13:08:23.045666: CHECKING HIGH LOWS FOR: ETH-BTC STARTS
-2024-02-18 13:08:23.054172: CHECKING HIGH LOWS FOR: ETH-GBP STARTS
-2024-02-18 13:08:23.063180: CHECKING HIGH LOWS FOR: AXS-USDT STARTS
-2024-02-18 13:08:23.071686: CHECKING HIGH LOWS FOR: BAT-USD STARTS
-2024-02-18 13:08:23.079694: CHECKING HIGH LOWS FOR: SEI-USD STARTS
-2024-02-18 13:08:23.087700: CHECKING HIGH LOWS FOR: BLUR-USD STARTS
-2024-02-18 13:08:23.096706: CHECKING HIGH LOWS FOR: GYEN-USD STARTS
-2024-02-18 13:08:23.105714: CHECKING HIGH LOWS FOR: XCN-USD STARTS
-2024-02-18 13:08:23.114722: CHECKING HIGH LOWS FOR: BCH-USD STARTS
-2024-02-18 13:08:23.124229: CHECKING HIGH LOWS FOR: PRO-USD STARTS
-2024-02-18 13:08:23.133736: CHECKING HIGH LOWS FOR: POND-USD STARTS
-2024-02-18 13:08:23.143244: CHECKING HIGH LOWS FOR: ZEC-USD STARTS
-2024-02-18 13:08:23.151750: CHECKING HIGH LOWS FOR: MASK-USD STARTS
-2024-02-18 13:08:23.160758: CHECKING HIGH LOWS FOR: DIA-USD STARTS
-2024-02-18 13:08:23.171767: CHECKING HIGH LOWS FOR: TRB-USD STARTS
-2024-02-18 13:08:23.181275: CHECKING HIGH LOWS FOR: ACH-USD STARTS
-2024-02-18 13:08:23.190782: CHECKING HIGH LOWS FOR: OXT-USD STARTS
-2024-02-18 13:08:23.200289: CHECKING HIGH LOWS FOR: USDT-EUR STARTS
-2024-02-18 13:08:23.209297: CHECKING HIGH LOWS FOR: COMP-BTC STARTS
-2024-02-18 13:08:23.218303: CHECKING HIGH LOWS FOR: RAI-USD STARTS
-2024-02-18 13:08:23.227811: CHECKING HIGH LOWS FOR: FLOW-USD STARTS
-2024-02-18 13:08:23.235818: CHECKING HIGH LOWS FOR: ADA-BTC STARTS
-2024-02-18 13:08:23.244826: CHECKING HIGH LOWS FOR: HFT-USD STARTS
-2024-02-18 13:08:23.253833: CHECKING HIGH LOWS FOR: MATH-USD STARTS
-2024-02-18 13:08:23.262339: CHECKING HIGH LOWS FOR: BCH-BTC STARTS
-2024-02-18 13:08:23.271347: CHECKING HIGH LOWS FOR: EOS-BTC STARTS
-2024-02-18 13:08:23.281354: CHECKING HIGH LOWS FOR: C98-USD STARTS
-2024-02-18 13:08:23.289862: CHECKING HIGH LOWS FOR: RPL-USD STARTS
-2024-02-18 13:08:23.298868: CHECKING HIGH LOWS FOR: KSM-USD STARTS
-2024-02-18 13:08:23.307375: CHECKING HIGH LOWS FOR: FIL-USD STARTS
-2024-02-18 13:08:23.315882: CHECKING HIGH LOWS FOR: PRQ-USD STARTS
-2024-02-18 13:08:23.324889: CHECKING HIGH LOWS FOR: FX-USD STARTS
-2024-02-18 13:08:23.334397: CHECKING HIGH LOWS FOR: BTC-GBP STARTS
-2024-02-18 13:08:23.343405: CHECKING HIGH LOWS FOR: ALICE-USD STARTS
-2024-02-18 13:08:23.352410: CHECKING HIGH LOWS FOR: DOGE-GBP STARTS
-2024-02-18 13:08:23.361418: CHECKING HIGH LOWS FOR: 1INCH-EUR STARTS
-2024-02-18 13:08:23.370426: CHECKING HIGH LOWS FOR: USDT-USD STARTS
-2024-02-18 13:08:23.379433: CHECKING HIGH LOWS FOR: CTSI-USD STARTS
-2024-02-18 13:08:23.388940: CHECKING HIGH LOWS FOR: POWR-USD STARTS
-2024-02-18 13:08:23.397447: CHECKING HIGH LOWS FOR: NEAR-USDT STARTS
-2024-02-18 13:08:23.405454: CHECKING HIGH LOWS FOR: GODS-USD STARTS
-2024-02-18 13:08:23.413960: CHECKING HIGH LOWS FOR: MKR-BTC STARTS
-2024-02-18 13:08:23.428967: CHECKING HIGH LOWS FOR: GRT-EUR STARTS
-2024-02-18 13:08:23.437473: CHECKING HIGH LOWS FOR: HBAR-USDT STARTS
-2024-02-18 13:08:23.445980: CHECKING HIGH LOWS FOR: SYN-USD STARTS
-2024-02-18 13:08:23.454987: CHECKING HIGH LOWS FOR: DOGE-EUR STARTS
-2024-02-18 13:08:23.463995: CHECKING HIGH LOWS FOR: ASM-USD STARTS
-2024-02-18 13:08:23.473001: CHECKING HIGH LOWS FOR: ZEN-USD STARTS
-2024-02-18 13:08:23.481509: CHECKING HIGH LOWS FOR: DASH-USD STARTS
-2024-02-18 13:08:23.491016: CHECKING HIGH LOWS FOR: SOL-USDT STARTS
-2024-02-18 13:08:23.499023: CHECKING HIGH LOWS FOR: SHIB-EUR STARTS
-2024-02-18 13:08:23.506529: CHECKING HIGH LOWS FOR: OP-USD STARTS
-2024-02-18 13:08:23.515036: CHECKING HIGH LOWS FOR: DOT-EUR STARTS
-2024-02-18 13:08:23.523542: CHECKING HIGH LOWS FOR: GUSD-USD STARTS
-2024-02-18 13:08:23.531548: CHECKING HIGH LOWS FOR: IMX-USDT STARTS
-2024-02-18 13:08:23.540055: CHECKING HIGH LOWS FOR: CRV-BTC STARTS
-2024-02-18 13:08:23.550064: CHECKING HIGH LOWS FOR: RNDR-USD STARTS
-2024-02-18 13:08:23.559572: CHECKING HIGH LOWS FOR: MANA-EUR STARTS
-2024-02-18 13:08:23.568077: CHECKING HIGH LOWS FOR: LRC-BTC STARTS
-2024-02-18 13:08:23.576084: CHECKING HIGH LOWS FOR: DOT-GBP STARTS
-2024-02-18 13:08:23.584591: CHECKING HIGH LOWS FOR: HIGH-USD STARTS
-2024-02-18 13:08:23.593459: CHECKING HIGH LOWS FOR: RLC-USD STARTS
-2024-02-18 13:08:23.601039: CHECKING HIGH LOWS FOR: YFI-USD STARTS
-2024-02-18 13:08:23.610548: CHECKING HIGH LOWS FOR: KRL-USD STARTS
-2024-02-18 13:08:23.619556: CHECKING HIGH LOWS FOR: SNX-EUR STARTS
-2024-02-18 13:08:23.628563: CHECKING HIGH LOWS FOR: JASMY-USDT STARTS
-2024-02-18 13:08:23.636568: CHECKING HIGH LOWS FOR: ADA-USD STARTS
-2024-02-18 13:08:23.646576: CHECKING HIGH LOWS FOR: QNT-USD STARTS
-2024-02-18 13:08:23.658085: CHECKING HIGH LOWS FOR: HOPR-USD STARTS
-2024-02-18 13:08:23.668093: CHECKING HIGH LOWS FOR: MKR-USD STARTS
-2024-02-18 13:08:23.681103: CHECKING HIGH LOWS FOR: ROSE-USDT STARTS
-2024-02-18 13:08:23.692112: CHECKING HIGH LOWS FOR: BIGTIME-USD STARTS
-2024-02-18 13:08:23.702621: CHECKING HIGH LOWS FOR: AVAX-BTC STARTS
-2024-02-18 13:08:23.713129: CHECKING HIGH LOWS FOR: MTL-USD STARTS
-2024-02-18 13:08:23.722638: CHECKING HIGH LOWS FOR: FIDA-USD STARTS
-2024-02-18 13:08:23.732146: CHECKING HIGH LOWS FOR: PYR-USD STARTS
-2024-02-18 13:08:23.741151: CHECKING HIGH LOWS FOR: DESO-USD STARTS
-2024-02-18 13:08:23.749659: CHECKING HIGH LOWS FOR: BLZ-USD STARTS
-2024-02-18 13:08:23.758666: CHECKING HIGH LOWS FOR: ORCA-USD STARTS
-2024-02-18 13:08:23.767673: CHECKING HIGH LOWS FOR: MASK-GBP STARTS
-2024-02-18 13:08:23.776681: CHECKING HIGH LOWS FOR: CRO-USDT STARTS
-2024-02-18 13:08:23.786188: CHECKING HIGH LOWS FOR: CLV-USD STARTS
-2024-02-18 13:08:23.794695: CHECKING HIGH LOWS FOR: KNC-USD STARTS
-2024-02-18 13:08:23.803702: CHECKING HIGH LOWS FOR: OP-USDT STARTS
-2024-02-18 13:08:23.812209: CHECKING HIGH LOWS FOR: MANA-BTC STARTS
-2024-02-18 13:08:23.819715: CHECKING HIGH LOWS FOR: ATOM-GBP STARTS
-2024-02-18 13:08:23.827963: CHECKING HIGH LOWS FOR: FARM-USD STARTS
-2024-02-18 13:08:23.835468: CHECKING HIGH LOWS FOR: BAT-ETH STARTS
-2024-02-18 13:08:23.843475: CHECKING HIGH LOWS FOR: ATOM-BTC STARTS
-2024-02-18 13:08:23.852482: CHECKING HIGH LOWS FOR: XTZ-BTC STARTS
-2024-02-18 13:08:23.860990: CHECKING HIGH LOWS FOR: ETC-GBP STARTS
-2024-02-18 13:08:23.869496: CHECKING HIGH LOWS FOR: WBTC-USD STARTS
-2024-02-18 13:08:23.878003: CHECKING HIGH LOWS FOR: GRT-GBP STARTS
-2024-02-18 13:08:23.886009: CHECKING HIGH LOWS FOR: ROSE-USD STARTS
-2024-02-18 13:08:23.894515: CHECKING HIGH LOWS FOR: ANKR-EUR STARTS
-2024-02-18 13:08:23.902523: CHECKING HIGH LOWS FOR: VARA-USD STARTS
-2024-02-18 13:08:23.910529: CHECKING HIGH LOWS FOR: SAND-USDT STARTS
-2024-02-18 13:08:23.919537: CHECKING HIGH LOWS FOR: LTC-EUR STARTS
-2024-02-18 13:08:23.930045: CHECKING HIGH LOWS FOR: MPL-USD STARTS
-2024-02-18 13:08:23.937551: CHECKING HIGH LOWS FOR: MNDE-USD STARTS
-2024-02-18 13:08:23.945556: CHECKING HIGH LOWS FOR: ICP-USDT STARTS
-2024-02-18 13:08:23.954063: CHECKING HIGH LOWS FOR: SNX-BTC STARTS
-2024-02-18 13:08:23.962570: CHECKING HIGH LOWS FOR: SUKU-USD STARTS
-2024-02-18 13:08:23.970577: CHECKING HIGH LOWS FOR: OGN-USD STARTS
-2024-02-18 13:08:23.978083: CHECKING HIGH LOWS FOR: AGLD-USD STARTS
-2024-02-18 13:08:23.985589: CHECKING HIGH LOWS FOR: NKN-USD STARTS
-2024-02-18 13:08:23.993094: CHECKING HIGH LOWS FOR: MINA-USDT STARTS
-2024-02-18 13:08:24.001101: CHECKING HIGH LOWS FOR: ONDO-USD STARTS
-2024-02-18 13:08:24.009108: CHECKING HIGH LOWS FOR: ALGO-GBP STARTS
-2024-02-18 13:08:24.017114: CHECKING HIGH LOWS FOR: CBETH-USD STARTS
-2024-02-18 13:08:24.026122: CHECKING HIGH LOWS FOR: LRC-USD STARTS
-2024-02-18 13:08:24.035128: CHECKING HIGH LOWS FOR: ZEC-BTC STARTS
-2024-02-18 13:08:24.043635: CHECKING HIGH LOWS FOR: ICP-GBP STARTS
-2024-02-18 13:08:24.052142: CHECKING HIGH LOWS FOR: ALGO-EUR STARTS
-2024-02-18 13:08:24.060648: CHECKING HIGH LOWS FOR: ICP-EUR STARTS
-2024-02-18 13:08:24.069655: CHECKING HIGH LOWS FOR: LTC-GBP STARTS
-2024-02-18 13:08:24.078663: CHECKING HIGH LOWS FOR: ALGO-USD STARTS
-2024-02-18 13:08:24.086670: CHECKING HIGH LOWS FOR: ADA-USDT STARTS
-2024-02-18 13:08:24.094676: CHECKING HIGH LOWS FOR: SWFTC-USD STARTS
-2024-02-18 13:08:24.103449: CHECKING HIGH LOWS FOR: ANKR-GBP STARTS
-2024-02-18 13:08:24.111456: CHECKING HIGH LOWS FOR: EOS-EUR STARTS
-2024-02-18 13:08:24.120462: CHECKING HIGH LOWS FOR: LSETH-USD STARTS
-2024-02-18 13:08:24.129471: CHECKING HIGH LOWS FOR: GMT-USD STARTS
-2024-02-18 13:08:24.137977: CHECKING HIGH LOWS FOR: GRT-BTC STARTS
-2024-02-18 13:08:24.145983: CHECKING HIGH LOWS FOR: HNT-USD STARTS
-2024-02-18 13:08:24.153990: CHECKING HIGH LOWS FOR: USDC-GBP STARTS
-2024-02-18 13:08:24.161963: CHECKING HIGH LOWS FOR: MATIC-EUR STARTS
-2024-02-18 13:08:24.169295: CHECKING HIGH LOWS FOR: ANKR-USD STARTS
-2024-02-18 13:08:24.178971: CHECKING HIGH LOWS FOR: ETC-EUR STARTS
-2024-02-18 13:08:24.186978: CHECKING HIGH LOWS FOR: IDEX-USD STARTS
-2024-02-18 13:08:24.194985: CHECKING HIGH LOWS FOR: QNT-USDT STARTS
-2024-02-18 13:08:24.203491: CHECKING HIGH LOWS FOR: BOBA-USD STARTS
-2024-02-18 13:08:24.211497: CHECKING HIGH LOWS FOR: REQ-USD STARTS
-2024-02-18 13:08:24.220504: CHECKING HIGH LOWS FOR: ENS-EUR STARTS
-2024-02-18 13:08:24.229512: CHECKING HIGH LOWS FOR: TRU-USD STARTS
-2024-02-18 13:08:24.238019: CHECKING HIGH LOWS FOR: STORJ-USD STARTS
-2024-02-18 13:08:24.245525: CHECKING HIGH LOWS FOR: MATIC-BTC STARTS
-2024-02-18 13:08:24.253531: CHECKING HIGH LOWS FOR: ATOM-USD STARTS
-2024-02-18 13:08:24.261037: CHECKING HIGH LOWS FOR: LINK-USD STARTS
-2024-02-18 13:08:24.269544: CHECKING HIGH LOWS FOR: MINA-EUR STARTS
-2024-02-18 13:08:24.279051: CHECKING HIGH LOWS FOR: TVK-USD STARTS
-2024-02-18 13:08:24.289559: CHECKING HIGH LOWS FOR: VTHO-USD STARTS
-2024-02-18 13:08:24.300568: CHECKING HIGH LOWS FOR: BCH-EUR STARTS
-2024-02-18 13:08:24.308575: CHECKING HIGH LOWS FOR: APE-USDT STARTS
-2024-02-18 13:08:24.316581: CHECKING HIGH LOWS FOR: GTC-USD STARTS
-2024-02-18 13:08:24.324587: CHECKING HIGH LOWS FOR: PLU-USD STARTS
-2024-02-18 13:08:24.332781: CHECKING HIGH LOWS FOR: SHIB-USDT STARTS
-2024-02-18 13:08:24.340287: CHECKING HIGH LOWS FOR: CRV-GBP STARTS
-2024-02-18 13:08:24.349294: CHECKING HIGH LOWS FOR: NMR-USD STARTS
-2024-02-18 13:08:24.358301: CHECKING HIGH LOWS FOR: DOGE-BTC STARTS
-2024-02-18 13:08:24.366808: CHECKING HIGH LOWS FOR: CRV-EUR STARTS
-2024-02-18 13:08:24.375816: CHECKING HIGH LOWS FOR: FOX-USD STARTS
-2024-02-18 13:08:24.384823: CHECKING HIGH LOWS FOR: RENDER-USD STARTS
-2024-02-18 13:08:24.393830: CHECKING HIGH LOWS FOR: AAVE-USD STARTS
-2024-02-18 13:08:24.402837: CHECKING HIGH LOWS FOR: SUSHI-USD STARTS
-2024-02-18 13:08:24.411343: CHECKING HIGH LOWS FOR: TRAC-USD STARTS
-2024-02-18 13:08:24.419851: CHECKING HIGH LOWS FOR: ADA-EUR STARTS
-2024-02-18 13:08:24.434362: CHECKING HIGH LOWS FOR: VELO-USD STARTS
-2024-02-18 13:08:24.445344: CHECKING HIGH LOWS FOR: CELR-USD STARTS
-2024-02-18 13:08:24.453849: CHECKING HIGH LOWS FOR: LTC-BTC STARTS
-2024-02-18 13:08:24.461856: CHECKING HIGH LOWS FOR: LRC-USDT STARTS
-2024-02-18 13:08:24.470363: CHECKING HIGH LOWS FOR: FET-USDT STARTS
-2024-02-18 13:08:24.478871: CHECKING HIGH LOWS FOR: WAXL-USD STARTS
-2024-02-18 13:08:24.487377: CHECKING HIGH LOWS FOR: AST-USD STARTS
-2024-02-18 13:08:24.495382: CHECKING HIGH LOWS FOR: PLA-USD STARTS
-2024-02-18 13:08:24.502890: CHECKING HIGH LOWS FOR: UNI-BTC STARTS
-2024-02-18 13:08:24.510896: CHECKING HIGH LOWS FOR: LINK-USDT STARTS
-2024-02-18 13:08:24.520403: CHECKING HIGH LOWS FOR: ETH-USDT STARTS
-2024-02-18 13:08:24.529412: CHECKING HIGH LOWS FOR: BTC-USDT STARTS
-2024-02-18 13:08:24.538418: CHECKING HIGH LOWS FOR: BAND-USD STARTS
-2024-02-18 13:08:24.547925: CHECKING HIGH LOWS FOR: CGLD-BTC STARTS
-2024-02-18 13:08:24.556933: CHECKING HIGH LOWS FOR: ZRX-USD STARTS
-2024-02-18 13:08:24.566439: CHECKING HIGH LOWS FOR: LDO-USD STARTS
-2024-02-18 13:08:24.574947: CHECKING HIGH LOWS FOR: ANKR-BTC STARTS
-2024-02-18 13:08:24.582954: CHECKING HIGH LOWS FOR: BAT-BTC STARTS
-2024-02-18 13:08:24.591960: CHECKING HIGH LOWS FOR: CGLD-EUR STARTS
-2024-02-18 13:08:24.601970: CHECKING HIGH LOWS FOR: KAVA-USD STARTS
-2024-02-18 13:08:24.611477: CHECKING HIGH LOWS FOR: MASK-USDT STARTS
-2024-02-18 13:08:24.621984: CHECKING HIGH LOWS FOR: SHIB-USD STARTS
-2024-02-18 13:08:24.632494: CHECKING HIGH LOWS FOR: UNI-EUR STARTS
-2024-02-18 13:08:24.642502: CHECKING HIGH LOWS FOR: ZETA-USD STARTS
-2024-02-18 13:08:24.652509: CHECKING HIGH LOWS FOR: 1INCH-USD STARTS
-2024-02-18 13:08:24.663518: CHECKING HIGH LOWS FOR: WAMPL-USD STARTS
-2024-02-18 13:08:24.673026: CHECKING HIGH LOWS FOR: ORN-USD STARTS
-2024-02-18 13:08:24.686535: CHECKING HIGH LOWS FOR: SAND-USD STARTS
-2024-02-18 13:08:24.696044: CHECKING HIGH LOWS FOR: LOKA-USD STARTS
-2024-02-18 13:08:24.705552: CHECKING HIGH LOWS FOR: RNDR-EUR STARTS
-2024-02-18 13:08:24.714058: CHECKING HIGH LOWS FOR: PNG-USD STARTS
-2024-02-18 13:08:24.722566: CHECKING HIGH LOWS FOR: DOGE-USDT STARTS
-2024-02-18 13:08:24.730071: CHECKING HIGH LOWS FOR: POLS-USD STARTS
-2024-02-18 13:08:24.738077: CHECKING HIGH LOWS FOR: MDT-USD STARTS
-2024-02-18 13:08:24.746584: CHECKING HIGH LOWS FOR: CHZ-USD STARTS
-2024-02-18 13:08:24.756092: CHECKING HIGH LOWS FOR: BONK-USD STARTS
-2024-02-18 13:08:24.765099: CHECKING HIGH LOWS FOR: USDT-USDC STARTS
-2024-02-18 13:08:24.773606: CHECKING HIGH LOWS FOR: SOL-GBP STARTS
-2024-02-18 13:08:24.782613: CHECKING HIGH LOWS FOR: DOT-BTC STARTS
-2024-02-18 13:08:24.791619: CHECKING HIGH LOWS FOR: FIS-USD STARTS
-2024-02-18 13:08:24.800627: CHECKING HIGH LOWS FOR: AXL-USD STARTS
-2024-02-18 13:08:24.809634: CHECKING HIGH LOWS FOR: XLM-BTC STARTS
-2024-02-18 13:08:24.818141: CHECKING HIGH LOWS FOR: RBN-USD STARTS
-2024-02-18 13:08:24.826648: CHECKING HIGH LOWS FOR: ENJ-USD STARTS
-2024-02-18 13:08:24.834654: CHECKING HIGH LOWS FOR: OCEAN-USD STARTS
-2024-02-18 13:08:24.842161: CHECKING HIGH LOWS FOR: ETH-USD STARTS
-2024-02-18 13:08:24.850166: CHECKING HIGH LOWS FOR: SOL-BTC STARTS
-2024-02-18 13:08:24.857673: CHECKING HIGH LOWS FOR: XTZ-EUR STARTS
-2024-02-18 13:08:24.865314: CHECKING HIGH LOWS FOR: AVAX-USD STARTS
-2024-02-18 13:08:24.873822: CHECKING HIGH LOWS FOR: MUSE-USD STARTS
-2024-02-18 13:08:24.881828: CHECKING HIGH LOWS FOR: CGLD-USD STARTS
-2024-02-18 13:08:24.889963: CHECKING HIGH LOWS FOR: UNI-GBP STARTS
-2024-02-18 13:08:24.897970: CHECKING HIGH LOWS FOR: GAL-USD STARTS
-2024-02-18 13:08:24.906476: CHECKING HIGH LOWS FOR: CVC-USD STARTS
-2024-02-18 13:08:24.914983: CHECKING HIGH LOWS FOR: CRO-USD STARTS
-2024-02-18 13:08:24.924491: CHECKING HIGH LOWS FOR: SPA-USD STARTS
-2024-02-18 13:08:24.934964: CHECKING HIGH LOWS FOR: MATIC-GBP STARTS
-2024-02-18 13:08:24.945466: CHECKING HIGH LOWS FOR: DOGE-USD STARTS
-2024-02-18 13:08:24.954475: CHECKING HIGH LOWS FOR: ENS-USDT STARTS
-2024-02-18 13:08:24.962480: CHECKING HIGH LOWS FOR: NEAR-USD STARTS
-2024-02-18 13:08:24.970988: CHECKING HIGH LOWS FOR: SHIB-GBP STARTS
-2024-02-18 13:08:24.978966: CHECKING HIGH LOWS FOR: AMP-USD STARTS
-2024-02-18 13:08:24.987472: CHECKING HIGH LOWS FOR: INDEX-USD STARTS
-2024-02-18 13:08:24.995478: CHECKING HIGH LOWS FOR: VOXEL-USD STARTS
-2024-02-18 13:08:25.003985: CHECKING HIGH LOWS FOR: XLM-USD STARTS
-2024-02-18 13:08:25.012492: CHECKING HIGH LOWS FOR: BAL-BTC STARTS
-2024-02-18 13:08:25.020999: CHECKING HIGH LOWS FOR: ENS-USD STARTS
-2024-02-18 13:08:25.029506: CHECKING HIGH LOWS FOR: ATOM-USDT STARTS
-2024-02-18 13:08:25.037512: CHECKING HIGH LOWS FOR: XYO-USD STARTS
-2024-02-18 13:08:25.046018: CHECKING HIGH LOWS FOR: SHPING-USD STARTS
-2024-02-18 13:08:25.054025: CHECKING HIGH LOWS FOR: ETH-DAI STARTS
-2024-02-18 13:08:25.063033: CHECKING HIGH LOWS FOR: VET-USD STARTS
-2024-02-18 13:08:25.071038: CHECKING HIGH LOWS FOR: CBETH-ETH STARTS
-2024-02-18 13:08:25.079045: CHECKING HIGH LOWS FOR: AAVE-GBP STARTS
-2024-02-18 13:08:25.087051: CHECKING HIGH LOWS FOR: LINK-EUR STARTS
-2024-02-18 13:08:25.095559: CHECKING HIGH LOWS FOR: EOS-USD STARTS
-2024-02-18 13:08:25.104566: CHECKING HIGH LOWS FOR: RARE-USD STARTS
-2024-02-18 13:08:25.112573: CHECKING HIGH LOWS FOR: BICO-EUR STARTS
-2024-02-18 13:08:25.120578: CHECKING HIGH LOWS FOR: FIL-EUR STARTS
-2024-02-18 13:08:25.128585: CHECKING HIGH LOWS FOR: OSMO-USD STARTS
-2024-02-18 13:08:25.136591: CHECKING HIGH LOWS FOR: CVX-USD STARTS
-2024-02-18 13:08:25.145598: CHECKING HIGH LOWS FOR: HONEY-USD STARTS
-2024-02-18 13:08:25.154105: CHECKING HIGH LOWS FOR: LPT-USD STARTS
-2024-02-18 13:08:25.162112: CHECKING HIGH LOWS FOR: AXS-USD STARTS
-2024-02-18 13:08:25.171119: CHECKING HIGH LOWS FOR: FET-USD STARTS
-2024-02-18 13:08:25.179626: CHECKING HIGH LOWS FOR: FORTH-USD STARTS
-2024-02-18 13:08:25.195975: CHECKING HIGH LOWS FOR: 1INCH-BTC STARTS
-2024-02-18 13:08:25.204982: CHECKING HIGH LOWS FOR: DIMO-USD STARTS
-2024-02-18 13:08:25.213464: CHECKING HIGH LOWS FOR: SOL-USD STARTS
-2024-02-18 13:08:25.221470: CHECKING HIGH LOWS FOR: PYUSD-USD STARTS
-2024-02-18 13:08:25.229477: CHECKING HIGH LOWS FOR: ADA-GBP STARTS
-2024-02-18 13:08:25.238484: CHECKING HIGH LOWS FOR: JASMY-USD STARTS
-2024-02-18 13:08:25.246490: CHECKING HIGH LOWS FOR: ALGO-BTC STARTS
-2024-02-18 13:08:25.255498: CHECKING HIGH LOWS FOR: DEXT-USD STARTS
-2024-02-18 13:08:25.264505: CHECKING HIGH LOWS FOR: CHZ-USDT STARTS
-2024-02-18 13:08:25.273512: CHECKING HIGH LOWS FOR: AVAX-EUR STARTS
-2024-02-18 13:08:25.283519: CHECKING HIGH LOWS FOR: XRP-EUR STARTS
-2024-02-18 13:08:25.293028: CHECKING HIGH LOWS FOR: QI-USD STARTS
-2024-02-18 13:08:25.301034: CHECKING HIGH LOWS FOR: XRP-USDT STARTS
-2024-02-18 13:08:25.310042: CHECKING HIGH LOWS FOR: BTC-EUR STARTS
-2024-02-18 13:08:25.319049: CHECKING HIGH LOWS FOR: AAVE-EUR STARTS
-2024-02-18 13:08:25.327555: CHECKING HIGH LOWS FOR: ERN-USD STARTS
-2024-02-18 13:08:25.336062: CHECKING HIGH LOWS FOR: COTI-USD STARTS
-2024-02-18 13:08:25.344068: CHECKING HIGH LOWS FOR: EGLD-USD STARTS
-2024-02-18 13:08:25.351574: CHECKING HIGH LOWS FOR: BAT-EUR STARTS
-2024-02-18 13:08:25.359081: CHECKING HIGH LOWS FOR: LINK-ETH STARTS
-2024-02-18 13:08:25.366586: CHECKING HIGH LOWS FOR: T-USD STARTS
-2024-02-18 13:08:25.374092: CHECKING HIGH LOWS FOR: ENJ-USDT STARTS
-2024-02-18 13:08:25.456442: CHECKING HIGH LOWS FOR: ENJ-USDT ENDS
-2024-02-18 13:08:25.462445: CHECKING HIGH LOWS TEMP TABLE ENDS
-2024-02-18 13:08:25.467950: HIGHS LOWS CHECK ENDS 
-2024-02-18 13:08:25.467950: HIGHS LOWS CHECK TOOK 0:00:03.576239
-2024-02-18 13:08:25.472954: BREAKTOUTS CHECK STARTS
-2024-02-18 13:08:26.845915: BREAKTOUTS CHECK ENDS 
-2024-02-18 13:08:26.845915: BREAKTOUTS CHECK TOOK 0:00:01.372961
-2024-02-18 13:08:26.851419: DB CONNECTION CLOSED
-2024-02-18 13:08:26.856423: Crypto Turtle has FINISHED, STOPPED, THE END.
-2024-02-18 13:08:26.861928: CRYPTO TURTLE WHOLE PROGRAM ENDS 
-2024-02-18 13:08:26.861928: CRYPTO TURTLE WHOLE PROGRAM TOOK 0:04:09.013167
-2024-02-18 13:08:26.866932: ********************************************************
+2024-02-18 15:11:20.596465: ********************************************************
+2024-02-18 15:11:20.601785: CRYPTO TURTLE WHOLE PROGRAM STARTS
+2024-02-18 15:11:20.606788: DB CONNECTION OPENED
+2024-02-18 15:11:20.653325: CHECK OR CREATE TABLES STARTS
+2024-02-18 15:11:20.665334: TABLE: symbols already exists
+2024-02-18 15:11:20.671839: TABLE: hourlyprices already exists
+2024-02-18 15:11:20.678345: TABLE: dailyprices already exists
+2024-02-18 15:11:20.683349: CHECK OR CREATE TABLES ENDS 
+2024-02-18 15:11:20.683349: CHECK OR CREATE TABLES TOOK 0:00:00.030024
+2024-02-18 15:11:20.688353: SYMBOLS CHECK STARTS
+2024-02-18 15:11:20.693858: GET COINBASE SYMBOLS STARTS
+2024-02-18 15:11:21.085963: GET COINBASE SYMBOLS: API returns 614 symbols.
+2024-02-18 15:11:21.090824: GET COINBASE SYMBOLS ENDS 
+2024-02-18 15:11:21.090824: GET COINBASE SYMBOLS TOOK 0:00:00.396966
+2024-02-18 15:11:21.097831: DB SYMBOLS CHECK AND INSERT STARTS
+2024-02-18 15:11:21.104835: DB SYMBOLS CHECK AND INSERT: SELECT COUNT returns 614 symbols in database.
+2024-02-18 15:11:21.176509: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'online': 396
+2024-02-18 15:11:21.181514: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'delisted': 218
+2024-02-18 15:11:21.186518: DB SYMBOLS CHECK AND INSERT ENDS 
+2024-02-18 15:11:21.186518: DB SYMBOLS CHECK AND INSERT TOOK 0:00:00.088687
+2024-02-18 15:11:21.191522: GET ONLINE SYMBOLS STARTS
+2024-02-18 15:11:21.198027: GET ONLINE SYMBOLS: there are 396 symbols online.
+2024-02-18 15:11:21.203531: GET ONLINE SYMBOLS ENDS 
+2024-02-18 15:11:21.203531: GET ONLINE SYMBOLS TOOK 0:00:00.012009
+2024-02-18 15:11:21.208535: SYMBOLS CHECK ENDS 
+2024-02-18 15:11:21.208535: SYMBOLS CHECK TOOK 0:00:00.520182
+2024-02-18 15:11:21.213539: PRICES CHECK STARTS
+2024-02-18 15:11:21.218543: UPDATE HOURLY PRICES STARTS
+2024-02-18 15:11:21.224048: CURRENT UNIX IS: 1708265480.3108199
+2024-02-18 15:11:21.229051: START OF PREVIOUS HOUR UNIX IS: 1708261200
+2024-02-18 15:11:21.241561: UPDATE HOURLY PRICES: initial row count is: 63842
+2024-02-18 15:11:22.213218: UPDATE HOURLY PRICES: UPDATING: ILV-USD
+2024-02-18 15:11:22.781467: UPDATE HOURLY PRICES: UPDATING: BADGER-USD
+2024-02-18 15:11:23.324464: UPDATE HOURLY PRICES: UPDATING: PRIME-USD
+2024-02-18 15:11:23.856462: UPDATE HOURLY PRICES: UPDATING: MANA-USD
+2024-02-18 15:11:24.492964: UPDATE HOURLY PRICES: UPDATING: NCT-USD
+2024-02-18 15:11:25.029662: UPDATE HOURLY PRICES: UPDATING: CRO-EUR
+2024-02-18 15:11:25.578463: UPDATE HOURLY PRICES: UPDATING: MATIC-USD
+2024-02-18 15:11:26.128964: UPDATE HOURLY PRICES: UPDATING: EUROC-USD
+2024-02-18 15:11:26.657008: UPDATE HOURLY PRICES: UPDATING: XTZ-USD
+2024-02-18 15:11:27.170535: UPDATE HOURLY PRICES: UPDATING: ETC-USD
+2024-02-18 15:11:27.804968: UPDATE HOURLY PRICES: UPDATING: AAVE-BTC
+2024-02-18 15:11:28.414966: UPDATE HOURLY PRICES: UPDATING: ACS-USD
+2024-02-18 15:11:28.921324: UPDATE HOURLY PRICES: UPDATING: LTC-USD
+2024-02-18 15:11:29.475342: UPDATE HOURLY PRICES: UPDATING: SNT-USD
+2024-02-18 15:11:30.054463: UPDATE HOURLY PRICES: UPDATING: ALEPH-USD
+2024-02-18 15:11:31.007946: UPDATE HOURLY PRICES: UPDATING: BCH-GBP
+2024-02-18 15:11:31.963463: UPDATE HOURLY PRICES: UPDATING: MANA-ETH
+2024-02-18 15:11:32.526963: UPDATE HOURLY PRICES: UPDATING: AVAX-USDT
+2024-02-18 15:11:33.127466: UPDATE HOURLY PRICES: UPDATING: GHST-USD
+2024-02-18 15:11:33.747968: UPDATE HOURLY PRICES: UPDATING: TIA-USD
+2024-02-18 15:11:34.367450: UPDATE HOURLY PRICES: UPDATING: ENJ-BTC
+2024-02-18 15:11:34.875966: UPDATE HOURLY PRICES: UPDATING: INV-USD
+2024-02-18 15:11:35.435038: UPDATE HOURLY PRICES: UPDATING: GRT-USD
+2024-02-18 15:11:35.996962: UPDATE HOURLY PRICES: UPDATING: CTX-USD
+2024-02-18 15:11:36.534962: UPDATE HOURLY PRICES: UPDATING: GMT-USDT
+2024-02-18 15:11:37.032464: UPDATE HOURLY PRICES: UPDATING: HBAR-USD
+2024-02-18 15:11:37.764963: UPDATE HOURLY PRICES: UPDATING: LSETH-ETH
+2024-02-18 15:11:39.000872: UPDATE HOURLY PRICES: UPDATING: ETC-BTC
+2024-02-18 15:11:39.485760: UPDATE HOURLY PRICES: UPDATING: PUNDIX-USD
+2024-02-18 15:11:39.970268: UPDATE HOURLY PRICES: UPDATING: WBTC-BTC
+2024-02-18 15:11:40.518093: UPDATE HOURLY PRICES: UPDATING: XLM-EUR
+2024-02-18 15:11:41.025451: UPDATE HOURLY PRICES: UPDATING: IOTX-USD
+2024-02-18 15:11:41.612464: UPDATE HOURLY PRICES: UPDATING: SUI-USD
+2024-02-18 15:11:42.167961: UPDATE HOURLY PRICES: UPDATING: ARB-USD
+2024-02-18 15:11:42.674454: UPDATE HOURLY PRICES: UPDATING: GNO-USD
+2024-02-18 15:11:43.173964: UPDATE HOURLY PRICES: UPDATING: BIT-USD
+2024-02-18 15:11:43.837964: UPDATE HOURLY PRICES: UPDATING: BICO-USD
+2024-02-18 15:11:44.487962: UPDATE HOURLY PRICES: UPDATING: SNX-GBP
+2024-02-18 15:11:45.091463: UPDATE HOURLY PRICES: UPDATING: RARI-USD
+2024-02-18 15:11:45.744461: UPDATE HOURLY PRICES: UPDATING: CGLD-GBP
+2024-02-18 15:11:46.262961: UPDATE HOURLY PRICES: UPDATING: API3-USD
+2024-02-18 15:11:46.920108: UPDATE HOURLY PRICES: UPDATING: USDT-GBP
+2024-02-18 15:11:47.574966: UPDATE HOURLY PRICES: UPDATING: STX-USDT
+2024-02-18 15:11:48.129964: UPDATE HOURLY PRICES: UPDATING: CHZ-EUR
+2024-02-18 15:11:48.705962: UPDATE HOURLY PRICES: UPDATING: SOL-ETH
+2024-02-18 15:11:49.327504: UPDATE HOURLY PRICES: UPDATING: GFI-USD
+2024-02-18 15:11:49.878678: UPDATE HOURLY PRICES: UPDATING: DAR-USD
+2024-02-18 15:11:50.577962: UPDATE HOURLY PRICES: UPDATING: AURORA-USD
+2024-02-18 15:11:51.349465: UPDATE HOURLY PRICES: UPDATING: AERGO-USD
+2024-02-18 15:11:51.854962: UPDATE HOURLY PRICES: UPDATING: FORT-USD
+2024-02-18 15:11:52.415122: UPDATE HOURLY PRICES: UPDATING: 1INCH-GBP
+2024-02-18 15:11:52.925470: UPDATE HOURLY PRICES: UPDATING: DYP-USD
+2024-02-18 15:11:53.472461: UPDATE HOURLY PRICES: UPDATING: SUPER-USD
+2024-02-18 15:11:54.127462: UPDATE HOURLY PRICES: UPDATING: XTZ-GBP
+2024-02-18 15:11:54.667528: UPDATE HOURLY PRICES: UPDATING: MATIC-USDT
+2024-02-18 15:11:55.210964: UPDATE HOURLY PRICES: UPDATING: BICO-USDT
+2024-02-18 15:11:55.849921: UPDATE HOURLY PRICES: UPDATING: LQTY-USD
+2024-02-18 15:11:56.388954: UPDATE HOURLY PRICES: UPDATING: LIT-USD
+2024-02-18 15:11:57.023463: UPDATE HOURLY PRICES: UPDATING: SOL-EUR
+2024-02-18 15:11:57.568963: UPDATE HOURLY PRICES: UPDATING: ELA-USD
+2024-02-18 15:11:58.191965: UPDATE HOURLY PRICES: UPDATING: COVAL-USD
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:11:58.725963: UPDATE HOURLY PRICES: UPDATING: STX-USD
+2024-02-18 15:11:59.280386: UPDATE HOURLY PRICES: UPDATING: PERP-USD
+2024-02-18 15:11:59.779484: UPDATE HOURLY PRICES: UPDATING: ETH-EUR
+2024-02-18 15:12:00.428043: UPDATE HOURLY PRICES: UPDATING: EUROC-EUR
+2024-02-18 15:12:01.077461: UPDATE HOURLY PRICES: UPDATING: IMX-USD
+2024-02-18 15:12:01.859469: UPDATE HOURLY PRICES: UPDATING: DAI-USD
+2024-02-18 15:12:02.398974: UPDATE HOURLY PRICES: UPDATING: JTO-USD
+2024-02-18 15:12:02.925963: UPDATE HOURLY PRICES: UPDATING: AXS-BTC
+2024-02-18 15:12:03.610948: UPDATE HOURLY PRICES: UPDATING: ARPA-USD
+2024-02-18 15:12:04.209465: UPDATE HOURLY PRICES: UPDATING: FIL-BTC
+2024-02-18 15:12:04.703963: UPDATE HOURLY PRICES: UPDATING: LINK-BTC
+2024-02-18 15:12:05.278217: UPDATE HOURLY PRICES: UPDATING: BNT-USD
+2024-02-18 15:12:05.832463: UPDATE HOURLY PRICES: UPDATING: ADA-ETH
+2024-02-18 15:12:06.391463: UPDATE HOURLY PRICES: UPDATING: APE-EUR
+2024-02-18 15:12:06.897963: UPDATE HOURLY PRICES: UPDATING: LCX-USD
+2024-02-18 15:12:07.428964: UPDATE HOURLY PRICES: UPDATING: AIOZ-USD
+2024-02-18 15:12:07.979953: UPDATE HOURLY PRICES: UPDATING: APE-USD
+2024-02-18 15:12:08.507961: UPDATE HOURLY PRICES: UPDATING: AXS-EUR
+2024-02-18 15:12:09.147465: UPDATE HOURLY PRICES: UPDATING: TIME-USD
+2024-02-18 15:12:09.681496: UPDATE HOURLY PRICES: UPDATING: MINA-USD
+2024-02-18 15:12:10.354962: UPDATE HOURLY PRICES: UPDATING: SNX-USD
+2024-02-18 15:12:10.916201: UPDATE HOURLY PRICES: UPDATING: DNT-USD
+2024-02-18 15:12:11.631463: UPDATE HOURLY PRICES: UPDATING: ICP-USD
+2024-02-18 15:12:12.259468: UPDATE HOURLY PRICES: UPDATING: AVT-USD
+2024-02-18 15:12:12.909962: UPDATE HOURLY PRICES: UPDATING: DOT-USD
+2024-02-18 15:12:13.456491: UPDATE HOURLY PRICES: UPDATING: INJ-USD
+2024-02-18 15:12:14.104462: UPDATE HOURLY PRICES: UPDATING: APT-USD
+2024-02-18 15:12:14.606961: UPDATE HOURLY PRICES: UPDATING: UNFI-USD
+2024-02-18 15:12:15.110962: UPDATE HOURLY PRICES: UPDATING: RNDR-USDT
+2024-02-18 15:12:15.617462: UPDATE HOURLY PRICES: UPDATING: COMP-USD
+2024-02-18 15:12:16.199963: UPDATE HOURLY PRICES: UPDATING: BTRST-USD
+2024-02-18 15:12:16.761199: UPDATE HOURLY PRICES: UPDATING: UNI-USD
+2024-02-18 15:12:17.660963: UPDATE HOURLY PRICES: UPDATING: 00-USD
+2024-02-18 15:12:18.215635: UPDATE HOURLY PRICES: UPDATING: SEAM-USD
+2024-02-18 15:12:18.870963: UPDATE HOURLY PRICES: UPDATING: FLR-USD
+2024-02-18 15:12:19.514968: UPDATE HOURLY PRICES: UPDATING: LINK-GBP
+2024-02-18 15:12:20.153422: UPDATE HOURLY PRICES: UPDATING: MASK-EUR
+2024-02-18 15:12:20.697964: UPDATE HOURLY PRICES: UPDATING: GST-USD
+2024-02-18 15:12:21.342974: UPDATE HOURLY PRICES: UPDATING: WCFG-USD
+2024-02-18 15:12:21.961626: UPDATE HOURLY PRICES: UPDATING: DASH-BTC
+2024-02-18 15:12:22.478462: UPDATE HOURLY PRICES: UPDATING: AUCTION-USD
+2024-02-18 15:12:23.020115: UPDATE HOURLY PRICES: UPDATING: BAL-USD
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:12:23.591462: UPDATE HOURLY PRICES: UPDATING: MAGIC-USD
+2024-02-18 15:12:24.145974: UPDATE HOURLY PRICES: UPDATING: FIL-GBP
+2024-02-18 15:12:24.633297: UPDATE HOURLY PRICES: UPDATING: MLN-USD
+2024-02-18 15:12:25.289066: UPDATE HOURLY PRICES: UPDATING: AUDIO-USD
+2024-02-18 15:12:25.868463: UPDATE HOURLY PRICES: UPDATING: BTC-USD
+2024-02-18 15:12:26.425550: UPDATE HOURLY PRICES: UPDATING: DOT-USDT
+2024-02-18 15:12:27.094243: UPDATE HOURLY PRICES: UPDATING: PAX-USD
+2024-02-18 15:12:27.740259: UPDATE HOURLY PRICES: UPDATING: UMA-USD
+2024-02-18 15:12:28.310715: UPDATE HOURLY PRICES: UPDATING: ABT-USD
+2024-02-18 15:12:28.856964: UPDATE HOURLY PRICES: UPDATING: SPELL-USD
+2024-02-18 15:12:29.350460: UPDATE HOURLY PRICES: UPDATING: CHZ-GBP
+2024-02-18 15:12:29.966983: UPDATE HOURLY PRICES: UPDATING: XRP-USD
+2024-02-18 15:12:30.489936: UPDATE HOURLY PRICES: UPDATING: MEDIA-USD
+2024-02-18 15:12:31.031478: UPDATE HOURLY PRICES: UPDATING: FLOW-USDT
+2024-02-18 15:12:31.595462: UPDATE HOURLY PRICES: UPDATING: METIS-USD
+2024-02-18 15:12:32.250408: UPDATE HOURLY PRICES: UPDATING: XLM-USDT
+2024-02-18 15:12:32.900464: UPDATE HOURLY PRICES: UPDATING: CRV-USD
+2024-02-18 15:12:33.412965: UPDATE HOURLY PRICES: UPDATING: ATOM-EUR
+2024-02-18 15:12:34.029963: UPDATE HOURLY PRICES: UPDATING: YFI-BTC
+2024-02-18 15:12:34.655462: UPDATE HOURLY PRICES: UPDATING: GLM-USD
+2024-02-18 15:12:35.178014: UPDATE HOURLY PRICES: UPDATING: RAD-USD
+2024-02-18 15:12:35.865199: UPDATE HOURLY PRICES: UPDATING: AERO-USD
+2024-02-18 15:12:36.533466: UPDATE HOURLY PRICES: UPDATING: ICP-BTC
+2024-02-18 15:12:37.170076: UPDATE HOURLY PRICES: UPDATING: APT-USDT
+2024-02-18 15:12:37.672463: UPDATE HOURLY PRICES: UPDATING: USDC-EUR
+2024-02-18 15:12:38.657462: UPDATE HOURLY PRICES: UPDATING: SKL-USD
+2024-02-18 15:12:39.231135: UPDATE HOURLY PRICES: UPDATING: ALCX-USD
+2024-02-18 15:12:40.091462: UPDATE HOURLY PRICES: UPDATING: MSOL-USD
+2024-02-18 15:12:40.574961: UPDATE HOURLY PRICES: UPDATING: ETH-BTC
+2024-02-18 15:12:41.192962: UPDATE HOURLY PRICES: UPDATING: ETH-GBP
+2024-02-18 15:12:41.700965: UPDATE HOURLY PRICES: UPDATING: AXS-USDT
+2024-02-18 15:12:42.360423: UPDATE HOURLY PRICES: UPDATING: BAT-USD
+2024-02-18 15:12:42.911463: UPDATE HOURLY PRICES: UPDATING: SEI-USD
+2024-02-18 15:12:43.444440: UPDATE HOURLY PRICES: UPDATING: BLUR-USD
+2024-02-18 15:12:43.981893: UPDATE HOURLY PRICES: UPDATING: GYEN-USD
+2024-02-18 15:12:44.495962: UPDATE HOURLY PRICES: UPDATING: XCN-USD
+2024-02-18 15:12:44.960453: UPDATE HOURLY PRICES: UPDATING: BCH-USD
+2024-02-18 15:12:45.493463: UPDATE HOURLY PRICES: UPDATING: PRO-USD
+2024-02-18 15:12:45.981962: UPDATE HOURLY PRICES: UPDATING: POND-USD
+2024-02-18 15:12:46.497391: UPDATE HOURLY PRICES: UPDATING: ZEC-USD
+2024-02-18 15:12:47.093464: UPDATE HOURLY PRICES: UPDATING: MASK-USD
+2024-02-18 15:12:47.618964: UPDATE HOURLY PRICES: UPDATING: DIA-USD
+2024-02-18 15:12:48.170960: UPDATE HOURLY PRICES: UPDATING: TRB-USD
+2024-02-18 15:12:48.755460: UPDATE HOURLY PRICES: UPDATING: ACH-USD
+2024-02-18 15:12:49.324982: UPDATE HOURLY PRICES: UPDATING: OXT-USD
+2024-02-18 15:12:49.825961: UPDATE HOURLY PRICES: UPDATING: USDT-EUR
+2024-02-18 15:12:50.339962: UPDATE HOURLY PRICES: UPDATING: COMP-BTC
+2024-02-18 15:12:50.826218: UPDATE HOURLY PRICES: UPDATING: RAI-USD
+2024-02-18 15:12:51.464519: UPDATE HOURLY PRICES: UPDATING: FLOW-USD
+2024-02-18 15:12:52.086162: UPDATE HOURLY PRICES: UPDATING: ADA-BTC
+2024-02-18 15:12:52.657469: UPDATE HOURLY PRICES: UPDATING: HFT-USD
+2024-02-18 15:12:53.198962: UPDATE HOURLY PRICES: UPDATING: MATH-USD
+2024-02-18 15:12:53.959463: UPDATE HOURLY PRICES: UPDATING: BCH-BTC
+2024-02-18 15:12:54.826463: UPDATE HOURLY PRICES: UPDATING: EOS-BTC
+2024-02-18 15:12:55.410468: UPDATE HOURLY PRICES: UPDATING: C98-USD
+2024-02-18 15:12:55.988146: UPDATE HOURLY PRICES: UPDATING: RPL-USD
+2024-02-18 15:12:56.622301: UPDATE HOURLY PRICES: UPDATING: KSM-USD
+2024-02-18 15:12:57.147963: UPDATE HOURLY PRICES: UPDATING: FIL-USD
+2024-02-18 15:12:57.737462: UPDATE HOURLY PRICES: UPDATING: PRQ-USD
+2024-02-18 15:12:58.335205: UPDATE HOURLY PRICES: UPDATING: FX-USD
+2024-02-18 15:12:58.874419: UPDATE HOURLY PRICES: UPDATING: BTC-GBP
+2024-02-18 15:12:59.500414: UPDATE HOURLY PRICES: UPDATING: ALICE-USD
+2024-02-18 15:13:00.151998: UPDATE HOURLY PRICES: UPDATING: DOGE-GBP
+2024-02-18 15:13:00.765478: UPDATE HOURLY PRICES: UPDATING: 1INCH-EUR
+2024-02-18 15:13:01.304392: UPDATE HOURLY PRICES: UPDATING: USDT-USD
+2024-02-18 15:13:01.825026: UPDATE HOURLY PRICES: UPDATING: CTSI-USD
+2024-02-18 15:13:02.455462: UPDATE HOURLY PRICES: UPDATING: POWR-USD
+2024-02-18 15:13:02.944957: UPDATE HOURLY PRICES: UPDATING: NEAR-USDT
+2024-02-18 15:13:03.512964: UPDATE HOURLY PRICES: UPDATING: GODS-USD
+2024-02-18 15:13:04.180660: UPDATE HOURLY PRICES: UPDATING: MKR-BTC
+2024-02-18 15:13:04.805485: UPDATE HOURLY PRICES: UPDATING: GRT-EUR
+2024-02-18 15:13:05.316462: UPDATE HOURLY PRICES: UPDATING: HBAR-USDT
+2024-02-18 15:13:05.856294: UPDATE HOURLY PRICES: UPDATING: SYN-USD
+2024-02-18 15:13:07.267961: UPDATE HOURLY PRICES: UPDATING: DOGE-EUR
+2024-02-18 15:13:07.874460: UPDATE HOURLY PRICES: UPDATING: ASM-USD
+2024-02-18 15:13:08.498462: UPDATE HOURLY PRICES: UPDATING: ZEN-USD
+2024-02-18 15:13:09.109482: UPDATE HOURLY PRICES: UPDATING: DASH-USD
+2024-02-18 15:13:09.748454: UPDATE HOURLY PRICES: UPDATING: SOL-USDT
+2024-02-18 15:13:10.229448: UPDATE HOURLY PRICES: UPDATING: SHIB-EUR
+2024-02-18 15:13:10.727462: UPDATE HOURLY PRICES: UPDATING: OP-USD
+2024-02-18 15:13:11.271962: UPDATE HOURLY PRICES: UPDATING: DOT-EUR
+2024-02-18 15:13:11.900290: UPDATE HOURLY PRICES: UPDATING: GUSD-USD
+2024-02-18 15:13:12.449003: UPDATE HOURLY PRICES: UPDATING: IMX-USDT
+2024-02-18 15:13:12.996454: UPDATE HOURLY PRICES: UPDATING: CRV-BTC
+2024-02-18 15:13:13.579945: UPDATE HOURLY PRICES: UPDATING: RNDR-USD
+2024-02-18 15:13:15.158211: UPDATE HOURLY PRICES: UPDATING: MANA-EUR
+2024-02-18 15:13:15.801442: UPDATE HOURLY PRICES: UPDATING: LRC-BTC
+2024-02-18 15:13:16.433507: UPDATE HOURLY PRICES: UPDATING: DOT-GBP
+2024-02-18 15:13:16.981462: UPDATE HOURLY PRICES: UPDATING: HIGH-USD
+2024-02-18 15:13:17.507350: UPDATE HOURLY PRICES: UPDATING: RLC-USD
+2024-02-18 15:13:18.032127: UPDATE HOURLY PRICES: UPDATING: YFI-USD
+2024-02-18 15:13:18.675570: UPDATE HOURLY PRICES: UPDATING: KRL-USD
+2024-02-18 15:13:19.497964: UPDATE HOURLY PRICES: UPDATING: SNX-EUR
+2024-02-18 15:13:20.051961: UPDATE HOURLY PRICES: UPDATING: JASMY-USDT
+2024-02-18 15:13:20.624266: UPDATE HOURLY PRICES: UPDATING: ADA-USD
+2024-02-18 15:13:21.269954: UPDATE HOURLY PRICES: UPDATING: QNT-USD
+2024-02-18 15:13:21.842009: UPDATE HOURLY PRICES: UPDATING: HOPR-USD
+2024-02-18 15:13:22.353496: UPDATE HOURLY PRICES: UPDATING: MKR-USD
+2024-02-18 15:13:23.075452: UPDATE HOURLY PRICES: UPDATING: ROSE-USDT
+2024-02-18 15:13:23.602470: UPDATE HOURLY PRICES: UPDATING: BIGTIME-USD
+2024-02-18 15:13:24.172575: UPDATE HOURLY PRICES: UPDATING: AVAX-BTC
+2024-02-18 15:13:24.807368: UPDATE HOURLY PRICES: UPDATING: MTL-USD
+2024-02-18 15:13:25.446443: UPDATE HOURLY PRICES: UPDATING: FIDA-USD
+2024-02-18 15:13:25.985869: UPDATE HOURLY PRICES: UPDATING: PYR-USD
+2024-02-18 15:13:26.611484: UPDATE HOURLY PRICES: UPDATING: DESO-USD
+2024-02-18 15:13:27.149380: UPDATE HOURLY PRICES: UPDATING: BLZ-USD
+2024-02-18 15:13:27.657187: UPDATE HOURLY PRICES: UPDATING: ORCA-USD
+2024-02-18 15:13:28.170460: UPDATE HOURLY PRICES: UPDATING: MASK-GBP
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:13:28.748550: UPDATE HOURLY PRICES: UPDATING: CRO-USDT
+2024-02-18 15:13:29.644400: UPDATE HOURLY PRICES: UPDATING: CLV-USD
+2024-02-18 15:13:30.210869: UPDATE HOURLY PRICES: UPDATING: KNC-USD
+2024-02-18 15:13:30.747859: UPDATE HOURLY PRICES: UPDATING: OP-USDT
+2024-02-18 15:13:31.286408: UPDATE HOURLY PRICES: UPDATING: MANA-BTC
+2024-02-18 15:13:31.873965: UPDATE HOURLY PRICES: UPDATING: ATOM-GBP
+2024-02-18 15:13:32.374886: UPDATE HOURLY PRICES: UPDATING: FARM-USD
+2024-02-18 15:13:33.022102: UPDATE HOURLY PRICES: UPDATING: BAT-ETH
+2024-02-18 15:13:33.568404: UPDATE HOURLY PRICES: UPDATING: ATOM-BTC
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:13:34.200958: UPDATE HOURLY PRICES: UPDATING: XTZ-BTC
+2024-02-18 15:13:34.803963: UPDATE HOURLY PRICES: UPDATING: ETC-GBP
+2024-02-18 15:13:35.326967: UPDATE HOURLY PRICES: UPDATING: WBTC-USD
+2024-02-18 15:13:35.994757: UPDATE HOURLY PRICES: UPDATING: GRT-GBP
+2024-02-18 15:13:36.556462: UPDATE HOURLY PRICES: UPDATING: ROSE-USD
+2024-02-18 15:13:37.102964: UPDATE HOURLY PRICES: UPDATING: ANKR-EUR
+2024-02-18 15:13:37.628465: UPDATE HOURLY PRICES: UPDATING: VARA-USD
+2024-02-18 15:13:38.299961: UPDATE HOURLY PRICES: UPDATING: SAND-USDT
+2024-02-18 15:13:38.956961: UPDATE HOURLY PRICES: UPDATING: LTC-EUR
+2024-02-18 15:13:39.451963: UPDATE HOURLY PRICES: UPDATING: MPL-USD
+2024-02-18 15:13:39.951463: UPDATE HOURLY PRICES: UPDATING: MNDE-USD
+2024-02-18 15:13:40.505961: UPDATE HOURLY PRICES: UPDATING: ICP-USDT
+2024-02-18 15:13:41.236962: UPDATE HOURLY PRICES: UPDATING: SNX-BTC
+2024-02-18 15:13:41.882961: UPDATE HOURLY PRICES: UPDATING: SUKU-USD
+2024-02-18 15:13:42.582150: UPDATE HOURLY PRICES: UPDATING: OGN-USD
+2024-02-18 15:13:43.187962: UPDATE HOURLY PRICES: UPDATING: AGLD-USD
+2024-02-18 15:13:43.695240: UPDATE HOURLY PRICES: UPDATING: NKN-USD
+2024-02-18 15:13:44.227980: UPDATE HOURLY PRICES: UPDATING: MINA-USDT
+2024-02-18 15:13:44.758962: UPDATE HOURLY PRICES: UPDATING: ONDO-USD
+2024-02-18 15:13:45.308482: UPDATE HOURLY PRICES: UPDATING: ALGO-GBP
+2024-02-18 15:13:45.813943: UPDATE HOURLY PRICES: UPDATING: CBETH-USD
+2024-02-18 15:13:46.422352: UPDATE HOURLY PRICES: UPDATING: LRC-USD
+2024-02-18 15:13:47.156304: UPDATE HOURLY PRICES: UPDATING: ZEC-BTC
+2024-02-18 15:13:47.741461: UPDATE HOURLY PRICES: UPDATING: ICP-GBP
+2024-02-18 15:13:48.481474: UPDATE HOURLY PRICES: UPDATING: ALGO-EUR
+2024-02-18 15:13:48.965838: UPDATE HOURLY PRICES: UPDATING: ICP-EUR
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:13:49.518289: UPDATE HOURLY PRICES: UPDATING: LTC-GBP
+2024-02-18 15:13:50.152290: UPDATE HOURLY PRICES: UPDATING: ALGO-USD
+2024-02-18 15:13:50.779680: UPDATE HOURLY PRICES: UPDATING: ADA-USDT
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:13:51.794845: UPDATE HOURLY PRICES: UPDATING: SWFTC-USD
+2024-02-18 15:13:52.430316: UPDATE HOURLY PRICES: UPDATING: ANKR-GBP
+2024-02-18 15:13:53.062465: UPDATE HOURLY PRICES: UPDATING: EOS-EUR
+2024-02-18 15:13:53.615381: UPDATE HOURLY PRICES: UPDATING: LSETH-USD
+2024-02-18 15:13:54.231793: UPDATE HOURLY PRICES: UPDATING: GMT-USD
+2024-02-18 15:13:54.791963: UPDATE HOURLY PRICES: UPDATING: GRT-BTC
+2024-02-18 15:13:55.301196: UPDATE HOURLY PRICES: UPDATING: HNT-USD
+2024-02-18 15:13:55.944470: UPDATE HOURLY PRICES: UPDATING: USDC-GBP
+2024-02-18 15:13:56.587220: UPDATE HOURLY PRICES: UPDATING: MATIC-EUR
+2024-02-18 15:13:57.093463: UPDATE HOURLY PRICES: UPDATING: ANKR-USD
+2024-02-18 15:13:57.596964: UPDATE HOURLY PRICES: UPDATING: ETC-EUR
+2024-02-18 15:13:58.222073: UPDATE HOURLY PRICES: UPDATING: IDEX-USD
+2024-02-18 15:13:58.807464: UPDATE HOURLY PRICES: UPDATING: QNT-USDT
+2024-02-18 15:13:59.436965: UPDATE HOURLY PRICES: UPDATING: BOBA-USD
+2024-02-18 15:13:59.946348: UPDATE HOURLY PRICES: UPDATING: REQ-USD
+2024-02-18 15:14:00.628964: UPDATE HOURLY PRICES: UPDATING: ENS-EUR
+2024-02-18 15:14:01.299808: UPDATE HOURLY PRICES: UPDATING: TRU-USD
+2024-02-18 15:14:01.799963: UPDATE HOURLY PRICES: UPDATING: STORJ-USD
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:14:02.325248: UPDATE HOURLY PRICES: UPDATING: MATIC-BTC
+2024-02-18 15:14:02.825738: UPDATE HOURLY PRICES: UPDATING: ATOM-USD
+2024-02-18 15:14:03.446339: UPDATE HOURLY PRICES: UPDATING: LINK-USD
+2024-02-18 15:14:04.128460: UPDATE HOURLY PRICES: UPDATING: MINA-EUR
+2024-02-18 15:14:04.775749: UPDATE HOURLY PRICES: UPDATING: TVK-USD
+2024-02-18 15:14:05.476231: UPDATE HOURLY PRICES: UPDATING: VTHO-USD
+2024-02-18 15:14:06.022960: UPDATE HOURLY PRICES: UPDATING: BCH-EUR
+2024-02-18 15:14:06.572965: UPDATE HOURLY PRICES: UPDATING: APE-USDT
+2024-02-18 15:14:07.105462: UPDATE HOURLY PRICES: UPDATING: GTC-USD
+2024-02-18 15:14:07.739962: UPDATE HOURLY PRICES: UPDATING: PLU-USD
+2024-02-18 15:14:08.397390: UPDATE HOURLY PRICES: UPDATING: SHIB-USDT
+2024-02-18 15:14:08.954981: UPDATE HOURLY PRICES: UPDATING: CRV-GBP
+2024-02-18 15:14:09.443482: UPDATE HOURLY PRICES: UPDATING: NMR-USD
+2024-02-18 15:14:10.000963: UPDATE HOURLY PRICES: UPDATING: DOGE-BTC
+2024-02-18 15:14:10.551963: UPDATE HOURLY PRICES: UPDATING: CRV-EUR
+2024-02-18 15:14:11.027961: UPDATE HOURLY PRICES: UPDATING: FOX-USD
+2024-02-18 15:14:11.516465: UPDATE HOURLY PRICES: UPDATING: RENDER-USD
+2024-02-18 15:14:12.161462: UPDATE HOURLY PRICES: UPDATING: AAVE-USD
+2024-02-18 15:14:12.697962: UPDATE HOURLY PRICES: UPDATING: SUSHI-USD
+2024-02-18 15:14:13.285462: UPDATE HOURLY PRICES: UPDATING: TRAC-USD
+2024-02-18 15:14:13.876961: UPDATE HOURLY PRICES: UPDATING: ADA-EUR
+2024-02-18 15:14:14.374129: UPDATE HOURLY PRICES: UPDATING: VELO-USD
+2024-02-18 15:14:14.866481: UPDATE HOURLY PRICES: UPDATING: CELR-USD
+2024-02-18 15:14:15.733963: UPDATE HOURLY PRICES: UPDATING: LTC-BTC
+2024-02-18 15:14:16.316959: UPDATE HOURLY PRICES: UPDATING: LRC-USDT
+2024-02-18 15:14:17.201963: UPDATE HOURLY PRICES: UPDATING: FET-USDT
+2024-02-18 15:14:17.690463: UPDATE HOURLY PRICES: UPDATING: WAXL-USD
+2024-02-18 15:14:18.372464: UPDATE HOURLY PRICES: UPDATING: AST-USD
+2024-02-18 15:14:18.881422: UPDATE HOURLY PRICES: UPDATING: PLA-USD
+2024-02-18 15:14:19.424514: UPDATE HOURLY PRICES: UPDATING: UNI-BTC
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:14:20.322965: UPDATE HOURLY PRICES: UPDATING: LINK-USDT
+2024-02-18 15:14:20.883174: UPDATE HOURLY PRICES: UPDATING: ETH-USDT
+2024-02-18 15:14:21.715409: UPDATE HOURLY PRICES: UPDATING: BTC-USDT
+2024-02-18 15:14:22.261781: UPDATE HOURLY PRICES: UPDATING: BAND-USD
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:14:22.939546: UPDATE HOURLY PRICES: UPDATING: CGLD-BTC
+2024-02-18 15:14:23.568184: UPDATE HOURLY PRICES: UPDATING: ZRX-USD
+2024-02-18 15:14:24.080462: UPDATE HOURLY PRICES: UPDATING: LDO-USD
+2024-02-18 15:14:24.572834: UPDATE HOURLY PRICES: UPDATING: ANKR-BTC
+2024-02-18 15:14:25.125463: UPDATE HOURLY PRICES: UPDATING: BAT-BTC
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:14:25.755657: UPDATE HOURLY PRICES: UPDATING: CGLD-EUR
+2024-02-18 15:14:26.269087: UPDATE HOURLY PRICES: UPDATING: KAVA-USD
+2024-02-18 15:14:26.786458: UPDATE HOURLY PRICES: UPDATING: MASK-USDT
+2024-02-18 15:14:27.303654: UPDATE HOURLY PRICES: UPDATING: SHIB-USD
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:14:28.274963: UPDATE HOURLY PRICES: UPDATING: UNI-EUR
+2024-02-18 15:14:29.208464: UPDATE HOURLY PRICES: UPDATING: ZETA-USD
+2024-02-18 15:14:29.850471: UPDATE HOURLY PRICES: UPDATING: 1INCH-USD
+2024-02-18 15:14:30.362964: UPDATE HOURLY PRICES: UPDATING: WAMPL-USD
+2024-02-18 15:14:30.921962: UPDATE HOURLY PRICES: UPDATING: ORN-USD
+2024-02-18 15:14:31.463667: UPDATE HOURLY PRICES: UPDATING: SAND-USD
+2024-02-18 15:14:32.089135: UPDATE HOURLY PRICES: UPDATING: LOKA-USD
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:14:32.594256: UPDATE HOURLY PRICES: UPDATING: RNDR-EUR
+2024-02-18 15:14:33.143962: UPDATE HOURLY PRICES: UPDATING: PNG-USD
+2024-02-18 15:14:33.676940: UPDATE HOURLY PRICES: UPDATING: DOGE-USDT
+2024-02-18 15:14:34.336467: UPDATE HOURLY PRICES: UPDATING: POLS-USD
+2024-02-18 15:14:35.213963: UPDATE HOURLY PRICES: UPDATING: MDT-USD
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:14:35.855486: UPDATE HOURLY PRICES: UPDATING: CHZ-USD
+2024-02-18 15:14:41.433970: UPDATE HOURLY PRICES: UPDATING: BONK-USD
+2024-02-18 15:14:41.945314: UPDATE HOURLY PRICES: UPDATING: USDT-USDC
+2024-02-18 15:14:42.595965: UPDATE HOURLY PRICES: UPDATING: SOL-GBP
+2024-02-18 15:14:43.096291: UPDATE HOURLY PRICES: UPDATING: DOT-BTC
+2024-02-18 15:14:43.690463: UPDATE HOURLY PRICES: UPDATING: FIS-USD
+2024-02-18 15:14:44.364288: UPDATE HOURLY PRICES: UPDATING: AXL-USD
+2024-02-18 15:14:44.875962: UPDATE HOURLY PRICES: UPDATING: XLM-BTC
+2024-02-18 15:14:45.513963: UPDATE HOURLY PRICES: UPDATING: RBN-USD
+2024-02-18 15:14:46.100380: UPDATE HOURLY PRICES: UPDATING: ENJ-USD
+2024-02-18 15:14:46.672482: UPDATE HOURLY PRICES: UPDATING: OCEAN-USD
+2024-02-18 15:14:47.300482: UPDATE HOURLY PRICES: UPDATING: ETH-USD
+2024-02-18 15:14:47.850467: UPDATE HOURLY PRICES: UPDATING: SOL-BTC
+2024-02-18 15:14:48.748962: UPDATE HOURLY PRICES: UPDATING: XTZ-EUR
+2024-02-18 15:14:49.246952: UPDATE HOURLY PRICES: UPDATING: AVAX-USD
+2024-02-18 15:14:49.776482: UPDATE HOURLY PRICES: UPDATING: MUSE-USD
+2024-02-18 15:14:50.693464: UPDATE HOURLY PRICES: UPDATING: CGLD-USD
+2024-02-18 15:14:51.212981: UPDATE HOURLY PRICES: UPDATING: UNI-GBP
+2024-02-18 15:14:51.908997: UPDATE HOURLY PRICES: UPDATING: GAL-USD
+2024-02-18 15:14:52.368482: UPDATE HOURLY PRICES: UPDATING: CVC-USD
+2024-02-18 15:14:52.964957: UPDATE HOURLY PRICES: UPDATING: CRO-USD
+2024-02-18 15:14:53.497382: UPDATE HOURLY PRICES: UPDATING: SPA-USD
+2024-02-18 15:14:54.023483: UPDATE HOURLY PRICES: UPDATING: MATIC-GBP
+2024-02-18 15:14:54.511449: UPDATE HOURLY PRICES: UPDATING: DOGE-USD
+2024-02-18 15:14:55.020981: UPDATE HOURLY PRICES: UPDATING: ENS-USDT
+2024-02-18 15:14:55.527981: UPDATE HOURLY PRICES: UPDATING: NEAR-USD
+2024-02-18 15:14:56.351104: UPDATE HOURLY PRICES: UPDATING: SHIB-GBP
+2024-02-18 15:14:56.973482: UPDATE HOURLY PRICES: UPDATING: AMP-USD
+2024-02-18 15:14:57.484981: UPDATE HOURLY PRICES: UPDATING: INDEX-USD
+2024-02-18 15:14:58.123463: UPDATE HOURLY PRICES: UPDATING: VOXEL-USD
+2024-02-18 15:14:58.732961: UPDATE HOURLY PRICES: UPDATING: XLM-USD
+2024-02-18 15:14:59.261961: UPDATE HOURLY PRICES: UPDATING: BAL-BTC
+2024-02-18 15:14:59.919961: UPDATE HOURLY PRICES: UPDATING: ENS-USD
+2024-02-18 15:15:00.445121: UPDATE HOURLY PRICES: UPDATING: ATOM-USDT
+2024-02-18 15:15:01.110912: UPDATE HOURLY PRICES: UPDATING: XYO-USD
+2024-02-18 15:15:01.750475: UPDATE HOURLY PRICES: UPDATING: SHPING-USD
+2024-02-18 15:15:02.343464: UPDATE HOURLY PRICES: UPDATING: ETH-DAI
+2024-02-18 15:15:02.902233: UPDATE HOURLY PRICES: UPDATING: VET-USD
+2024-02-18 15:15:03.577962: UPDATE HOURLY PRICES: UPDATING: CBETH-ETH
+2024-02-18 15:15:04.345981: UPDATE HOURLY PRICES: UPDATING: AAVE-GBP
+2024-02-18 15:15:04.947483: UPDATE HOURLY PRICES: UPDATING: LINK-EUR
+2024-02-18 15:15:05.646462: UPDATE HOURLY PRICES: UPDATING: EOS-USD
+2024-02-18 15:15:06.165962: UPDATE HOURLY PRICES: UPDATING: RARE-USD
+2024-02-18 15:15:06.687463: UPDATE HOURLY PRICES: UPDATING: BICO-EUR
+2024-02-18 15:15:07.364963: UPDATE HOURLY PRICES: UPDATING: FIL-EUR
+2024-02-18 15:15:07.879062: UPDATE HOURLY PRICES: UPDATING: OSMO-USD
+2024-02-18 15:15:08.452963: UPDATE HOURLY PRICES: UPDATING: CVX-USD
+2024-02-18 15:15:08.966963: UPDATE HOURLY PRICES: UPDATING: HONEY-USD
+2024-02-18 15:15:09.475462: UPDATE HOURLY PRICES: UPDATING: LPT-USD
+2024-02-18 15:15:10.007484: UPDATE HOURLY PRICES: UPDATING: AXS-USD
+2024-02-18 15:15:10.549462: UPDATE HOURLY PRICES: UPDATING: FET-USD
+2024-02-18 15:15:11.054499: UPDATE HOURLY PRICES: UPDATING: FORTH-USD
+2024-02-18 15:15:11.617480: UPDATE HOURLY PRICES: UPDATING: 1INCH-BTC
+2024-02-18 15:15:12.220463: UPDATE HOURLY PRICES: UPDATING: DIMO-USD
+2024-02-18 15:15:12.847463: UPDATE HOURLY PRICES: UPDATING: SOL-USD
+2024-02-18 15:15:13.349462: UPDATE HOURLY PRICES: UPDATING: PYUSD-USD
+2024-02-18 15:15:13.988461: UPDATE HOURLY PRICES: UPDATING: ADA-GBP
+2024-02-18 15:15:14.510962: UPDATE HOURLY PRICES: UPDATING: JASMY-USD
+2024-02-18 15:15:15.164982: UPDATE HOURLY PRICES: UPDATING: ALGO-BTC
+2024-02-18 15:15:15.676276: UPDATE HOURLY PRICES: UPDATING: DEXT-USD
+2024-02-18 15:15:16.595462: UPDATE HOURLY PRICES: UPDATING: CHZ-USDT
+2024-02-18 15:15:17.188297: UPDATE HOURLY PRICES: UPDATING: AVAX-EUR
+2024-02-18 15:15:17.725412: UPDATE HOURLY PRICES: UPDATING: XRP-EUR
+2024-02-18 15:15:18.923962: UPDATE HOURLY PRICES: UPDATING: QI-USD
+2024-02-18 15:15:19.480357: UPDATE HOURLY PRICES: UPDATING: XRP-USDT
+2024-02-18 15:15:20.159381: UPDATE HOURLY PRICES: UPDATING: BTC-EUR
+2024-02-18 15:15:20.639961: UPDATE HOURLY PRICES: UPDATING: AAVE-EUR
+2024-02-18 15:15:21.192464: UPDATE HOURLY PRICES: UPDATING: ERN-USD
+2024-02-18 15:15:21.871464: UPDATE HOURLY PRICES: UPDATING: COTI-USD
+2024-02-18 15:15:22.580463: UPDATE HOURLY PRICES: UPDATING: EGLD-USD
+2024-02-18 15:15:23.113871: UPDATE HOURLY PRICES: UPDATING: BAT-EUR
+2024-02-18 15:15:24.017961: UPDATE HOURLY PRICES: UPDATING: LINK-ETH
+2024-02-18 15:15:24.647462: UPDATE HOURLY PRICES: UPDATING: T-USD
+2024-02-18 15:15:25.172963: UPDATE HOURLY PRICES: UPDATING: ENJ-USDT
+2024-02-18 15:15:25.208685: UPDATE HOURLY PRICES: total api calls is: 396
+2024-02-18 15:15:25.213689: UPDATE HOURLY PRICES: api calls successful: 396
+2024-02-18 15:15:25.223697: UPDATE HOURLY PRICES: final row count is: 64568
+2024-02-18 15:15:25.228701: UPDATE HOURLY PRICES: rows added is: 726
+2024-02-18 15:15:25.234206: UPDATE HOURLY PRICES ENDS 
+2024-02-18 15:15:25.234206: UPDATE HOURLY PRICES TOOK 0:04:04.015663
+2024-02-18 15:15:25.240813: PRICES CHECK ENDS 
+2024-02-18 15:15:25.240813: PRICES CHECK TOOK 0:04:04.027274
+2024-02-18 15:15:25.245816: BREAKOUTS CHECK STARTS
+2024-02-18 15:15:25,374:ERROR:Unhandled exception
+Traceback (most recent call last):
+  File "D:\matthew\matthew-coding\crypto-turtle\crypto_turtle_program\crypto_turtle.py", line 74, in <module>
+    import coinbase_compare_prices_percentages as comp
+  File "D:\matthew\matthew-coding\crypto-turtle\crypto_turtle_program\coinbase_compare_prices_percentages.py", line 6, in <module>
+    log.log
+AttributeError: module 'crypto_turtle_logger' has no attribute 'log'
+Request: GET /logs | Response: 200 OK
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:17:09.639465: ********************************************************
+2024-02-18 15:17:09.644869: CRYPTO TURTLE WHOLE PROGRAM STARTS
+2024-02-18 15:17:09.649873: DB CONNECTION OPENED
+2024-02-18 15:17:09.702916: CHECK OR CREATE TABLES STARTS
+2024-02-18 15:17:09.713925: TABLE: symbols already exists
+2024-02-18 15:17:09.720431: TABLE: hourlyprices already exists
+2024-02-18 15:17:09.726435: TABLE: dailyprices already exists
+2024-02-18 15:17:09.732439: CHECK OR CREATE TABLES ENDS 
+2024-02-18 15:17:09.732439: CHECK OR CREATE TABLES TOOK 0:00:00.029523
+2024-02-18 15:17:09.738444: SYMBOLS CHECK STARTS
+2024-02-18 15:17:09.743448: GET COINBASE SYMBOLS STARTS
+2024-02-18 15:17:10.253973: GET COINBASE SYMBOLS: API returns 614 symbols.
+2024-02-18 15:17:10.259978: GET COINBASE SYMBOLS ENDS 
+2024-02-18 15:17:10.259978: GET COINBASE SYMBOLS TOOK 0:00:00.516530
+2024-02-18 15:17:10.266982: DB SYMBOLS CHECK AND INSERT STARTS
+2024-02-18 15:17:10.274467: DB SYMBOLS CHECK AND INSERT: SELECT COUNT returns 614 symbols in database.
+2024-02-18 15:17:10.344523: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'online': 396
+2024-02-18 15:17:10.350027: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'delisted': 218
+2024-02-18 15:17:10.355534: DB SYMBOLS CHECK AND INSERT ENDS 
+2024-02-18 15:17:10.355534: DB SYMBOLS CHECK AND INSERT TOOK 0:00:00.088552
+2024-02-18 15:17:10.361036: GET ONLINE SYMBOLS STARTS
+2024-02-18 15:17:10.368041: GET ONLINE SYMBOLS: there are 396 symbols online.
+2024-02-18 15:17:10.373337: GET ONLINE SYMBOLS ENDS 
+2024-02-18 15:17:10.373337: GET ONLINE SYMBOLS TOOK 0:00:00.012301
+2024-02-18 15:17:10.378343: SYMBOLS CHECK ENDS 
+2024-02-18 15:17:10.378343: SYMBOLS CHECK TOOK 0:00:00.639899
+2024-02-18 15:17:10.383347: PRICES CHECK STARTS
+2024-02-18 15:17:10.388851: UPDATE HOURLY PRICES STARTS
+2024-02-18 15:17:10.393855: CURRENT UNIX IS: 1708265829.374489
+2024-02-18 15:17:10.398859: START OF PREVIOUS HOUR UNIX IS: 1708261200
+2024-02-18 15:17:10.410868: UPDATE HOURLY PRICES: initial row count is: 64568
+2024-02-18 15:17:10.881331: UPDATE HOURLY PRICES: UPDATING: CRO-EUR
+2024-02-18 15:17:11.347964: UPDATE HOURLY PRICES: UPDATING: BCH-GBP
+2024-02-18 15:17:11.815277: UPDATE HOURLY PRICES: UPDATING: MANA-ETH
+2024-02-18 15:17:12.263389: UPDATE HOURLY PRICES: UPDATING: ENJ-BTC
+2024-02-18 15:17:12.702906: UPDATE HOURLY PRICES: UPDATING: LSETH-ETH
+2024-02-18 15:17:13.194427: UPDATE HOURLY PRICES: UPDATING: ETC-BTC
+2024-02-18 15:17:13.625962: UPDATE HOURLY PRICES: UPDATING: PUNDIX-USD
+2024-02-18 15:17:14.050278: UPDATE HOURLY PRICES: UPDATING: WBTC-BTC
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:17:14.503463: UPDATE HOURLY PRICES: UPDATING: CGLD-GBP
+2024-02-18 15:17:14.977961: UPDATE HOURLY PRICES: UPDATING: XTZ-GBP
+2024-02-18 15:17:15.422975: UPDATE HOURLY PRICES: UPDATING: AXS-BTC
+2024-02-18 15:17:15.930462: UPDATE HOURLY PRICES: UPDATING: AVT-USD
+2024-02-18 15:17:16.357485: UPDATE HOURLY PRICES: UPDATING: BTRST-USD
+2024-02-18 15:17:16.865975: UPDATE HOURLY PRICES: UPDATING: DASH-BTC
+2024-02-18 15:17:17.290463: UPDATE HOURLY PRICES: UPDATING: PAX-USD
+2024-02-18 15:17:17.714485: UPDATE HOURLY PRICES: UPDATING: FLOW-USDT
+2024-02-18 15:17:18.161252: UPDATE HOURLY PRICES: UPDATING: GYEN-USD
+2024-02-18 15:17:18.591477: UPDATE HOURLY PRICES: UPDATING: COMP-BTC
+2024-02-18 15:17:19.048004: UPDATE HOURLY PRICES: UPDATING: RAI-USD
+2024-02-18 15:17:19.500962: UPDATE HOURLY PRICES: UPDATING: GUSD-USD
+2024-02-18 15:17:19.947090: UPDATE HOURLY PRICES: UPDATING: CRV-BTC
+2024-02-18 15:17:20.362961: UPDATE HOURLY PRICES: UPDATING: DOT-GBP
+2024-02-18 15:17:20.862963: UPDATE HOURLY PRICES: UPDATING: XTZ-BTC
+2024-02-18 15:17:21.183963: UPDATE HOURLY PRICES: UPDATING: ETC-GBP
+2024-02-18 15:17:21.625961: UPDATE HOURLY PRICES: UPDATING: SNX-BTC
+2024-02-18 15:17:22.044012: UPDATE HOURLY PRICES: UPDATING: MINA-USDT
+2024-02-18 15:17:22.469461: UPDATE HOURLY PRICES: UPDATING: ANKR-GBP
+2024-02-18 15:17:22.885463: UPDATE HOURLY PRICES: UPDATING: LSETH-USD
+2024-02-18 15:17:23.222964: UPDATE HOURLY PRICES: UPDATING: ENS-EUR
+2024-02-18 15:17:23.552460: UPDATE HOURLY PRICES: UPDATING: CRV-EUR
+2024-02-18 15:17:23.980461: UPDATE HOURLY PRICES: UPDATING: PLA-USD
+2024-02-18 15:17:24.393462: UPDATE HOURLY PRICES: UPDATING: CGLD-BTC
+2024-02-18 15:17:24.810962: UPDATE HOURLY PRICES: UPDATING: ANKR-BTC
+2024-02-18 15:17:25.162962: UPDATE HOURLY PRICES: UPDATING: MASK-USDT
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:17:25.592387: UPDATE HOURLY PRICES: UPDATING: LOKA-USD
+2024-02-18 15:17:26.008963: UPDATE HOURLY PRICES: UPDATING: DOT-BTC
+2024-02-18 15:17:26.335477: UPDATE HOURLY PRICES: UPDATING: XTZ-EUR
+2024-02-18 15:17:26.650964: UPDATE HOURLY PRICES: UPDATING: UNI-GBP
+2024-02-18 15:17:27.071372: UPDATE HOURLY PRICES: UPDATING: BAL-BTC
+2024-02-18 15:17:27.408207: UPDATE HOURLY PRICES: UPDATING: CBETH-ETH
+2024-02-18 15:17:27.845960: UPDATE HOURLY PRICES: UPDATING: BICO-EUR
+2024-02-18 15:17:28.265300: UPDATE HOURLY PRICES: UPDATING: 1INCH-BTC
+2024-02-18 15:17:29.381481: UPDATE HOURLY PRICES: UPDATING: ALGO-BTC
+2024-02-18 15:17:29.823466: UPDATE HOURLY PRICES: UPDATING: ERN-USD
+2024-02-18 15:17:29.838478: UPDATE HOURLY PRICES: total api calls is: 44
+2024-02-18 15:17:29.843482: UPDATE HOURLY PRICES: api calls successful: 44
+2024-02-18 15:17:29.852489: UPDATE HOURLY PRICES: final row count is: 64568
+2024-02-18 15:17:29.857994: UPDATE HOURLY PRICES: rows added is: 0
+2024-02-18 15:17:29.862997: UPDATE HOURLY PRICES ENDS 
+2024-02-18 15:17:29.862997: UPDATE HOURLY PRICES TOOK 0:00:19.474146
+2024-02-18 15:17:29.869737: PRICES CHECK ENDS 
+2024-02-18 15:17:29.869737: PRICES CHECK TOOK 0:00:19.486390
+2024-02-18 15:17:29.874742: BREAKOUTS CHECK STARTS
+2024-02-18 15:17:30.006347: Comparing prices: percentages STARTS
+2024-02-18 15:17:30.052884: Comparing prices: percentages ENDS
+2024-02-18 15:17:30.057888: BREAKOUTS CHECK ENDS 
+2024-02-18 15:17:30.057888: BREAKOUTS CHECK TOOK 0:00:00.183146
+2024-02-18 15:17:30.063392: DB CONNECTION CLOSED
+2024-02-18 15:17:30.068897: Crypto Turtle has FINISHED, STOPPED, THE END.
+2024-02-18 15:17:30.074401: CRYPTO TURTLE WHOLE PROGRAM ENDS 
+2024-02-18 15:17:30.074401: CRYPTO TURTLE WHOLE PROGRAM TOOK 0:00:20.429532
+2024-02-18 15:17:30.079905: ********************************************************
 Request: POST /trigger-update | Response: 200 OK
+Request: GET /logs | Response: 200 OK
+Request: GET /logs | Response: 200 OK
 Request: GET / | Response: 200 OK
 Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
 Request: GET / | Response: 200 OK
 Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
+Request: GET / | Response: 200 OK
+Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
+2024-02-18 15:18:51.041159: ********************************************************
+2024-02-18 15:18:51.046859: CRYPTO TURTLE WHOLE PROGRAM STARTS
+2024-02-18 15:18:51.062646: DB CONNECTION OPENED
+2024-02-18 15:18:51.109684: CHECK OR CREATE TABLES STARTS
+2024-02-18 15:18:51.119692: TABLE: symbols already exists
+2024-02-18 15:18:51.125696: TABLE: hourlyprices already exists
+2024-02-18 15:18:51.131702: TABLE: dailyprices already exists
+2024-02-18 15:18:51.137290: CHECK OR CREATE TABLES ENDS 
+2024-02-18 15:18:51.137290: CHECK OR CREATE TABLES TOOK 0:00:00.027606
+2024-02-18 15:18:51.142296: SYMBOLS CHECK STARTS
+2024-02-18 15:18:51.147300: GET COINBASE SYMBOLS STARTS
+2024-02-18 15:18:51.622462: GET COINBASE SYMBOLS: API returns 614 symbols.
+2024-02-18 15:18:51.633427: GET COINBASE SYMBOLS ENDS 
+2024-02-18 15:18:51.633427: GET COINBASE SYMBOLS TOOK 0:00:00.486127
+2024-02-18 15:18:51.639816: DB SYMBOLS CHECK AND INSERT STARTS
+2024-02-18 15:18:51.646321: DB SYMBOLS CHECK AND INSERT: SELECT COUNT returns 614 symbols in database.
+2024-02-18 15:18:51.707370: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'online': 396
+2024-02-18 15:18:51.712875: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'delisted': 218
+2024-02-18 15:18:51.717878: DB SYMBOLS CHECK AND INSERT ENDS 
+2024-02-18 15:18:51.717878: DB SYMBOLS CHECK AND INSERT TOOK 0:00:00.078062
+2024-02-18 15:18:51.723382: GET ONLINE SYMBOLS STARTS
+2024-02-18 15:18:51.729887: GET ONLINE SYMBOLS: there are 396 symbols online.
+2024-02-18 15:18:51.736393: GET ONLINE SYMBOLS ENDS 
+2024-02-18 15:18:51.736393: GET ONLINE SYMBOLS TOOK 0:00:00.013011
+2024-02-18 15:18:51.741397: SYMBOLS CHECK ENDS 
+2024-02-18 15:18:51.741397: SYMBOLS CHECK TOOK 0:00:00.599101
+2024-02-18 15:18:51.746401: PRICES CHECK STARTS
+2024-02-18 15:18:51.751404: UPDATE HOURLY PRICES STARTS
+2024-02-18 15:18:51.756408: CURRENT UNIX IS: 1708265930.8024685
+2024-02-18 15:18:51.761412: START OF PREVIOUS HOUR UNIX IS: 1708261200
+2024-02-18 15:18:51.772922: UPDATE HOURLY PRICES: initial row count is: 64568
+2024-02-18 15:18:52.216237: UPDATE HOURLY PRICES: UPDATING: CRO-EUR
+2024-02-18 15:18:52.547736: UPDATE HOURLY PRICES: UPDATING: BCH-GBP
+2024-02-18 15:18:52.971953: UPDATE HOURLY PRICES: UPDATING: MANA-ETH
+2024-02-18 15:18:53.414962: UPDATE HOURLY PRICES: UPDATING: ENJ-BTC
+2024-02-18 15:18:53.837732: UPDATE HOURLY PRICES: UPDATING: LSETH-ETH
+2024-02-18 15:18:54.251310: UPDATE HOURLY PRICES: UPDATING: ETC-BTC
+2024-02-18 15:18:54.687302: UPDATE HOURLY PRICES: UPDATING: PUNDIX-USD
+2024-02-18 15:18:55.031940: UPDATE HOURLY PRICES: UPDATING: WBTC-BTC
+2024-02-18 15:18:55.466730: UPDATE HOURLY PRICES: UPDATING: CGLD-GBP
+2024-02-18 15:18:55.791349: UPDATE HOURLY PRICES: UPDATING: XTZ-GBP
+2024-02-18 15:18:56.480462: UPDATE HOURLY PRICES: UPDATING: AXS-BTC
+2024-02-18 15:18:56.915344: UPDATE HOURLY PRICES: UPDATING: AVT-USD
+2024-02-18 15:18:57.374963: UPDATE HOURLY PRICES: UPDATING: BTRST-USD
+2024-02-18 15:18:57.701463: UPDATE HOURLY PRICES: UPDATING: DASH-BTC
+2024-02-18 15:18:58.137461: UPDATE HOURLY PRICES: UPDATING: PAX-USD
+2024-02-18 15:18:58.465237: UPDATE HOURLY PRICES: UPDATING: FLOW-USDT
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:18:58.804008: UPDATE HOURLY PRICES: UPDATING: GYEN-USD
+2024-02-18 15:18:59.253294: UPDATE HOURLY PRICES: UPDATING: COMP-BTC
+2024-02-18 15:18:59.688311: UPDATE HOURLY PRICES: UPDATING: RAI-USD
+2024-02-18 15:19:00.123462: UPDATE HOURLY PRICES: UPDATING: GUSD-USD
+2024-02-18 15:19:00.469718: UPDATE HOURLY PRICES: UPDATING: CRV-BTC
+2024-02-18 15:19:00.802961: UPDATE HOURLY PRICES: UPDATING: DOT-GBP
+2024-02-18 15:19:01.242480: UPDATE HOURLY PRICES: UPDATING: XTZ-BTC
+2024-02-18 15:19:01.690030: UPDATE HOURLY PRICES: UPDATING: ETC-GBP
+2024-02-18 15:19:02.029963: UPDATE HOURLY PRICES: UPDATING: SNX-BTC
+2024-02-18 15:19:02.477461: UPDATE HOURLY PRICES: UPDATING: MINA-USDT
+2024-02-18 15:19:02.910980: UPDATE HOURLY PRICES: UPDATING: ANKR-GBP
+2024-02-18 15:19:03.247964: UPDATE HOURLY PRICES: UPDATING: LSETH-USD
+2024-02-18 15:19:03.695993: UPDATE HOURLY PRICES: UPDATING: ENS-EUR
+2024-02-18 15:19:04.169463: UPDATE HOURLY PRICES: UPDATING: CRV-EUR
+2024-02-18 15:19:04.506712: UPDATE HOURLY PRICES: UPDATING: PLA-USD
+2024-02-18 15:19:04.941463: UPDATE HOURLY PRICES: UPDATING: CGLD-BTC
+2024-02-18 15:19:05.386370: UPDATE HOURLY PRICES: UPDATING: ANKR-BTC
+2024-02-18 15:19:05.838480: UPDATE HOURLY PRICES: UPDATING: MASK-USDT
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:19:06.263981: UPDATE HOURLY PRICES: UPDATING: LOKA-USD
+2024-02-18 15:19:06.716706: UPDATE HOURLY PRICES: UPDATING: DOT-BTC
+2024-02-18 15:19:07.164961: UPDATE HOURLY PRICES: UPDATING: XTZ-EUR
+2024-02-18 15:19:07.493201: UPDATE HOURLY PRICES: UPDATING: UNI-GBP
+2024-02-18 15:19:08.055646: UPDATE HOURLY PRICES: UPDATING: BAL-BTC
+2024-02-18 15:19:08.443725: UPDATE HOURLY PRICES: UPDATING: CBETH-ETH
+2024-02-18 15:19:08.797827: UPDATE HOURLY PRICES: UPDATING: BICO-EUR
+Request: GET /logs | Response: 200 OK
+2024-02-18 15:19:09.125480: UPDATE HOURLY PRICES: UPDATING: 1INCH-BTC
+2024-02-18 15:19:09.467174: UPDATE HOURLY PRICES: UPDATING: ALGO-BTC
+2024-02-18 15:19:09.891400: UPDATE HOURLY PRICES: UPDATING: ERN-USD
+2024-02-18 15:19:09.908415: UPDATE HOURLY PRICES: total api calls is: 44
+2024-02-18 15:19:09.913918: UPDATE HOURLY PRICES: api calls successful: 44
+2024-02-18 15:19:09.923425: UPDATE HOURLY PRICES: final row count is: 64568
+2024-02-18 15:19:09.928430: UPDATE HOURLY PRICES: rows added is: 0
+2024-02-18 15:19:09.933434: UPDATE HOURLY PRICES ENDS 
+2024-02-18 15:19:09.933434: UPDATE HOURLY PRICES TOOK 0:00:18.182030
+2024-02-18 15:19:09.940439: PRICES CHECK ENDS 
+2024-02-18 15:19:09.940439: PRICES CHECK TOOK 0:00:18.194038
+2024-02-18 15:19:09.945944: BREAKOUTS CHECK STARTS
+2024-02-18 15:19:10.077549: Comparing prices: percentages STARTS
+2024-02-18 15:19:10.123587: HOURLY PERCENTAGES HTML report generated successfully.
+2024-02-18 15:19:10.129090: Comparing prices: percentages ENDS
+2024-02-18 15:19:10.134340: BREAKOUTS CHECK ENDS 
+2024-02-18 15:19:10.134340: BREAKOUTS CHECK TOOK 0:00:00.188396
+2024-02-18 15:19:10.139345: DB CONNECTION CLOSED
+2024-02-18 15:19:10.144850: Crypto Turtle has FINISHED, STOPPED, THE END.
+2024-02-18 15:19:10.150354: CRYPTO TURTLE WHOLE PROGRAM ENDS 
+2024-02-18 15:19:10.150354: CRYPTO TURTLE WHOLE PROGRAM TOOK 0:00:19.103495
+2024-02-18 15:19:10.155858: ********************************************************
+Request: POST /trigger-update | Response: 200 OK
+Request: GET /logs | Response: 200 OK
+Request: GET / | Response: 200 OK
+Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
+Request: GET / | Response: 200 OK
+Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
+Request: GET / | Response: 200 OK
+Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
+2024-02-18 15:20:16.414179: ********************************************************
+2024-02-18 15:20:16.419887: CRYPTO TURTLE WHOLE PROGRAM STARTS
+2024-02-18 15:20:16.436449: DB CONNECTION OPENED
+2024-02-18 15:20:16.589484: CHECK OR CREATE TABLES STARTS
+2024-02-18 15:20:16.600104: TABLE: symbols already exists
+2024-02-18 15:20:16.606109: TABLE: hourlyprices already exists
+2024-02-18 15:20:16.611963: TABLE: dailyprices already exists
+2024-02-18 15:20:16.616967: CHECK OR CREATE TABLES ENDS 
+2024-02-18 15:20:16.616967: CHECK OR CREATE TABLES TOOK 0:00:00.027483
+2024-02-18 15:20:16.621971: SYMBOLS CHECK STARTS
+2024-02-18 15:20:16.626975: GET COINBASE SYMBOLS STARTS
+2024-02-18 15:20:17.057762: GET COINBASE SYMBOLS: API returns 614 symbols.
+2024-02-18 15:20:17.072465: GET COINBASE SYMBOLS ENDS 
+2024-02-18 15:20:17.072465: GET COINBASE SYMBOLS TOOK 0:00:00.445490
+2024-02-18 15:20:17.079469: DB SYMBOLS CHECK AND INSERT STARTS
+2024-02-18 15:20:17.085963: DB SYMBOLS CHECK AND INSERT: SELECT COUNT returns 614 symbols in database.
+2024-02-18 15:20:17.152516: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'online': 396
+2024-02-18 15:20:17.158020: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'delisted': 218
+2024-02-18 15:20:17.163024: DB SYMBOLS CHECK AND INSERT ENDS 
+2024-02-18 15:20:17.163024: DB SYMBOLS CHECK AND INSERT TOOK 0:00:00.083555
+2024-02-18 15:20:17.168528: GET ONLINE SYMBOLS STARTS
+2024-02-18 15:20:17.175534: GET ONLINE SYMBOLS: there are 396 symbols online.
+2024-02-18 15:20:17.181038: GET ONLINE SYMBOLS ENDS 
+2024-02-18 15:20:17.181038: GET ONLINE SYMBOLS TOOK 0:00:00.012510
+2024-02-18 15:20:17.186042: SYMBOLS CHECK ENDS 
+2024-02-18 15:20:17.186042: SYMBOLS CHECK TOOK 0:00:00.564071
+2024-02-18 15:20:17.191046: PRICES CHECK STARTS
+2024-02-18 15:20:17.196550: UPDATE HOURLY PRICES STARTS
+2024-02-18 15:20:17.202055: CURRENT UNIX IS: 1708266016.1734872
+2024-02-18 15:20:17.207560: START OF PREVIOUS HOUR UNIX IS: 1708261200
+2024-02-18 15:20:17.220571: UPDATE HOURLY PRICES: initial row count is: 64568
+2024-02-18 15:20:17.659972: UPDATE HOURLY PRICES: UPDATING: CRO-EUR
+2024-02-18 15:20:18.100988: UPDATE HOURLY PRICES: UPDATING: BCH-GBP
+2024-02-18 15:20:18.427962: UPDATE HOURLY PRICES: UPDATING: MANA-ETH
+2024-02-18 15:20:18.857463: UPDATE HOURLY PRICES: UPDATING: ENJ-BTC
+2024-02-18 15:20:19.185461: UPDATE HOURLY PRICES: UPDATING: LSETH-ETH
+2024-02-18 15:20:19.616962: UPDATE HOURLY PRICES: UPDATING: ETC-BTC
+2024-02-18 15:20:19.952967: UPDATE HOURLY PRICES: UPDATING: PUNDIX-USD
+2024-02-18 15:20:20.401965: UPDATE HOURLY PRICES: UPDATING: WBTC-BTC
+2024-02-18 15:20:20.850480: UPDATE HOURLY PRICES: UPDATING: CGLD-GBP
+2024-02-18 15:20:21.285463: UPDATE HOURLY PRICES: UPDATING: XTZ-GBP
+2024-02-18 15:20:21.618962: UPDATE HOURLY PRICES: UPDATING: AXS-BTC
+2024-02-18 15:20:21.958961: UPDATE HOURLY PRICES: UPDATING: AVT-USD
+2024-02-18 15:20:22.290463: UPDATE HOURLY PRICES: UPDATING: BTRST-USD
+2024-02-18 15:20:22.729461: UPDATE HOURLY PRICES: UPDATING: DASH-BTC
+2024-02-18 15:20:23.058961: UPDATE HOURLY PRICES: UPDATING: PAX-USD
+2024-02-18 15:20:23.392461: UPDATE HOURLY PRICES: UPDATING: FLOW-USDT
+2024-02-18 15:20:23.838335: UPDATE HOURLY PRICES: UPDATING: GYEN-USD
+2024-02-18 15:20:24.152063: UPDATE HOURLY PRICES: UPDATING: COMP-BTC
+2024-02-18 15:20:24.577171: UPDATE HOURLY PRICES: UPDATING: RAI-USD
+2024-02-18 15:20:24.903943: UPDATE HOURLY PRICES: UPDATING: GUSD-USD
+2024-02-18 15:20:25.324009: UPDATE HOURLY PRICES: UPDATING: CRV-BTC
+2024-02-18 15:20:25.658462: UPDATE HOURLY PRICES: UPDATING: DOT-GBP
+2024-02-18 15:20:25.977276: UPDATE HOURLY PRICES: UPDATING: XTZ-BTC
+2024-02-18 15:20:26.427550: UPDATE HOURLY PRICES: UPDATING: ETC-GBP
+2024-02-18 15:20:26.773962: UPDATE HOURLY PRICES: UPDATING: SNX-BTC
+2024-02-18 15:20:27.097700: UPDATE HOURLY PRICES: UPDATING: MINA-USDT
+2024-02-18 15:20:27.422460: UPDATE HOURLY PRICES: UPDATING: ANKR-GBP
+2024-02-18 15:20:27.852804: UPDATE HOURLY PRICES: UPDATING: LSETH-USD
+2024-02-18 15:20:28.316174: UPDATE HOURLY PRICES: UPDATING: ENS-EUR
+2024-02-18 15:20:28.747462: UPDATE HOURLY PRICES: UPDATING: CRV-EUR
+2024-02-18 15:20:29.180962: UPDATE HOURLY PRICES: UPDATING: PLA-USD
+2024-02-18 15:20:29.634463: UPDATE HOURLY PRICES: UPDATING: CGLD-BTC
+2024-02-18 15:20:30.058966: UPDATE HOURLY PRICES: UPDATING: ANKR-BTC
+2024-02-18 15:20:30.549462: UPDATE HOURLY PRICES: UPDATING: MASK-USDT
+2024-02-18 15:20:30.983465: UPDATE HOURLY PRICES: UPDATING: LOKA-USD
+2024-02-18 15:20:31.306962: UPDATE HOURLY PRICES: UPDATING: DOT-BTC
+2024-02-18 15:20:31.741473: UPDATE HOURLY PRICES: UPDATING: XTZ-EUR
+2024-02-18 15:20:32.219631: UPDATE HOURLY PRICES: UPDATING: UNI-GBP
+2024-02-18 15:20:32.550962: UPDATE HOURLY PRICES: UPDATING: BAL-BTC
+2024-02-18 15:20:32.998077: UPDATE HOURLY PRICES: UPDATING: CBETH-ETH
+2024-02-18 15:20:33.416462: UPDATE HOURLY PRICES: UPDATING: BICO-EUR
+2024-02-18 15:20:34.068515: UPDATE HOURLY PRICES: UPDATING: 1INCH-BTC
+2024-02-18 15:20:34.490961: UPDATE HOURLY PRICES: UPDATING: ALGO-BTC
+2024-02-18 15:20:35.228045: UPDATE HOURLY PRICES: UPDATING: ERN-USD
+2024-02-18 15:20:35.247768: UPDATE HOURLY PRICES: total api calls is: 44
+2024-02-18 15:20:35.254775: UPDATE HOURLY PRICES: api calls successful: 44
+2024-02-18 15:20:35.266283: UPDATE HOURLY PRICES: final row count is: 64568
+2024-02-18 15:20:35.271287: UPDATE HOURLY PRICES: rows added is: 0
+2024-02-18 15:20:35.276792: UPDATE HOURLY PRICES ENDS 
+2024-02-18 15:20:35.276792: UPDATE HOURLY PRICES TOOK 0:00:18.080242
+2024-02-18 15:20:35.283296: PRICES CHECK ENDS 
+2024-02-18 15:20:35.283296: PRICES CHECK TOOK 0:00:18.092250
+2024-02-18 15:20:35.288453: BREAKOUTS CHECK STARTS
+2024-02-18 15:20:35.439015: Comparing prices: percentages STARTS
+2024-02-18 15:20:35.485443: HOURLY PERCENTAGES HTML report generated successfully.
+2024-02-18 15:20:35.490446: Comparing prices: percentages ENDS
+2024-02-18 15:20:35.495951: BREAKOUTS CHECK ENDS 
+2024-02-18 15:20:35.495951: BREAKOUTS CHECK TOOK 0:00:00.207498
+2024-02-18 15:20:35.500955: DB CONNECTION CLOSED
+2024-02-18 15:20:35.506459: Crypto Turtle has FINISHED, STOPPED, THE END.
+2024-02-18 15:20:35.511964: CRYPTO TURTLE WHOLE PROGRAM ENDS 
+2024-02-18 15:20:35.511964: CRYPTO TURTLE WHOLE PROGRAM TOOK 0:00:19.092077
+2024-02-18 15:20:35.517053: ********************************************************
+Request: POST /trigger-update | Response: 200 OK
+Request: GET /logs | Response: 200 OK
+Request: GET / | Response: 200 OK
+Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED
+2024-02-18 15:21:20.859186: ********************************************************
+2024-02-18 15:21:20.864691: CRYPTO TURTLE WHOLE PROGRAM STARTS
+2024-02-18 15:21:20.877204: DB CONNECTION OPENED
+2024-02-18 15:21:20.924242: CHECK OR CREATE TABLES STARTS
+2024-02-18 15:21:20.934751: TABLE: symbols already exists
+2024-02-18 15:21:20.940756: TABLE: hourlyprices already exists
+2024-02-18 15:21:20.947260: TABLE: dailyprices already exists
+2024-02-18 15:21:20.952765: CHECK OR CREATE TABLES ENDS 
+2024-02-18 15:21:20.952765: CHECK OR CREATE TABLES TOOK 0:00:00.028523
+2024-02-18 15:21:20.957769: SYMBOLS CHECK STARTS
+2024-02-18 15:21:20.963273: GET COINBASE SYMBOLS STARTS
+2024-02-18 15:21:21.310459: GET COINBASE SYMBOLS: API returns 614 symbols.
+2024-02-18 15:21:21.316532: GET COINBASE SYMBOLS ENDS 
+2024-02-18 15:21:21.316532: GET COINBASE SYMBOLS TOOK 0:00:00.353259
+2024-02-18 15:21:21.323466: DB SYMBOLS CHECK AND INSERT STARTS
+2024-02-18 15:21:21.332473: DB SYMBOLS CHECK AND INSERT: SELECT COUNT returns 614 symbols in database.
+2024-02-18 15:21:21.420543: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'online': 396
+2024-02-18 15:21:21.428050: DB SYMBOLS CHECK AND INSERT: total symbols in database with status 'delisted': 218
+2024-02-18 15:21:21.433554: DB SYMBOLS CHECK AND INSERT ENDS 
+2024-02-18 15:21:21.433554: DB SYMBOLS CHECK AND INSERT TOOK 0:00:00.110088
+2024-02-18 15:21:21.439059: GET ONLINE SYMBOLS STARTS
+2024-02-18 15:21:21.446564: GET ONLINE SYMBOLS: there are 396 symbols online.
+2024-02-18 15:21:21.452217: GET ONLINE SYMBOLS ENDS 
+2024-02-18 15:21:21.452217: GET ONLINE SYMBOLS TOOK 0:00:00.013158
+2024-02-18 15:21:21.457723: SYMBOLS CHECK ENDS 
+2024-02-18 15:21:21.457723: SYMBOLS CHECK TOOK 0:00:00.499954
+2024-02-18 15:21:21.463228: PRICES CHECK STARTS
+2024-02-18 15:21:21.468731: UPDATE HOURLY PRICES STARTS
+2024-02-18 15:21:21.474737: CURRENT UNIX IS: 1708266080.624499
+2024-02-18 15:21:21.480241: START OF PREVIOUS HOUR UNIX IS: 1708261200
+2024-02-18 15:21:21.493751: UPDATE HOURLY PRICES: initial row count is: 64568
+2024-02-18 15:21:21.836462: UPDATE HOURLY PRICES: UPDATING: CRO-EUR
+2024-02-18 15:21:22.272964: UPDATE HOURLY PRICES: UPDATING: BCH-GBP
+2024-02-18 15:21:22.704964: UPDATE HOURLY PRICES: UPDATING: MANA-ETH
+2024-02-18 15:21:23.143961: UPDATE HOURLY PRICES: UPDATING: ENJ-BTC
+2024-02-18 15:21:23.791304: UPDATE HOURLY PRICES: UPDATING: LSETH-ETH
+2024-02-18 15:21:24.141463: UPDATE HOURLY PRICES: UPDATING: ETC-BTC
+2024-02-18 15:21:24.583464: UPDATE HOURLY PRICES: UPDATING: PUNDIX-USD
+2024-02-18 15:21:25.044963: UPDATE HOURLY PRICES: UPDATING: WBTC-BTC
+2024-02-18 15:21:25.379961: UPDATE HOURLY PRICES: UPDATING: CGLD-GBP
+2024-02-18 15:21:25.852974: UPDATE HOURLY PRICES: UPDATING: XTZ-GBP
+2024-02-18 15:21:26.186461: UPDATE HOURLY PRICES: UPDATING: AXS-BTC
+2024-02-18 15:21:26.530147: UPDATE HOURLY PRICES: UPDATING: AVT-USD
+2024-02-18 15:21:26.880964: UPDATE HOURLY PRICES: UPDATING: BTRST-USD
+2024-02-18 15:21:27.316966: UPDATE HOURLY PRICES: UPDATING: DASH-BTC
+2024-02-18 15:21:27.741961: UPDATE HOURLY PRICES: UPDATING: PAX-USD
+2024-02-18 15:21:28.075737: UPDATE HOURLY PRICES: UPDATING: FLOW-USDT
+2024-02-18 15:21:28.400041: UPDATE HOURLY PRICES: UPDATING: GYEN-USD
+2024-02-18 15:21:28.734962: UPDATE HOURLY PRICES: UPDATING: COMP-BTC
+2024-02-18 15:21:29.058461: UPDATE HOURLY PRICES: UPDATING: RAI-USD
+2024-02-18 15:21:29.388092: UPDATE HOURLY PRICES: UPDATING: GUSD-USD
+2024-02-18 15:21:29.835460: UPDATE HOURLY PRICES: UPDATING: CRV-BTC
+2024-02-18 15:21:30.182463: UPDATE HOURLY PRICES: UPDATING: DOT-GBP
+2024-02-18 15:21:30.535962: UPDATE HOURLY PRICES: UPDATING: XTZ-BTC
+2024-02-18 15:21:30.863962: UPDATE HOURLY PRICES: UPDATING: ETC-GBP
+2024-02-18 15:21:31.290462: UPDATE HOURLY PRICES: UPDATING: SNX-BTC
+2024-02-18 15:21:31.714962: UPDATE HOURLY PRICES: UPDATING: MINA-USDT
+2024-02-18 15:21:32.055463: UPDATE HOURLY PRICES: UPDATING: ANKR-GBP
+2024-02-18 15:21:32.490461: UPDATE HOURLY PRICES: UPDATING: LSETH-USD
+2024-02-18 15:21:32.934465: UPDATE HOURLY PRICES: UPDATING: ENS-EUR
+2024-02-18 15:21:33.264962: UPDATE HOURLY PRICES: UPDATING: CRV-EUR
+2024-02-18 15:21:33.712963: UPDATE HOURLY PRICES: UPDATING: PLA-USD
+2024-02-18 15:21:34.028814: UPDATE HOURLY PRICES: UPDATING: CGLD-BTC
+2024-02-18 15:21:34.436476: UPDATE HOURLY PRICES: UPDATING: ANKR-BTC
+2024-02-18 15:21:34.869981: UPDATE HOURLY PRICES: UPDATING: MASK-USDT
+2024-02-18 15:21:35.218460: UPDATE HOURLY PRICES: UPDATING: LOKA-USD
+2024-02-18 15:21:35.547962: UPDATE HOURLY PRICES: UPDATING: DOT-BTC
+2024-02-18 15:21:35.989962: UPDATE HOURLY PRICES: UPDATING: XTZ-EUR
+2024-02-18 15:21:36.428467: UPDATE HOURLY PRICES: UPDATING: UNI-GBP
+2024-02-18 15:21:36.857460: UPDATE HOURLY PRICES: UPDATING: BAL-BTC
+2024-02-18 15:21:37.274315: UPDATE HOURLY PRICES: UPDATING: CBETH-ETH
+2024-02-18 15:21:37.587463: UPDATE HOURLY PRICES: UPDATING: BICO-EUR
+2024-02-18 15:21:37.957463: UPDATE HOURLY PRICES: UPDATING: 1INCH-BTC
+2024-02-18 15:21:38.404992: UPDATE HOURLY PRICES: UPDATING: ALGO-BTC
+2024-02-18 15:21:38.866830: UPDATE HOURLY PRICES: UPDATING: ERN-USD
+2024-02-18 15:21:38.879841: UPDATE HOURLY PRICES: total api calls is: 44
+2024-02-18 15:21:38.885845: UPDATE HOURLY PRICES: api calls successful: 44
+2024-02-18 15:21:38.895853: UPDATE HOURLY PRICES: final row count is: 64568
+2024-02-18 15:21:38.901358: UPDATE HOURLY PRICES: rows added is: 0
+2024-02-18 15:21:38.906862: UPDATE HOURLY PRICES ENDS 
+2024-02-18 15:21:38.906862: UPDATE HOURLY PRICES TOOK 0:00:17.438131
+2024-02-18 15:21:38.914368: PRICES CHECK ENDS 
+2024-02-18 15:21:38.914368: PRICES CHECK TOOK 0:00:17.451140
+2024-02-18 15:21:38.919872: BREAKOUTS CHECK STARTS
+2024-02-18 15:21:39.065989: Comparing prices: percentages STARTS
+2024-02-18 15:21:39.113327: HOURLY PERCENTAGES HTML report generated successfully.
+2024-02-18 15:21:39.119332: Comparing prices: percentages ENDS
+2024-02-18 15:21:39.124836: BREAKOUTS CHECK ENDS 
+2024-02-18 15:21:39.124836: BREAKOUTS CHECK TOOK 0:00:00.204964
+2024-02-18 15:21:39.130341: DB CONNECTION CLOSED
+2024-02-18 15:21:39.136345: Crypto Turtle has FINISHED, STOPPED, THE END.
+2024-02-18 15:21:39.141849: CRYPTO TURTLE WHOLE PROGRAM ENDS 
+2024-02-18 15:21:39.141849: CRYPTO TURTLE WHOLE PROGRAM TOOK 0:00:18.277158
+2024-02-18 15:21:39.147354: ********************************************************
+Request: POST /trigger-update | Response: 200 OK
 Request: GET / | Response: 200 OK
 Request: GET /static/css/crypto_turtle_styles.css | Response: 304 NOT MODIFIED

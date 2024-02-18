@@ -46,34 +46,35 @@ log.log_duration_end(log_time_symbols)
 
 # GET THE DAILY PRICES
 log_prices = log.log_duration_start("PRICES CHECK")
-prices.get_daily_prices_for_symbols(symbols, new_connection)
+#  prices.get_daily_prices_for_symbols(symbols, new_connection)
 prices.get_hourly_prices_for_symbols(symbols, new_connection)
 # missing.fill_missing_hourly_prices(symbols, new_connection)
 log.log_duration_end(log_prices)
 
 # WORK OUT ALL THE HIGHS AND LOWS
-log_highs_lows = log.log_duration_start("HIGHS LOWS CHECK")
-highs.update_high_lows(symbols, new_connection)
-log.log_duration_end(log_highs_lows)
+# log_highs_lows = log.log_duration_start("HIGHS LOWS CHECK")
+# highs.update_high_lows(symbols, new_connection)
+# log.log_duration_end(log_highs_lows)
 
 # BREKAOUTS
-log_breakouts = log.log_duration_start("BREAKTOUTS CHECK")
+log_breakouts = log.log_duration_start("BREAKOUTS CHECK")
 
-import coinbase_compare_prices_daily_10 as comp10
-comp10.print_symbols_exceeding_highs(new_connection)
+# import coinbase_compare_prices_daily_10 as comp10
+# comp10.print_symbols_exceeding_highs(new_connection)
 
-import coinbase_compare_prices_daily_20 as comp20
-comp20.print_symbols_exceeding_highs(new_connection)
+# import coinbase_compare_prices_daily_20 as comp20
+# comp20.print_symbols_exceeding_highs(new_connection)
 
-import coinbase_compare_prices_daily_55 as comp55
-comp55.print_symbols_exceeding_highs(new_connection)
+# import coinbase_compare_prices_daily_55 as comp55
+# comp55.print_symbols_exceeding_highs(new_connection)
 
 # import coinbase_compare_prices_hourly as comp
 # comp.print_symbols_exceeding_highs(new_connection)
 
 import coinbase_compare_prices_percentages as comp
+log.log_message("Comparing prices: percentages STARTS")
 comp.compare_prices_percentages(new_connection)
-
+log.log_message("Comparing prices: percentages ENDS")
 log.log_duration_end(log_breakouts)
 
 
