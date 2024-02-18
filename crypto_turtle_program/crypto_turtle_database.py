@@ -12,8 +12,9 @@ def db_connect_open():
             dbname = os.getenv("DATABASE_NAME"),
             user = os.getenv("DATABASE_USER"),
             password = os.getenv("DATABASE_PASSWORD"),
-            port = os.getenv("DATABASE_PORT"),
-            sslmode="require"
+            port = os.getenv("DATABASE_PORT")
+            # ,
+            # sslmode="require"
         )
         return connection
         

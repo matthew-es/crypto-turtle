@@ -139,7 +139,7 @@ def compare_prices_percentages(new_connection):
             <!DOCTYPE html>
             <html>
             <head>
-                <title>Pumping on Coinbase - %</title>
+                <title>CryptoTurtle.Pro</title>
                 <meta charset="utf-8">
                 
                 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -149,11 +149,16 @@ def compare_prices_percentages(new_connection):
                 <link rel="stylesheet" type="text/css" href="/static/css/crypto_turtle_styles.css">
             </head>
             <body>
-                <h1>Pumping on Coinbase - %</h1>
             """
             
-            html_content += """<div class="container">"""
-            html_content += f"<p><strong>Last updated:</strong> {formatted_datetime}</p>"           
+            html_content += """
+                <div class="container">
+                <h1>CryptoTurtle.Pro</h1>
+            """
+            html_content += f"""<p class=\"small\">
+            <strong>Last updated:</strong> {formatted_datetime}.
+            Monitors all the active symbols returned by the Coinbase Pro API and compares the previous hour's high to the high 2, 4, 12, etc. hours earlier.
+            </p>"""           
             
             html_content += """
             <table>
