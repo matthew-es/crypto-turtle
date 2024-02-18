@@ -126,12 +126,12 @@ def get_hourly_prices_for_symbols(symbols, new_connection):
         # Create a temporary table for hourly price updates
         cursor.execute("""
             CREATE TEMP TABLE IF NOT EXISTS temp_hourly_prices (
-                symbol_id INTEGER,
-                unix_timestamp BIGINT,
-                high_price NUMERIC,
-                low_price NUMERIC,
-                open_price NUMERIC,
-                close_price NUMERIC
+                symbolid INTEGER,
+                unixtimestamp BIGINT,
+                highprice NUMERIC,
+                lowprice NUMERIC,
+                openprice NUMERIC,
+                closeprice NUMERIC
             );
         """)
 
@@ -159,7 +159,7 @@ def get_hourly_prices_for_symbols(symbols, new_connection):
                     # Instead of inserting each row individually, store them in the temporary table
                     for hourly_data in sorted_data:
                         cursor.execute("""
-                            INSERT INTO temp_hourly_prices (symbol_id, unix_timestamp, high_price, low_price, open_price, close_price)
+                            INSERT INTO temp_hourly_prices (symbolid, unixtimestamp, highprice, lowprice, openprice, closeprice)
                             VALUES (%s, %s, %s, %s, %s, %s);
                         """, (symbol_id, hourly_data[0], hourly_data[2], hourly_data[1], hourly_data[3], hourly_data[4]))
 
