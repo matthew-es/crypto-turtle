@@ -1,11 +1,99 @@
+{% macro get_color_style(percentage) %}
+    {% if percentage >= 100 %}
+        purple
+    {% elif percentage >= 75 %}
+        green-very-dark
+    {% elif percentage >= 50 %}
+        green-dark
+    {% elif percentage >= 25 %}
+        green
+    {% elif percentage >= 10 %}
+        green-light
+    {% elif percentage >= 5 %}
+        green-very-light
+    {% elif percentage > 0 %}
+        orange
+    {% elif percentage == 0 %}
+        orange-light
+    {% elif percentage <= -50 %}
+        red-very-dark
+    {% elif percentage <= -25 %}
+        red-dark
+    {% elif percentage <= -10 %}
+        red
+    {% elif percentage <= -5 %}
+        red-light
+    {% else %}
+        red-very-light
+    {% endif %}
+{% endmacro %}
+
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dynamic Page</title>
-</head>
+    <head>
+        <title>CryptoTurtle.Pro</title>
+        <meta charset="utf-8">
+        
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        
+        <link rel="icon" type="image/png" href="/static/favicon.png">
+        <link rel="stylesheet" type="text/css" href="/static/css/crypto_turtle_styles.css">
+    </head>
 <body>
-    <h1>Current Time</h1>
-    <p>The current time is: {{ data.time }}</p>
+    <div class="container">
+    <h1>CryptoTurtle.Pro</h1>
+    <p class="small">
+        <strong>Last updated:</strong> {{ latest_report_time }}
+        <br />Monitors all active symbols returned by the Coinbase API and compares the previous hour's high to the high X hours earlier.
+    </p>
+
+    {% for period, data in tables_data.items() %}
+        <h4>{{ period_names[period] }}</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th class="table-align-right">2 Hrs</th>
+                    <th class="table-align-right">4 Hrs</th>
+                    <th class="table-align-right">12 Hrs</th>
+                    <th class="table-align-right">24 Hrs</th>
+                    <th class="table-align-right">48 Hrs</th>
+                    <th class="table-align-right">72 Hrs</th>
+                    <th class="table-align-right">120 Hrs</th>
+                    <th class="table-align-right">TV</th>
+                    <th class="table-align-right">CB</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row[0] }}</td> <!-- Symbol -->
+                    {% for increase in row[1:] %}
+                        {% if increase is none %}
+                            <td>-/-</td>
+                        {% else %}
+                        <td class="table-align-right {{ get_color_style(increase) }}">{{ increase|round(2) }}%</td>
+                        {% endif %}
+                    {% endfor %}
+                    <td class="table-align-right">
+                        {% set symbol = row[0] %}
+                        {% set tradingview_url = "https://www.tradingview.com/chart/?symbol=" + symbol|replace('-', '') %}
+                        <a href="{{ tradingview_url }}" target="_blank">TV</a>
+                    </td>
+                    <td class="table-align-right">
+                        {% set symbol = row[0] %}
+                        {% set coinbase_url = "https://www.coinbase.com/advanced-trade/spot/" + symbol %}
+                        <a href='{coinbase_url}' target='_blank'>CB</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+
+    </div>
 </body>
 </html>

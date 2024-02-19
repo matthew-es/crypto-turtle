@@ -55,6 +55,17 @@ def check_or_create_tables(new_connection):
     new_connection.commit()
 
     cursor = new_connection.cursor()
+    cursor.execute("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'hourly_percentage_increases');")
+    exists = cursor.fetchone()[0]
+    if not exists:
+        cursor.execute(hourly_percentage_increases_create_table())
+        new_connection.commit()
+        log.log_message("CREATED TABLE: hourly percentage increases")
+    else:
+        log.log_message("TABLE: hourly percentage increases already exists")
+    new_connection.commit()
+
+    cursor = new_connection.cursor()
     cursor.execute("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'dailyprices');")
     exists = cursor.fetchone()[0]
     if not exists:
@@ -108,6 +119,47 @@ def hourlyprices_create_table():
             BEFORE UPDATE ON hourlyprices
             FOR EACH ROW
             EXECUTE FUNCTION update_updated_at_column();
+    """
+
+def hourly_percentage_increases_create_table():
+    return """
+        CREATE OR REPLACE FUNCTION update_updatedat_column()
+        RETURNS TRIGGER AS $$
+        BEGIN
+            NEW.updatedat = CURRENT_TIMESTAMP;
+            RETURN NEW;
+        END;
+        $$ LANGUAGE plpgsql;
+        
+        CREATE TABLE hourly_percentage_increases (
+            id SERIAL PRIMARY KEY,
+            symbolid INT NOT NULL,
+            two_hours_increase NUMERIC(31, 15),
+            four_hours_increase NUMERIC(31, 15),
+            twelve_hours_increase NUMERIC(31, 15),
+            twenty_four_hours_increase NUMERIC(31, 15),
+            forty_eight_hours_increase NUMERIC(31, 15),
+            seventy_two_hours_increase NUMERIC(31, 15),
+            one_hundred_twenty_hours_increase NUMERIC(31, 15),
+            report_generated_at BIGINT,
+            createdat TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+            updatedat TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (symbolid) REFERENCES symbols(symbolid),
+            UNIQUE (symbolid, report_generated_at)
+        );
+
+        CREATE INDEX idx_two_hours_increase ON hourly_percentage_increases(two_hours_increase DESC);
+        CREATE INDEX idx_four_hours_increase ON hourly_percentage_increases(four_hours_increase DESC);
+        CREATE INDEX idx_twelve_hours_increase ON hourly_percentage_increases(twelve_hours_increase DESC);
+        CREATE INDEX idx_twenty_four_hours_increase ON hourly_percentage_increases(twenty_four_hours_increase DESC);
+        CREATE INDEX idx_forty_eight_hours_increase ON hourly_percentage_increases(forty_eight_hours_increase DESC);
+        CREATE INDEX idx_seventy_two_hours_increase ON hourly_percentage_increases(seventy_two_hours_increase DESC);
+        CREATE INDEX idx_one_hundred_twenty_hours_increase ON hourly_percentage_increases(one_hundred_twenty_hours_increase DESC);
+        
+        CREATE TRIGGER update_hourly_percentage_increases_modtime
+            BEFORE UPDATE ON hourly_percentage_increases
+            FOR EACH ROW
+            EXECUTE FUNCTION update_updatedat_column();
     """
 
 def dailyprices_create_table():

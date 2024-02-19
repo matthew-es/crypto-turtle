@@ -71,10 +71,15 @@ log_breakouts = log.log_duration_start("BREAKOUTS CHECK")
 # import coinbase_compare_prices_hourly as comp
 # comp.print_symbols_exceeding_highs(new_connection)
 
-import coinbase_compare_prices_percentages as comp
-log.log_message("Comparing prices: percentages STARTS")
+# import coinbase_compare_prices_percentages as comp
+# log.log_message("Comparing prices: percentages STARTS")
+# comp.compare_prices_percentages(new_connection)
+# log.log_message("Comparing prices: percentages ENDS")
+
+log_breakouts = log.log_duration_start("CALCULATING NEW PERCENTAGES TABLE")
+import coinbase_prices_calculate_hourly_percentages as comp
 comp.compare_prices_percentages(new_connection)
-log.log_message("Comparing prices: percentages ENDS")
+
 log.log_duration_end(log_breakouts)
 
 

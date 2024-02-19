@@ -71,8 +71,9 @@ th {
     width: 24%; /* Divide the container into three equal parts */
     padding: 0px;
 }
-h2 {
-    color: #333;
+
+h2, h3, h4, h5, h6{
+    color: #ffffff;
 }
 
 a {text-decoration: none; color: #007bff;}
