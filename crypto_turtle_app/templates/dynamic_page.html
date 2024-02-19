@@ -52,6 +52,7 @@
 
     {% for period, data in tables_data.items() %}
         <h4>{{ period_names[period] }}</h4>
+        <p class="small">Symbols with a greater than {{ thresholds[period] }}% increase</p>
         <table>
             <thead>
                 <tr>

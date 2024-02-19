@@ -98,7 +98,7 @@ def init_routes(app):
             '120hrs': '120-hour increases',
         }
         
-        return fk.render_template('dynamic_page.html', tables_data=tables_data, period_names=period_names, latest_report_time=latest_report_time)
+        return fk.render_template('dynamic_page.html', tables_data=tables_data, period_names=period_names, latest_report_time=latest_report_time, thresholds=thresholds)
 
 
     def fetch_percentage_increases():
