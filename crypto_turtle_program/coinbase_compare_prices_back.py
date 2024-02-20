@@ -1,9 +1,9 @@
 import decimal as dec
 import psycopg as pg
-import crypto_turtle.crypto_turtle_database as db
-import crypto_turtle.crypto_turtle_logger as log
+import crypto_turtle_database as db
+import crypto_turtle_logger as log
 
-new_log = log.log_duration_start()
+new_log = log.log_duration_start("PRINT SYMBOLS EXCEEDING HIGHS")
 
 def print_symbols_exceeding_highs():
     # Establish a connection to the database
@@ -13,45 +13,6 @@ def print_symbols_exceeding_highs():
 
     # Create a cursor object
     cursor = new_connection.cursor()
-    
-    # query = """
-    #     SELECT DISTINCT
-    #         s.SymbolName,
-    #         dp.Date,
-    #         dp.HighPrice,
-    #         dp."55dayhigh" AS Previous55DayHigh
-    #     FROM 
-    #         dailyprices dp
-    #     JOIN 
-    #         symbols s ON dp.SymbolID = s.SymbolID
-    #     WHERE 
-    #         dp.Date >= CURRENT_DATE - INTERVAL '30 days'
-    #         AND dp.HighPrice > dp."55dayhigh"
-    #     ORDER BY 
-    #         s.SymbolName, dp.Date;
-    # """
-    
-    # interval = 14
-    # query = f"""
-    #     SELECT 
-    #         s.SymbolName,
-    #         latest.Date AS LatestDate,
-    #         latest.HighPrice AS LatestHigh,
-    #         previous."10dayhigh" AS Previous10DayHigh,
-    #         previous."20dayhigh" AS Previous20DayHigh,
-    #         previous."55dayhigh" AS Previous55DayHigh
-    #     FROM 
-    #         dailyprices latest
-    #     JOIN 
-    #         dailyprices previous ON latest.SymbolID = previous.SymbolID AND previous.Date = latest.Date - INTERVAL '1 day'
-    #     JOIN 
-    #         symbols s ON latest.SymbolID = s.SymbolID
-    #     WHERE 
-    #         latest.Date >= (SELECT MAX(Date) FROM dailyprices) - INTERVAL '{interval} days'
-    #     ORDER BY 
-    #         latest.Date DESC, s.SymbolName;
-    # """
-    
     
     query = """
         SELECT 
@@ -224,4 +185,4 @@ def print_symbols_exceeding_highs():
 
 
 print_symbols_exceeding_highs()
-log.log_duration_end(new_log, "COMPARE PRICES")
+log.log_duration_end(new_log)

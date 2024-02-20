@@ -42,9 +42,9 @@ def update_high_lows(symbols, new_connection):
                     SELECT UnixTimestamp 
                     FROM DailyPrices 
                     WHERE SymbolID = %s AND (
-                        "10dayhigh" IS NULL OR 
-                        "20dayhigh" IS NULL OR 
-                        "55dayhigh" IS NULL OR 
+                        "10dayhigh" IS NULL OR "10dayhigh" = 0 OR
+                        "20dayhigh" IS NULL OR "20dayhigh" = 0 OR
+                        "55dayhigh" IS NULL OR "55dayhigh" = 0 OR
                         UnixTimestamp >= (SELECT MAX(UnixTimestamp) FROM DailyPrices WHERE SymbolID = %s) - (2 * 86400)
                     )
                     ORDER BY UnixTimestamp;

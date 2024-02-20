@@ -1,9 +1,138 @@
+# 1. Imports
+# 2. get_hourly_prices_for_symbols
+# 3. compare_prices_percentages
+# 4. xxxxxxxxxxx
+
+########################################################################################
+########################################################################################
+########################################################################################
+########################################################################################
+########################################################################################
+
+import requests as req
 import datetime as dt
-import psycopg  # Assuming psycopg2 for PostgreSQL connection
-import flask as fk
+import psycopg as pg
+from contextlib import closing
+
 import crypto_turtle_logger as log
 import crypto_turtle_timings as ctt
 import crypto_turtle_database as db
+
+########################################################################################
+########################################################################################
+########################################################################################
+########################################################################################
+########################################################################################
+
+def get_hourly_prices_for_symbols(symbols, new_connection):
+    function_name = "UPDATE HOURLY PRICES"
+    log_hourly_price_check = log.log_duration_start(function_name)
+    
+    api_call_count = 0
+    api_call_count_successful = 0
+    
+    # TIME references
+    current_unix_time = ctt.now_basic_unix
+    end_time = ctt.now_previous_hour
+    start_time = ctt.three_hours_ago
+    granularity = 3600
+    start_of_previous_hour_unix = int(ctt.now_previous_hour.timestamp())
+    log.log_message(f"CURRENT UNIX IS: {current_unix_time}")
+    log.log_message(f"START OF PREVIOUS HOUR UNIX IS: {start_of_previous_hour_unix}")
+    
+    try:
+        cursor = new_connection.cursor()        
+        cursor.execute(db.hourlyprices_select_count())
+        initial_row_count = cursor.fetchone()[0]
+        log.log_message(f"{function_name}: initial row count is: {initial_row_count}")
+    except pg.OperationalError as e:
+        log.log_message(f"{function_name}: connection NOT OPEN. Not even the first cursor: {e}")
+        return 
+    
+    with new_connection.cursor() as cursor:
+        # Create a temporary table for hourly price updates
+        cursor.execute("""
+            CREATE TEMP TABLE IF NOT EXISTS temp_hourly_prices (
+                symbolid INTEGER,
+                unixtimestamp BIGINT,
+                highprice NUMERIC,
+                lowprice NUMERIC,
+                openprice NUMERIC,
+                closeprice NUMERIC
+            );
+        """)
+
+        for symbol in symbols:
+            cursor.execute("SELECT symbolid FROM symbols WHERE symbolname = %s;", (symbol,))
+            symbol_data = cursor.fetchone()
+            symbol_id = symbol_data[0] if symbol_data else None
+
+            # When was the last HOURLY row entered for a symbol compared to unix now?
+            cursor.execute("SELECT MAX(unixtimestamp) FROM hourlyprices WHERE symbolid = %s;", (symbol_id,))
+            latest_hourly_timestamp = cursor.fetchone()[0]
+
+            if latest_hourly_timestamp is None or latest_hourly_timestamp < start_of_previous_hour_unix:
+                # Coinbase API endpoint for fetching candles data
+                url = f"https://api.pro.coinbase.com/products/{symbol}/candles"
+                params = {'start': start_time.isoformat(), 'end': end_time.isoformat(), 'granularity': granularity}
+                response = req.get(url, params=params)
+                api_call_count += 1
+
+                if response.status_code == 200:
+                    api_call_count_successful += 1
+                    log.log_message(f"{function_name}: UPDATING: {symbol}")
+                    
+                    data = response.json()
+                    sorted_data = sorted(data, key=lambda x: x[0])
+
+                    # Instead of inserting each row individually, store them in the temporary table
+                    for hourly_data in sorted_data:
+                        cursor.execute("""
+                            INSERT INTO temp_hourly_prices (symbolid, unixtimestamp, highprice, lowprice, openprice, closeprice)
+                            VALUES (%s, %s, %s, %s, %s, %s);
+                        """, (symbol_id, hourly_data[0], hourly_data[2], hourly_data[1], hourly_data[3], hourly_data[4]))
+
+                else:
+                    log.log_message(f"{function_name}: Failed to retrieve data for {symbol}")
+
+        # After collecting all data, insert it into the actual hourlyprices table from the temporary table
+        cursor.execute("""
+            INSERT INTO hourlyprices (symbolid, unixtimestamp, highprice, lowprice, openprice, closeprice)
+            SELECT symbolid, unixtimestamp, highprice, lowprice, openprice, closeprice
+            FROM temp_hourly_prices
+            ON CONFLICT (symbolid, unixtimestamp)
+            DO UPDATE SET
+                highprice = EXCLUDED.highprice,
+                lowprice = EXCLUDED.lowprice,
+                openprice = EXCLUDED.openprice,
+                closeprice = EXCLUDED.closeprice;
+        """)
+
+        # Commit the transaction to finalize the bulk insert
+        new_connection.commit()
+
+        # Optionally, drop the temporary table if you won't use it further
+        cursor.execute("DROP TABLE IF EXISTS temp_hourly_prices;")
+
+    log.log_message(f"{function_name}: total api calls is: {api_call_count}")
+    log.log_message(f"{function_name}: api calls successful: {api_call_count_successful}")
+    cursor = new_connection.cursor()
+    cursor.execute("SELECT COUNT(*) FROM HourlyPrices")
+    final_row_count = cursor.fetchone()[0]
+    log.log_message(f"{function_name}: final row count is: {final_row_count}")
+    log.log_message(f"{function_name}: rows added is: {final_row_count - initial_row_count}")    
+        
+    cursor.close()
+    log.log_duration_end(log_hourly_price_check)
+    return
+
+
+########################################################################################
+########################################################################################
+########################################################################################
+########################################################################################
+########################################################################################
+
 
 def compare_prices_percentages(new_connection):
     print("MESSAGE 1")
@@ -110,3 +239,9 @@ def compare_prices_percentages(new_connection):
     except Exception as e:
         print(f"HOURLY PERCENTAGES: Error in generating report: {e}")
         log.log_message(f"HOURLY PERCENTAGES: Error in generating report: {e}")
+        
+########################################################################################
+########################################################################################
+########################################################################################
+########################################################################################
+########################################################################################
