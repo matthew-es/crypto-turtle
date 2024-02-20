@@ -33,15 +33,16 @@
 <html lang="en">
     <head>
         <title>CryptoTurtle.Pro</title>
-        <meta charset="utf-8">
         
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
         
+        <meta charset="utf-8">
         <link rel="icon" type="image/png" href="/static/favicon.png">
         <link rel="stylesheet" type="text/css" href="/static/css/crypto_turtle_styles.css">
 
+        <link rel=”canonical” href=”https://www.cryptoturtle.pro” />
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-0WPS6T7G0B"></script>
         <script>
@@ -54,57 +55,71 @@
     </head>
 <body>
     <div class="container">
-    <h1>CryptoTurtle.Pro</h1>
-    <p class="small">
-        <strong>Last updated:</strong> {{ latest_report_time }} (UTC)
-        <br />Monitors all active symbols returned by the Coinbase API and compares the previous hour's high to the high X hours earlier.
-    </p>
+        <div class="float-container">
+            <div class="float-left">
+                <h1>
+                    <a href="https://www.cryptoturtle.pro" title="CryptoTurtle.Pro" class="header">CryptoTurtle.Pro</a>
+                </h1>
+            </div>
+            <div class="float-right margin-top-x">
+                <a href="https://twitter.com/cryptoturtlepro" title="CryptoTurtle.Pro on X Twitter" target="_blank">
+                    <img src="/static/x.png" alt="CryptoTurtle.Pro on X Twitter" class="logo">
+                </a>        
+            </div>
+            <div class="float-clear"></div>
+        </div>
 
-    {% for period, data in tables_data.items() %}
-        <h4>{{ period_names[period] }}</h4>
-        <p class="small">Symbols with a greater than {{ thresholds[period] }}% increase</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Symbol</th>
-                    <th class="table-align-right">2 Hrs</th>
-                    <th class="table-align-right">4 Hrs</th>
-                    <th class="table-align-right">12 Hrs</th>
-                    <th class="table-align-right">24 Hrs</th>
-                    <th class="table-align-right">48 Hrs</th>
-                    <th class="table-align-right">72 Hrs</th>
-                    <th class="table-align-right">120 Hrs</th>
-                    <th class="table-align-right">TV</th>
-                    <th class="table-align-right">CB</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in data %}
-                <tr>
-                    <td>{{ row[0] }}</td> <!-- Symbol -->
-                    {% for increase in row[1:] %}
-                        {% if increase is none %}
-                            <td>-/-</td>
-                        {% else %}
-                        <td class="table-align-right {{ get_color_style(increase) }}">{{ increase|round(2) }}%</td>
-                        {% endif %}
-                    {% endfor %}
-                    <td class="table-align-right">
-                        {% set symbol = row[0] %}
-                        {% set tradingview_url = "https://www.tradingview.com/chart/?symbol=" + symbol|replace('-', '') %}
-                        <a href="{{ tradingview_url }}" target="_blank">TV</a>
-                    </td>
-                    <td class="table-align-right">
-                        {% set symbol = row[0] %}
-                        {% set coinbase_url = "https://www.coinbase.com/advanced-trade/spot/" + symbol %}
-                        <a href='{coinbase_url}' target='_blank'>CB</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% endfor %}
+        <div>
+            <p class="small">
+                <strong>Last updated:</strong> {{ latest_report_time }} (UTC)
+                <br />Monitors all active symbols returned by the Coinbase API and compares the previous hour's high to the high X hours earlier.
+            </p>
 
+            {% for period, data in tables_data.items() %}
+                <h4>{{ period_names[period] }}</h4>
+                <p class="small">Symbols with a greater than {{ thresholds[period] }}% increase</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th class="table-align-right">2 Hrs</th>
+                            <th class="table-align-right">4 Hrs</th>
+                            <th class="table-align-right">12 Hrs</th>
+                            <th class="table-align-right">24 Hrs</th>
+                            <th class="table-align-right">48 Hrs</th>
+                            <th class="table-align-right">72 Hrs</th>
+                            <th class="table-align-right">120 Hrs</th>
+                            <th class="table-align-right">TV</th>
+                            <th class="table-align-right">CB</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data %}
+                        <tr>
+                            <td>{{ row[0] }}</td> <!-- Symbol -->
+                            {% for increase in row[1:] %}
+                                {% if increase is none %}
+                                    <td>-/-</td>
+                                {% else %}
+                                <td class="table-align-right {{ get_color_style(increase) }}">{{ increase|round(2) }}%</td>
+                                {% endif %}
+                            {% endfor %}
+                            <td class="table-align-right">
+                                {% set symbol = row[0] %}
+                                {% set tradingview_url = "https://www.tradingview.com/chart/?symbol=" + symbol|replace('-', '') %}
+                                <a href="{{ tradingview_url }}" target="_blank">TV</a>
+                            </td>
+                            <td class="table-align-right">
+                                {% set symbol = row[0] %}
+                                {% set coinbase_url = "https://www.coinbase.com/advanced-trade/spot/" + symbol %}
+                                <a href='{coinbase_url}' target='_blank'>CB</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endfor %}
+        </div>
     </div>
 </body>
 </html>
