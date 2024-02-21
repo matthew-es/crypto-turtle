@@ -87,6 +87,17 @@ def check_or_create_tables(new_connection):
         log.log_message("TABLE: dailyprices already exists")
     new_connection.commit()
     
+    cursor = new_connection.cursor()
+    cursor.execute("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'users');")
+    exists = cursor.fetchone()[0]
+    if not exists:
+        cursor.execute(users_create_table())
+        new_connection.commit()
+        log.log_message("CREATED TABLE: users")
+    else:
+        log.log_message("TABLE: users already exists")
+    new_connection.commit()
+    
     log.log_duration_end(log_check_or_create_tables)
     
 ##############################
@@ -236,6 +247,42 @@ def dailyprices_create_table():
 
         CREATE TRIGGER update_dailyprices_modtime
             BEFORE UPDATE ON dailyprices
+            FOR EACH ROW
+            EXECUTE FUNCTION update_updatedat_column();
+    """
+
+def users_create_table():
+    return """
+        CREATE OR REPLACE FUNCTION update_updatedat_column()
+        RETURNS TRIGGER AS $$
+        BEGIN
+            NEW.updatedat = EXTRACT(epoch FROM CURRENT_TIMESTAMP);
+            RETURN NEW;
+        END;
+        $$ LANGUAGE plpgsql;
+        
+        
+        CREATE TABLE users (
+            uuid uuid PRIMARY KEY,
+            email varchar(255) UNIQUE NOT NULL,
+            email_confirmed boolean NOT NULL DEFAULT false,
+            email_confirm_token text,
+            password_digest text NOT NULL,
+            password_reset_token text,
+            password_reset_expiry bigint,
+            login_is_allowed boolean NOT NULL DEFAULT true,
+            login_last_time bigint,
+            login_failed_attempts integer NOT NULL DEFAULT 0,
+            login_lockout_until bigint,
+            can_access_level integer NOT NULL DEFAULT 0,
+            can_access_until bigint,
+            createdat bigint NOT NULL,
+            updatedat bigint NOT NULL
+        );
+        
+
+        CREATE TRIGGER update_users_modtime
+            BEFORE UPDATE ON users
             FOR EACH ROW
             EXECUTE FUNCTION update_updatedat_column();
     """

@@ -28,6 +28,10 @@ a.header {color: #ffffff; text-decoration: none;}
 a.header:visited {color: #ffffff; text-decoration: none;}
 a.header:hover {color: #ffffff; text-decoration: none;}
 
+a.whitelink {color: #ffffff; text-decoration: underline;}
+a.whitelink:visited {color: #ffffff; text-decoration: underline;}
+a.whitelink:hover {color: #2db300; text-decoration: underline;}
+
 .purple {background-color: #4d0099; color: #ffffff;}
 .green-very-dark {background-color: #134d00; color: #ffffff;}
 .green-dark {background-color: #1a6600; color: #ffffff;}
