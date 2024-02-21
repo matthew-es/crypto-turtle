@@ -287,12 +287,13 @@ def init_routes(app):
             message = "Failed to connect to the database."
         return fk.render_template_string('<h1>{{ message }}</h1>', message=message)
     
-    # Main trigger update route to ping from somewhere else
-    def run_crypto_turtle():
-        """Function to run the crypto_turtle.py script in a separate thread."""
+############################################################################################################
+    
+    # TRIGGER RUN DAILY
+    def run_crypto_turtle_daily():
         try:
             result = sb.run(
-                [sys.executable, 'crypto_turtle.py'],
+                [sys.executable, 'crypto_turtle_run_daily.py'],
                 cwd='crypto_turtle_program',  # Adjust as necessary
                 check=True,
                 stdout=sb.PIPE,
@@ -303,39 +304,45 @@ def init_routes(app):
         except sb.CalledProcessError as e:
             print(f"Failed to trigger the update process. {e}\nOutput: {e.stderr} {e.stdout}")
 
-    @app.route('/trigger-update', methods=['POST'])
-    def trigger_update():
+    @app.route('/trigger-update-daily', methods=['POST'])
+    def trigger_update_daily():
         expected_token = os.getenv('UPDATE_TOKEN')
         token = fk.request.headers.get('Authorization')
         
         if not token or token != expected_token:
             fk.abort(403)
         
-        # Start the crypto_turtle.py script in a background thread
-        thread = th.Thread(target=run_crypto_turtle)
+        thread = th.Thread(target=run_crypto_turtle_daily)
         thread.start()
         
-        # Immediately return a success response
         return fk.jsonify({'status': 'success', 'message': 'Process started.'}), 200
     
+############################################################################################################
     
-    # @app.route('/trigger-update', methods=['POST'])
-    # def trigger_update():
-    #     try:
-    #         expected_token = os.getenv('UPDATE_TOKEN')
-    #         token = fk.request.headers.get('Authorization')
-            
-    #         if not token or token != expected_token:
-    #             fk.abort(403)
-            
-    #         sb.run(
-    #             [sys.executable, 'crypto_turtle.py'],
-    #             cwd='crypto_turtle_program',  # Adjust as necessary
-    #             check=True,
-    #             stdout=sb.PIPE,
-    #             stderr=sb.PIPE,
-    #             text=True
-    #         )
-    #         return "Success", 200
-    #     except sb.CalledProcessError as e:
-    #         return f"Failed to trigger the update process. {e}\nOutput: {e.stderr} {e.stdout}", 500
+    # TRIGGER RUN HOURLY
+    def run_crypto_turtle_hourly():
+        try:
+            result = sb.run(
+                [sys.executable, 'crypto_turtle_run_hourly.py'],
+                cwd='crypto_turtle_program',  # Adjust as necessary
+                check=True,
+                stdout=sb.PIPE,
+                stderr=sb.PIPE,
+                text=True
+            )
+            print(f"Success: {result.stdout}")
+        except sb.CalledProcessError as e:
+            print(f"Failed to trigger the update process. {e}\nOutput: {e.stderr} {e.stdout}")
+
+    @app.route('/trigger-update-hourly', methods=['POST'])
+    def trigger_update_hourly():
+        expected_token = os.getenv('UPDATE_TOKEN')
+        token = fk.request.headers.get('Authorization')
+        
+        if not token or token != expected_token:
+            fk.abort(403)
+        
+        thread = th.Thread(target=run_crypto_turtle_hourly)
+        thread.start()
+        
+        return fk.jsonify({'status': 'success', 'message': 'Process started.'}), 200

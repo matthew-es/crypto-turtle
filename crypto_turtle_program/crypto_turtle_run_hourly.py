@@ -7,14 +7,6 @@ import crypto_turtle_database as db
 
 import coinbase_symbols as sym
 import coinbase_prices_hourly as hour
-import coinbase_prices_daily as day
-
-# import coinbase_prices_daily as day
-# import coinbase_prices_calculate_daily_highs_lows as highs
-
-# import coinbase_prices_hourly_breakouts as hbrk
-# import coinbase_prices_daily_percentages as dper
-# import coinbase_prices_daily_breakouts as dbrk
 
 ########################################################################################
 
@@ -40,7 +32,7 @@ sys.excepthook = handle_exception
 
 # LET'S GO
 log.log_message("********************************************************")
-log_crypto_turtle = log.log_duration_start("CRYPTO TURTLE WHOLE PROGRAM")
+log_crypto_turtle = log.log_duration_start("CRYPTO TURTLE RUN HOURLY BEGINS")
 
 ########################################################################################
 
@@ -57,28 +49,9 @@ sym.check_and_insert_symbols(new_connection, symbol_details)
 symbols = sym.get_online_symbols(new_connection)
 log.log_duration_end(log_time_symbols)
 
-
 ########################################################################################
 
-# GET THE DAILY PRICES
-log_daily_prices = log.log_duration_start("DAILY PRICES CHECK")
-day.get_daily_prices_for_symbols(symbols, new_connection)
-day.update_daily_highs_lows(symbols, new_connection)
-
-# log_breakouts = log.log_duration_start("BREAKOUTS CHECK")
-# import coinbase_compare_prices_daily_10 as comp10
-# comp10.print_symbols_exceeding_highs(new_connection)
-# import coinbase_compare_prices_daily_20 as comp20
-# comp20.print_symbols_exceeding_highs(new_connection)
-# import coinbase_compare_prices_daily_55 as comp55
-# comp55.print_symbols_exceeding_highs(new_connection)
-# log.log_duration_end(log_breakouts)
-
-log.log_duration_end(log_daily_prices)
-
-########################################################################################
-
-# HOURLY PRICES FIRST
+# HOURLY PRICES
 log_hourly_prices = log.log_duration_start("HOURLY PRICES CHECK")
 hour.get_hourly_prices_for_symbols(symbols, new_connection)
 hour.hourly_percentages(new_connection)
@@ -89,7 +62,7 @@ log.log_duration_end(log_hourly_prices)
 ########################################################################################
 
 db.db_connect_close(new_connection)
-log.log_message("Crypto Turtle has FINISHED, STOPPED, THE END.")
+log.log_message("Crypto Turtle HOURLY PRICES has FINISHED, STOPPED, THE END.")
 log.log_duration_end(log_crypto_turtle)
 log.log_message("********************************************************")
 
