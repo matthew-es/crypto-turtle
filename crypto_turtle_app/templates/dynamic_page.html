@@ -109,7 +109,7 @@
                             {% endfor %}
                             <td class="table-align-right">
                                 {% set symbol = row[0] %}
-                                {% set tradingview_url = "https://www.tradingview.com/chart/?symbol=" + symbol|replace('-', '') %}
+                                {% set tradingview_url = "https://www.tradingview.com/chart/?symbol=COINBASE:" + symbol|replace('-', '') %}
                                 <a href="{{ tradingview_url }}" target="_blank">TV</a>
                             </td>
                             <td class="table-align-right">

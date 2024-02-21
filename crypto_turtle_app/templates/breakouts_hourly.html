@@ -87,7 +87,7 @@
                                 <td class="table-align-right" {{ get_breakout_style(breakout[2], breakout[4], '20day') }}>{{ breakout[4] | round(8) }}</td>  {# 20 day high #}
                                 <td class="table-align-right" {{ get_breakout_style(breakout[2], breakout[5], '55day') }}>{{ breakout[5] | round(8) }}</td>  {# 55 day high #}
                                 <td class="table-align-right">
-                                    <a href="https://www.tradingview.com/chart/?symbol={{ breakout[0]|replace('-', '') }}" target="_blank">TV</a>
+                                    <a href="https://www.tradingview.com/chart/?symbol=COINBASE:{{ breakout[0]|replace('-', '') }}" target="_blank">TV</a>
                                 </td>
                                 <td class="table-align-right">
                                     <a href="https://www.coinbase.com/advanced-trade/spot/{{ breakout[0] }}" target="_blank">CB</a>
