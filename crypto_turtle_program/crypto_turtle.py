@@ -7,9 +7,8 @@ import crypto_turtle_database as db
 
 import coinbase_symbols as sym
 import coinbase_prices_hourly as hour
-# import coinbase_prices_calculate_hourly_percentages as hper
+import coinbase_prices_daily as day
 
-# import coinbase_prices as prices
 # import coinbase_prices_daily as day
 # import coinbase_prices_calculate_daily_highs_lows as highs
 
@@ -61,22 +60,10 @@ log.log_duration_end(log_time_symbols)
 
 ########################################################################################
 
-# HOURLY PRICES FIRST
-log_hourly_prices = log.log_duration_start("HOURLY PRICES CHECK")
-hour.get_hourly_prices_for_symbols(symbols, new_connection)
-hour.compare_prices_percentages(new_connection)
-# hour.print_symbols_exceeding_highs(new_connection)
-log.log_duration_end(log_hourly_prices)
-
-########################################################################################
-
 # GET THE DAILY PRICES
-# log_daily_prices = log.log_duration_start("DAILY PRICES CHECK")
-# prices.get_daily_prices_for_symbols(symbols, new_connection)
-
-# log_highs_lows = log.log_duration_start("HIGHS LOWS CHECK")
-# highs.update_high_lows(symbols, new_connection)
-# log.log_duration_end(log_highs_lows)
+log_daily_prices = log.log_duration_start("DAILY PRICES CHECK")
+day.get_daily_prices_for_symbols(symbols, new_connection)
+day.update_daily_highs_lows(symbols, new_connection)
 
 # log_breakouts = log.log_duration_start("BREAKOUTS CHECK")
 # import coinbase_compare_prices_daily_10 as comp10
@@ -87,7 +74,17 @@ log.log_duration_end(log_hourly_prices)
 # comp55.print_symbols_exceeding_highs(new_connection)
 # log.log_duration_end(log_breakouts)
 
-# log.log_duration_end(log_daily_prices)
+log.log_duration_end(log_daily_prices)
+
+########################################################################################
+
+# HOURLY PRICES FIRST
+log_hourly_prices = log.log_duration_start("HOURLY PRICES CHECK")
+hour.get_hourly_prices_for_symbols(symbols, new_connection)
+hour.hourly_percentages(new_connection)
+hour.hourly_breakouts(symbols, new_connection)
+# hour.print_symbols_exceeding_highs(new_connection)
+log.log_duration_end(log_hourly_prices)
 
 ########################################################################################
 

@@ -1,0 +1,145 @@
+{% macro get_breakout_style(hourly_high, day_high, day_type) %}
+    {% if hourly_high > day_high %}
+        {% if day_type == '10day' %}
+            style="background-color: #c6ffb3; color: #000000;"  {# Pale green for 10 day breakout #}
+        {% elif day_type == '20day' %}
+            style="background-color: #2db300;"  {# Lime green for 20 day breakout #}
+        {% elif day_type == '55day' %}
+            style="background-color: #4d0099;"  {# Forest green for 55 day breakout #}
+        {% endif %}
+    {% else %}
+        ""
+    {% endif %}
+{% endmacro %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CryptoTurtle.Pro</title>
+        <meta name=”description” content="There are hundreds of crypto symbols with thousands of price points an hour. Which ones are pumping today or breaking out?"/>
+
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="/static/favicon.png">
+        <link rel="stylesheet" type="text/css" href="/static/css/crypto_turtle_styles.css">
+
+        <link rel=”canonical” href=”https://www.cryptoturtle.pro” />
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8H10MFCC1D"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-8H10MFCC1D');
+        </script>
+</head>
+<body>
+    <div class="container">
+        <div class="float-container">
+            <div class="float-left">
+                <h1>
+                    <a href="https://www.cryptoturtle.pro" title="CryptoTurtle.Pro" class="header">CryptoTurtle.Pro</a>
+                </h1>
+            </div>
+            <div class="float-right margin-top-x">
+                <a href="https://twitter.com/cryptoturtlepro" title="CryptoTurtle.Pro on X Twitter" target="_blank">
+                    <img src="/static/x.png" alt="CryptoTurtle.Pro on X Twitter" class="logo">
+                </a>        
+            </div>
+            <div class="float-clear"></div>
+        </div>
+
+        <div>
+            <p class="small">
+                There are hundreds of crypto symbols with thousands of price points an hour. Which ones are moving today? 
+                Which ones are breaking out of their prices ranges?. 
+                CryptoTurtle.Pro monitors all active symbols returned by the Coinbase API and compares the previous hour's high to the high in the earlier period.
+                Runs every hour.
+            </p>
+            <!-- <p class="small">
+                <strong>Last updated:</strong> {{ latest_report_time }} (UTC)
+            </p> -->
+
+            {% for hour, breakouts in breakouts_by_hour.items() %}
+                <h4>Hourly Breakouts: {{ hour }} (UTC)</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="table-align-left">Symbol</th>
+                            <th class="table-align-right">Hourly High</th>
+                            <th class="table-align-right">10-Day High</th>
+                            <th class="table-align-right">20-Day High</th>
+                            <th class="table-align-right">55-Day High</th>
+                            <th class="table-align-right">TV</th>
+                            <th class="table-align-right">CB</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for breakout in breakouts %}
+                            <tr>
+                                <td class="table-align-left">{{ breakout[0] }}</td>
+                                <td class="table-align-right">{{ breakout[2] | round(8) }}</td>
+                                <td class="table-align-right" {{ get_breakout_style(breakout[2], breakout[3], '10day') }}>{{ breakout[3] | round(8) }}</td>  {# 10 day high #}
+                                <td class="table-align-right" {{ get_breakout_style(breakout[2], breakout[4], '20day') }}>{{ breakout[4] | round(8) }}</td>  {# 20 day high #}
+                                <td class="table-align-right" {{ get_breakout_style(breakout[2], breakout[5], '55day') }}>{{ breakout[5] | round(8) }}</td>  {# 55 day high #}
+                                <td class="table-align-right">
+                                    <a href="https://www.tradingview.com/chart/?symbol={{ breakout[0]|replace('-', '') }}" target="_blank">TV</a>
+                                </td>
+                                <td class="table-align-right">
+                                    <a href="https://www.coinbase.com/advanced-trade/spot/{{ breakout[0] }}" target="_blank">CB</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endfor %}
+
+
+
+
+
+            <!-- <h2>Hourly Breakouts</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Symbol</th>
+                        <th class="table-align-right">Hourly High</th>
+                        <th class="table-align-right">10 Day High</th>
+                        <th class="table-align-right">20 Day High</th>
+                        <th class="table-align-right">55 Day High</th>
+                        <th class="table-align-right">TV</th>
+                        <th class="table-align-right">CB</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for breakout in breakouts %}
+                    <tr>
+                            <td>{{ breakout[1] }}</td>    
+                            <td>{{ breakout[0] }}</td>                    
+                            <td class="table-align-right">{{ breakout[2] }}</td>
+                            <td class="table-align-right" {{ get_breakout_style(breakout[2], breakout[3], '10day') }}>{{ breakout[3] }}</td>  {# 10 day high #}
+                            <td class="table-align-right" {{ get_breakout_style(breakout[2], breakout[4], '20day') }}>{{ breakout[4] }}</td>  {# 20 day high #}
+                            <td class="table-align-right" {{ get_breakout_style(breakout[2], breakout[5], '55day') }}>{{ breakout[5] }}</td>  {# 55 day high #}
+                        <td class="table-align-right">
+                            {% set symbol = breakout[0] %}
+                            {% set tradingview_url = "https://www.tradingview.com/chart/?symbol=" + symbol|replace('-', '') %}
+                            <a href="{{ tradingview_url }}" target="_blank">TV</a>
+                        </td>
+                        <td class="table-align-right">
+                            {% set symbol = breakout[0] %}
+                            {% set coinbase_url = "https://www.coinbase.com/advanced-trade/spot/" + symbol %}
+                            <a href='{{ coinbase_url }}' target='_blank'>CB</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table> -->
+        </div>
+    </div>
+</body>
+</html>

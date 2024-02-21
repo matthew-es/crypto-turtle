@@ -14,6 +14,7 @@ new_connection = db.db_connect_open()
 
 ############################################################################
 
+
 symbol = "BTC-USD"
 
 cursor = new_connection.cursor()

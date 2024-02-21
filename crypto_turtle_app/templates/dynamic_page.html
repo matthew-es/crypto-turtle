@@ -72,11 +72,12 @@
 
         <div>
             <p class="small">
-                There are hundreds of crypto symbols with thousands of price points an hour. Which ones are moving today? Which ones are breaking out of their prices ranges?. CryptoTurtle.Pro monitors all active symbols returned by the Coinbase API and compares the previous hour's high to the high in the earlier period.
+                There are hundreds of crypto symbols with thousands of price points an hour. Which ones are moving today? Which ones are breaking out of their prices ranges?. 
+                CryptoTurtle.Pro monitors all active symbols returned by the Coinbase API and compares the previous hour's high to the high in the earlier period. Runs every hour.
             </p>
-            <p class="small">
+            <!-- <p class="small">
                 <strong>Last updated:</strong> {{ latest_report_time }} (UTC)
-            </p>
+            </p> -->
             {% for period, data in tables_data.items() %}
                 <h4>{{ period_names[period] }}</h4>
                 <p class="small">Symbols with a greater than {{ thresholds[period] }}% increase</p>
@@ -114,7 +115,7 @@
                             <td class="table-align-right">
                                 {% set symbol = row[0] %}
                                 {% set coinbase_url = "https://www.coinbase.com/advanced-trade/spot/" + symbol %}
-                                <a href='{coinbase_url}' target='_blank'>CB</a>
+                                <a href='{{ coinbase_url }}' target='_blank'>CB</a>
                             </td>
                         </tr>
                         {% endfor %}

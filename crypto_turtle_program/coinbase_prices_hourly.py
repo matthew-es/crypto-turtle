@@ -25,7 +25,7 @@ import crypto_turtle_database as db
 ########################################################################################
 
 def get_hourly_prices_for_symbols(symbols, new_connection):
-    function_name = "UPDATE HOURLY PRICES"
+    function_name = "GET HOURLY PRICES FOR SYMBOLS"
     log_hourly_price_check = log.log_duration_start(function_name)
     
     api_call_count = 0
@@ -134,8 +134,10 @@ def get_hourly_prices_for_symbols(symbols, new_connection):
 ########################################################################################
 
 
-def compare_prices_percentages(new_connection):
-    print("MESSAGE 1")
+def hourly_percentages(new_connection):
+    function_name = "HOURLY PERCENTAGES"
+    log_hourly_percentages = log.log_duration_start(function_name)
+    
     try:
         with new_connection.cursor() as cursor:
             print("MESSAGE 2")
@@ -236,12 +238,60 @@ def compare_prices_percentages(new_connection):
             cursor.execute("DROP TABLE IF EXISTS temp_hourly_percentage_increases")
             
             new_connection.commit()
+            log.log_duration_end(log_hourly_percentages)
     except Exception as e:
-        print(f"HOURLY PERCENTAGES: Error in generating report: {e}")
-        log.log_message(f"HOURLY PERCENTAGES: Error in generating report: {e}")
+        log.log_message(f"{function_name}: Error in generating report: {e}")
         
 ########################################################################################
 ########################################################################################
 ########################################################################################
 ########################################################################################
 ########################################################################################
+
+def hourly_breakouts(symbols, new_connection):
+    function_name = "HOURLY BREAKOUTS"
+    log_hourly_breakouts = log.log_duration_start(function_name)
+    
+    try:
+        with new_connection.cursor() as cursor:
+            cursor.execute("CREATE TEMP TABLE IF NOT EXISTS temp_hourly_breakouts AS SELECT * FROM hourly_breakouts WITH NO DATA;")        
+            
+            for symbol in symbols:
+                cursor.execute("SELECT symbolid FROM symbols WHERE symbolname = %s;", (symbol,))
+                symbol_data = cursor.fetchone()
+                symbol_id = symbol_data[0] if symbol_data else None
+            
+                cursor.execute("""
+                    INSERT INTO temp_hourly_breakouts (symbolid, unixtimestamp, hourly_high, day10_high, day20_high, day55_high)
+                    SELECT 
+                        h.symbolid,
+                        h.unixtimestamp,
+                        h.highprice AS hourly_high,
+                        d."10dayhigh", 
+                        d."20dayhigh",
+                        d."55dayhigh"
+                    FROM hourlyprices h
+                    JOIN dailyprices d ON h.symbolid = d.symbolid 
+                                    AND d.unixtimestamp >= extract(epoch from (CURRENT_DATE - INTERVAL '1 DAY'))
+                                    AND d.unixtimestamp < extract(epoch from CURRENT_DATE)
+                    WHERE h.createdat >= NOW() - INTERVAL '24 HOURS'
+                    AND h.symbolid = %s
+                    AND (
+                        h.highprice > d."10dayhigh" 
+                        OR h.highprice > d."20dayhigh" 
+                        OR h.highprice > d."55dayhigh"
+                    );""", (symbol_id,))
+            
+            cursor.execute("""
+                INSERT INTO hourly_breakouts (symbolid, unixtimestamp, hourly_high, day10_high, day20_high, day55_high, createdat, updatedat)
+                SELECT symbolid, unixtimestamp, hourly_high, day10_high, day20_high, day55_high, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+                FROM temp_hourly_breakouts
+                ON CONFLICT (symbolid, unixtimestamp) 
+                DO NOTHING;                
+                """)
+            
+            cursor.execute("DROP TABLE IF EXISTS temp_hourly_breakouts;")
+            new_connection.commit()
+            log.log_duration_end(log_hourly_breakouts)
+    except Exception as e:
+        log.log_message(f"{function_name}: Error in generating report: {e}")

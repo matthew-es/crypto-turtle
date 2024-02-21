@@ -152,6 +152,66 @@ def init_routes(app):
 
         return trending_results
     
+    def format_number(number):
+        if number is None:
+            return None
+        return "{:0.8f}".format(number).rstrip('').rstrip('.') if number != int(number) else str(int(number))
+    
+    def fetch_breakouts():
+        conn = db_connect_open()
+        cur = conn.cursor()
+        
+        # We want the latest report
+        cur.execute("""SELECT MAX(report_generated_at) FROM hourly_percentage_increases""")
+        latest_report_time = cur.fetchone()[0]
+        
+        cur.execute("""
+            SELECT s.symbolname, b.unixtimestamp, b.hourly_high, b.day10_high, b.day20_high, b.day55_high
+            FROM hourly_breakouts b
+            JOIN symbols s ON b.symbolid = s.symbolid
+            WHERE b.unixtimestamp >= EXTRACT(epoch FROM NOW() - INTERVAL '24 HOURS')
+            ORDER BY b.unixtimestamp DESC;
+        """)
+        raw_results = cur.fetchall()
+        cur.close()
+        conn.close()
+
+        breakouts_by_hour = {}
+        for result in raw_results:
+            symbol_name, unix_timestamp, hourly_high, day10_high, day20_high, day55_high = result
+            hour = dt.datetime.utcfromtimestamp(unix_timestamp).strftime('%d/%m, %H:00:00')
+            if hour not in breakouts_by_hour:
+                breakouts_by_hour[hour] = []
+            breakouts_by_hour[hour].append((symbol_name, unix_timestamp, hourly_high, day10_high, day20_high, day55_high))
+            
+        for hour in breakouts_by_hour:
+            breakouts_by_hour[hour].sort(key=lambda x: x[0])
+
+        return breakouts_by_hour, latest_report_time
+
+        # # Format the numbers in the results to remove trailing zeros
+        # formatted_results = []
+        # for row in raw_results:
+        #     symbolname, unixtimestamp, hourly_high, day10_high, day20_high, day55_high = row
+        #     formatted_row = (
+        #         symbolname,
+        #         dt.datetime.utcfromtimestamp(unixtimestamp).strftime('%d/%m %H:%M:%S'),
+        #         format_number(hourly_high),
+        #         format_number(day10_high),
+        #         format_number(day20_high),
+        #         format_number(day55_high),
+        #     )
+        #     formatted_results.append(formatted_row)
+
+        # return formatted_results, latest_report_time
+
+    @app.route('/breakouts')
+    def hourly_breakouts():
+        breakouts, latest_report_time = fetch_breakouts()
+        latest_report_time = dt.datetime.fromtimestamp(latest_report_time).strftime("%Y-%m-%d %H:%M:%S")
+        
+        return fk.render_template('breakouts_hourly.html', breakouts_by_hour=breakouts, latest_report_time=latest_report_time)
+    
     
 
     log_file_path = 'crypto_turtle_program/crypto_turtle_log.txt'  # Update this path

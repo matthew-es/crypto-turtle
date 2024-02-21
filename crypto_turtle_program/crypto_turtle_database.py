@@ -64,6 +64,17 @@ def check_or_create_tables(new_connection):
     else:
         log.log_message("TABLE: hourly percentage increases already exists")
     new_connection.commit()
+    
+    cursor = new_connection.cursor()
+    cursor.execute("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'hourly_breakouts');")
+    exists = cursor.fetchone()[0]
+    if not exists:
+        cursor.execute(hourly_breakouts_create_table())
+        new_connection.commit()
+        log.log_message("CREATED TABLE: hourly breakouts")
+    else:
+        log.log_message("TABLE: hourly breakouts already exists")
+    new_connection.commit()
 
     cursor = new_connection.cursor()
     cursor.execute("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'dailyprices');")
@@ -160,6 +171,38 @@ def hourly_percentage_increases_create_table():
             BEFORE UPDATE ON hourly_percentage_increases
             FOR EACH ROW
             EXECUTE FUNCTION update_updatedat_column();
+    """
+
+def hourly_breakouts_create_table():
+    return """
+        CREATE OR REPLACE FUNCTION update_updatedat_column()
+        RETURNS TRIGGER AS $$
+        BEGIN
+            NEW.updatedat = CURRENT_TIMESTAMP;
+            RETURN NEW;
+        END;
+        $$ LANGUAGE plpgsql;
+        
+        CREATE TABLE hourly_breakouts (
+            breakout_id SERIAL PRIMARY KEY,
+            symbolid INTEGER NOT NULL,
+            unixtimestamp BIGINT NOT NULL,
+            hourly_high NUMERIC(31, 15) NOT NULL,
+            day10_high NUMERIC(31, 15) NOT NULL,
+            day20_high NUMERIC(31, 15) NOT NULL,
+            day55_high NUMERIC(31, 15) NOT NULL,
+            createdat TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+            updatedat TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE (symbolid, unixtimestamp),
+            FOREIGN KEY (symbolid) REFERENCES symbols(symbolid)
+        );
+
+        CREATE INDEX idx_hourly_breakouts_symbolid ON hourly_breakouts(symbolid);
+        CREATE INDEX idx_hourly_breakouts_unixtimestamp ON hourly_breakouts(unixtimestamp);
+        
+        CREATE TRIGGER update_hourly_breakouts_modtime
+            BEFORE UPDATE ON hourly_breakouts
+            FOR EACH ROW EXECUTE FUNCTION update_updatedat_column();
     """
 
 def dailyprices_create_table():

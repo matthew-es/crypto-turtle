@@ -26,6 +26,7 @@ one_hundred_thirty_hours_ago = now_previous_hour - dt.timedelta(hours=130)
 now_previous_day = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
 three_days_ago = now_previous_day - dt.timedelta(days=3)
 ninety_days_ago = now_previous_day - dt.timedelta(days=90)
+one_hundred_eighty_days_ago = now_previous_day - dt.timedelta(days=180)
 
 now2 = dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=1)
 now3 = dt.datetime.now(dt.timezone.utc).replace(minute=0, second=0, microsecond=0) - dt.timedelta(seconds=1)
