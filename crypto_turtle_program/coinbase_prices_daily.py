@@ -83,14 +83,13 @@ def get_daily_prices_for_symbols(symbols, new_connection):
                 sorted_data = sorted(data, key=lambda x: x[0])
             
                 for daily_data in sorted_data:
-                    unix_timestamp = daily_data[0]
+                    unix_timestamp = daily_data[0]                    
                     high_price = daily_data[2]
                     low_price = daily_data[1]
                     open_price = daily_data[3]
                     close_price = daily_data[4]
-
                     cursor.execute(db.dailyprices_insert_symbol_prices(), (symbol_id, unix_timestamp, high_price, low_price, open_price, close_price))
-                    log.log_message(f"{symbol} UPDATING: {unix_timestamp}, {high_price}, {low_price}, {open_price}, {close_price}")
+                    log.log_message(f"UPDATING {symbol}: unix: {unix_timestamp}, high_price: {high_price}, low_price: {low_price}, open_price: {open_price}, close_price: {close_price}")
                 try:
                     new_connection.commit()
                 except Exception as e:

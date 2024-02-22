@@ -33,6 +33,26 @@ def check_or_create_tables(new_connection):
     log_check_or_create_tables = log.log_duration_start(function_name)
     
     cursor = new_connection.cursor()
+    cursor.execute("""
+                   SELECT EXISTS (
+                        SELECT 1
+                        FROM pg_catalog.pg_proc p
+                        JOIN pg_catalog.pg_namespace n ON n.oid = p.pronamespace
+                        WHERE n.nspname = 'public'  -- or your specific schema
+                        AND p.proname = 'update_updatedat_column'  -- your function name
+                    );
+                    """)
+    exists = cursor.fetchone()[0]
+    if not exists:
+        cursor.execute(create_shared_functions())
+        new_connection.commit()
+        log.log_message("CREATED FUNCTIONS: updatedat")
+    else:
+        log.log_message("FUNCTION: updatedat already exists")
+    new_connection.commit()
+    
+    
+    cursor = new_connection.cursor()
     cursor.execute("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'symbols');")
     exists = cursor.fetchone()[0]
     if not exists:
@@ -103,6 +123,17 @@ def check_or_create_tables(new_connection):
 ##############################
 ###### CREATE TABLES statements
 
+def create_shared_functions():
+    return """
+        CREATE OR REPLACE FUNCTION update_updatedat_column()
+        RETURNS TRIGGER AS $$
+        BEGIN
+            NEW.updatedat = CURRENT_TIMESTAMP;
+            RETURN NEW;
+        END;
+        $$ LANGUAGE plpgsql;
+    """
+
 def symbols_create_table():
     return """
         CREATE TABLE symbols (
@@ -116,14 +147,6 @@ def symbols_create_table():
 
 def hourlyprices_create_table():
     return """
-        CREATE OR REPLACE FUNCTION update_updated_at_column()
-        RETURNS TRIGGER AS $$
-        BEGIN
-            NEW.updatedat = CURRENT_TIMESTAMP;
-            RETURN NEW;
-        END;
-        $$ LANGUAGE plpgsql;
-
         CREATE TABLE hourlyprices (
             hourlypriceid SERIAL PRIMARY KEY,
             symbolid INTEGER REFERENCES symbols(symbolid),
@@ -144,15 +167,7 @@ def hourlyprices_create_table():
     """
 
 def hourly_percentage_increases_create_table():
-    return """
-        CREATE OR REPLACE FUNCTION update_updatedat_column()
-        RETURNS TRIGGER AS $$
-        BEGIN
-            NEW.updatedat = CURRENT_TIMESTAMP;
-            RETURN NEW;
-        END;
-        $$ LANGUAGE plpgsql;
-        
+    return """        
         CREATE TABLE hourly_percentage_increases (
             id SERIAL PRIMARY KEY,
             symbolid INT NOT NULL,
@@ -185,15 +200,7 @@ def hourly_percentage_increases_create_table():
     """
 
 def hourly_breakouts_create_table():
-    return """
-        CREATE OR REPLACE FUNCTION update_updatedat_column()
-        RETURNS TRIGGER AS $$
-        BEGIN
-            NEW.updatedat = CURRENT_TIMESTAMP;
-            RETURN NEW;
-        END;
-        $$ LANGUAGE plpgsql;
-        
+    return """        
         CREATE TABLE hourly_breakouts (
             breakout_id SERIAL PRIMARY KEY,
             symbolid INTEGER NOT NULL,
@@ -218,14 +225,6 @@ def hourly_breakouts_create_table():
 
 def dailyprices_create_table():
     return """
-        CREATE OR REPLACE FUNCTION update_updatedat_column()
-        RETURNS TRIGGER AS $$
-        BEGIN
-            NEW.updatedat = CURRENT_TIMESTAMP;
-            RETURN NEW;
-        END;
-        $$ LANGUAGE plpgsql;
-
         CREATE TABLE dailyprices (
             dailypriceid SERIAL PRIMARY KEY,
             symbolid INTEGER REFERENCES symbols(symbolid),
@@ -252,16 +251,7 @@ def dailyprices_create_table():
     """
 
 def users_create_table():
-    return """
-        CREATE OR REPLACE FUNCTION update_updatedat_column()
-        RETURNS TRIGGER AS $$
-        BEGIN
-            NEW.updatedat = EXTRACT(epoch FROM CURRENT_TIMESTAMP);
-            RETURN NEW;
-        END;
-        $$ LANGUAGE plpgsql;
-        
-        
+    return """        
         CREATE TABLE users (
             uuid uuid PRIMARY KEY,
             email varchar(255) UNIQUE NOT NULL,
@@ -276,11 +266,10 @@ def users_create_table():
             login_lockout_until bigint,
             can_access_level integer NOT NULL DEFAULT 0,
             can_access_until bigint,
-            createdat bigint NOT NULL,
-            updatedat bigint NOT NULL
+            createdat TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+            updatedat TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
         );
         
-
         CREATE TRIGGER update_users_modtime
             BEFORE UPDATE ON users
             FOR EACH ROW
