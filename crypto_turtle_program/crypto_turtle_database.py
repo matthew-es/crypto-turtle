@@ -289,7 +289,7 @@ def symbols_select_symbol_on_name():
     return "SELECT SymbolID FROM Symbols WHERE SymbolName = %s;"
 
 def symbols_select_status_trading_disabled():
-    return "SELECT SymbolName, Status, TradingDisabled FROM Symbols WHERE SymbolName = %s;"
+    return "SELECT SymbolID, Status, TradingDisabled FROM Symbols WHERE SymbolName = %s;"
 
 def symbols_select_status_online():
     return "SELECT SymbolName FROM Symbols WHERE Status = 'online';"

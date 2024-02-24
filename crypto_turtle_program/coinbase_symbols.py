@@ -38,26 +38,28 @@ def check_and_insert_symbols(new_connection, symbol_details):
         cursor.execute(db.symbols_select_count())
         how_many_symbols = cursor.fetchone()[0]
         log.log_message(f"{function_name}: SELECT COUNT returns {how_many_symbols} symbols in database.")
-        
+        print("MESSAGE 1")
         for symbol, details in symbol_details.items():
             status = details.get('status')
             trading_disabled = details.get('trading_disabled', False)
-            
+            print("MESSAGE 2")
             cursor.execute(db.symbols_select_status_trading_disabled(), (symbol,))
             symbol_data = cursor.fetchone()
-
+            print("MESSAGE 3")
             if symbol_data:
                 symbol_id, existing_status, existing_trading_disabled = symbol_data
-                
+                print("MESSAGE 4")
+                print(symbol_data)
                 if existing_status != status or existing_trading_disabled != trading_disabled:                  
                     cursor.execute(db.symbols_update_status_trading_disabled(), (status, trading_disabled, symbol_id))
                     new_connection.commit()
-                
+                print("MESSAGE 5")
             else:
                 cursor.execute(db.symbols_insert_symbol(), (symbol, status, trading_disabled))
                 symbol_id = cursor.fetchone()[0]
                 new_connection.commit()
-            
+                print("MESSAGE 6")
+        print("MESSAGE 7")
         cursor.execute(db.symbols_select_count_group_by_status())
         status_counts = cursor.fetchall()
         for status, count in status_counts:
