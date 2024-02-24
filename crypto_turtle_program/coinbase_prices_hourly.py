@@ -34,7 +34,7 @@ def get_hourly_prices_for_symbols(symbols, new_connection):
     # TIME references
     current_unix_time = ctt.now_basic_unix
     end_time = ctt.now_previous_hour
-    start_time = ctt.twenty_four_hours_ago
+    start_time = ctt.three_hours_ago
     granularity = 3600
     start_of_previous_hour_unix = int(ctt.now_previous_hour.timestamp())
     log.log_message(f"CURRENT UNIX IS: {current_unix_time}")
